@@ -1,0 +1,13 @@
+node_modules/
+.vscode/
+.svelte-kit/
+dist/
+build/
+.env
+.env.* 
+__pycache__/
+*.pyc
+venv/
+.Python
+backend/*/data/
+*.log
