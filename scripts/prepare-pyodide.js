@@ -61,6 +61,7 @@ async function downloadPackages() {
 		});
 	} catch (err) {
 		console.error('Failed to load Pyodide:', err);
+		console.warn('Skipping pyodide package download — continuing build');
 		return;
 	}
 
