@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  synergy-ui:
+    build: .
+    image: synergy-ui:local
+    ports:
+      - "3000:8080"
+    environment:
+      # Point to your local Ollama if available; otherwise leave blank
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-changeme}
+      - DATABASE_URL=postgresql://synergy:synergy@db:5432/synergy
+    volumes:
+      - synergy-ui-data:/app/backend/data
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+    networks:
+      - synergy_net
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: synergy
+      POSTGRES_USER: synergy
+      POSTGRES_PASSWORD: synergy
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - synergy_net
+
+  redis:
+    image: redis:7
+    volumes:
+      - redis-data:/data
+    networks:
+      - synergy_net
+
+volumes:
+  synergy-ui-data:
+  db-data:
+  redis-data:
+
+networks:
+  synergy_net:
+    driver: bridge
