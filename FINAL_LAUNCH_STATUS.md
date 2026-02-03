@@ -10,7 +10,7 @@
 ### ✅ OLLAMA AI MODEL ENGINE
 
 | Component | Status | Details |
-|-----------|--------|---------|
+| --------- | ------ | ------- |
 | **Service** | ✅ Active (Running) | WSL systemd enabled, uptime 1h 16m+ |
 | **Primary Model** | ✅ crisptech/jexi-prime-mistral:latest | 4.1GB, Q4_0 quantized, 7.2B params |
 | **Model Capabilities** | ✅ Completion + Tools | Ready for chat & function calling |
@@ -18,6 +18,7 @@
 | **Available Models** | ✅ 6 Total | Fallback options available |
 
 **Model Details:**
+
 ```
 Architecture:    Llama-based
 Parameters:      7.2B
@@ -32,9 +33,9 @@ System Prompt:   "You are a friendly assistant, named JEXI"
 ### ✅ BACKEND (FastAPI)
 
 | Component | Status | Details |
-|-----------|--------|---------|
+| --------- | ------ | ------- |
 | **Server** | ✅ Running | Uvicorn with auto-reload enabled |
-| **Port** | ✅ 8000 | http://localhost:8000 |
+| **Port** | ✅ 8000 | <http://localhost:8000> |
 | **Framework** | ✅ FastAPI v0.126.0 | Production-ready async framework |
 | **Database** | ✅ Configured | SQLAlchemy + Peewee migrations ready |
 | **Authentication** | ✅ Ready | JWT token-based auth system |
@@ -51,9 +52,9 @@ System Prompt:   "You are a friendly assistant, named JEXI"
 ### ✅ FRONTEND (SvelteKit + Vite)
 
 | Component | Status | Details |
-|-----------|--------|---------|
+| --------- | ------ | ------- |
 | **Server** | ✅ Running | Vite dev server with HMR |
-| **Port** | ✅ 5173 | http://localhost:5173 |
+| **Port** | ✅ 5173 | <http://localhost:5173> |
 | **Framework** | ✅ SvelteKit v2.5.27 | Modern reactive framework |
 | **Styling** | ✅ Tailwind CSS v4.0.0 | Utility-first CSS |
 | **Language** | ✅ TypeScript v5.5.4 | Full type safety |
@@ -69,7 +70,7 @@ System Prompt:   "You are a friendly assistant, named JEXI"
 ### ✅ INTEGRATION STATUS
 
 | Integration | Status | Details |
-|-------------|--------|---------|
+| ----------- | ------ | ------- |
 | **Ollama ↔ Backend** | ✅ Connected | Router configured for model inference |
 | **Backend ↔ Frontend** | ✅ Ready | API endpoints and WebSocket channels ready |
 | **Database Migrations** | ✅ Ready | Alembic migration system operational |
@@ -81,18 +82,21 @@ System Prompt:   "You are a friendly assistant, named JEXI"
 ## 📊 PRE-TEST VERIFICATION RESULTS
 
 ### Import Fixes
+
 - ✅ **202 files updated** with corrected imports
 - ✅ **200+ replacements** (SYNERGY_UI → synergy_ui)
 - ✅ **No syntax errors** in codebase
 - ✅ **All modules loadable** and ready
 
 ### Infrastructure
+
 - ✅ **All dependencies installed** (backend + frontend)
 - ✅ **No blocking errors** detected
 - ✅ **Services responsive** and communicating
 - ✅ **Ollama models accessible** via API
 
 ### Configuration
+
 - ✅ **pyproject.toml** - Complete dependency spec
 - ✅ **package.json** - All scripts configured
 - ✅ **cypress.config.ts** - E2E testing configured
@@ -104,35 +108,40 @@ System Prompt:   "You are a friendly assistant, named JEXI"
 ## 🧪 TESTING COMMANDS
 
 ### Option 1: E2E Tests (Cypress)
+
 ```bash
 npm run cy:open
 ```
+
 **Tests Available:**
+
 - `chat.cy.ts` - Chat functionality
 - `documents.cy.ts` - Document handling
 - `registration.cy.ts` - User registration
 - `settings.cy.ts` - Settings management
 
 ### Option 2: Unit Tests (Vitest)
+
 ```bash
 npm run test:frontend
 ```
 
 ### Option 3: Manual Testing
-- **Frontend:** http://localhost:5173
-- **API Docs:** http://localhost:8000/docs
-- **API ReDoc:** http://localhost:8000/redoc
+
+- **Frontend:** <http://localhost:5173>
+- **API Docs:** <http://localhost:8000/docs>
+- **API ReDoc:** <http://localhost:8000/redoc>
 
 ---
 
 ## 🔗 SERVICE ENDPOINTS
 
 | Service | URL | Purpose |
-|---------|-----|---------|
-| **Frontend** | http://localhost:5173 | Web UI |
-| **Backend API** | http://localhost:8000 | API server |
-| **Swagger Docs** | http://localhost:8000/docs | Interactive API docs |
-| **ReDoc** | http://localhost:8000/redoc | Alternative API docs |
+| ------- | --- | ------- |
+| **Frontend** | <http://localhost:5173> | Web UI |
+| **Backend API** | <http://localhost:8000> | API server |
+| **Swagger Docs** | <http://localhost:8000/docs> | Interactive API docs |
+| **ReDoc** | <http://localhost:8000/redoc> | Alternative API docs |
 | **Ollama Service** | WSL / localhost:11434 | LLM inference |
 | **WebSocket** | ws://localhost:8000 | Real-time updates |
 
@@ -141,12 +150,14 @@ npm run test:frontend
 ## 📈 SYSTEM RESOURCES
 
 ### Memory Usage
+
 - **Ollama Service:** 63.3MB (WSL)
 - **Backend Server:** Running efficiently
 - **Frontend Dev Server:** Hot-reload enabled
 - **Total Footprint:** Optimized for development
 
 ### Model Information
+
 - **Primary Model:** crisptech/jexi-prime-mistral:latest
 - **Model ID:** ccfea5fafad5
 - **Size:** 4.1 GB (4 days fresh)
@@ -172,11 +183,12 @@ npm run test:frontend
 
 ---
 
-## 🎬 READY TO TEST!
+## 🎬 READY TO TEST
 
 **All systems are GO! The Synergy UI stack is fully operational and ready for comprehensive testing.**
 
-### Next Actions:
+### Next Actions
+
 1. **Run E2E tests:** `npm run cy:open`
 2. **Run unit tests:** `npm run test:frontend`
 3. **Manual testing:** Visit `http://localhost:5173`
