@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import traceback
 from typing import Collection, Union
 
@@ -26,7 +26,7 @@ from requests import PreparedRequest, Response
 from sqlalchemy import Engine
 from fastapi import status
 
-from SYNERGY_UI.utils.telemetry.constants import SPAN_REDIS_TYPE, SpanAttributes
+from synergy_ui.utils.telemetry.constants import SPAN_REDIS_TYPE, SpanAttributes
 
 
 logger = logging.getLogger(__name__)
@@ -198,3 +198,4 @@ class Instrumentor(BaseInstrumentor):
             return
         for instrumentor in self.instrumentors:
             instrumentor.uninstrument()
+

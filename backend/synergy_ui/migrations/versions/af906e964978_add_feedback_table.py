@@ -49,3 +49,4 @@ def upgrade():
 def downgrade():
     # ### Drop feedback table ###
     op.drop_table("feedback")
+

@@ -1,6 +1,6 @@
-﻿import time
+import time
 from typing import Optional, Dict
-from SYNERGY_UI.env import REDIS_KEY_PREFIX
+from synergy_ui.env import REDIS_KEY_PREFIX
 
 
 class RateLimiter:
@@ -137,3 +137,4 @@ class RateLimiter:
             del store[b]
 
         return sum(store.values())
+

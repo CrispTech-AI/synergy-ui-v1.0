@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 from typing import Awaitable, Optional, Union
 
@@ -19,31 +19,31 @@ from langchain_classic.retrievers import (
 from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 
-from SYNERGY_UI.config import VECTOR_DB
-from SYNERGY_UI.retrieval.vector.factory import VECTOR_DB_CLIENT
+from synergy_ui.config import VECTOR_DB
+from synergy_ui.retrieval.vector.factory import VECTOR_DB_CLIENT
 
 
-from SYNERGY_UI.models.users import UserModel
-from SYNERGY_UI.models.files import Files
-from SYNERGY_UI.models.knowledge import Knowledges
+from synergy_ui.models.users import UserModel
+from synergy_ui.models.files import Files
+from synergy_ui.models.knowledge import Knowledges
 
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.notes import Notes
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.notes import Notes
 
-from SYNERGY_UI.retrieval.vector.main import GetResult
-from SYNERGY_UI.utils.access_control import has_access
-from SYNERGY_UI.utils.headers import include_user_info_headers
-from SYNERGY_UI.utils.misc import get_message_list
+from synergy_ui.retrieval.vector.main import GetResult
+from synergy_ui.utils.access_control import has_access
+from synergy_ui.utils.headers import include_user_info_headers
+from synergy_ui.utils.misc import get_message_list
 
-from SYNERGY_UI.retrieval.web.utils import get_web_loader
-from SYNERGY_UI.retrieval.loaders.youtube import YoutubeLoader
+from synergy_ui.retrieval.web.utils import get_web_loader
+from synergy_ui.retrieval.loaders.youtube import YoutubeLoader
 
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     OFFLINE_MODE,
     ENABLE_FORWARD_USER_INFO_HEADERS,
 )
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     RAG_EMBEDDING_QUERY_PREFIX,
     RAG_EMBEDDING_CONTENT_PREFIX,
     RAG_EMBEDDING_PREFIX_FIELD_NAME,
@@ -1322,3 +1322,4 @@ class RerankCompressor(BaseDocumentCompressor):
                 "No valid scores found, check your reranking function. Returning original documents."
             )
             return documents
+

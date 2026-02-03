@@ -1,8 +1,8 @@
-﻿import time
+import time
 import uuid
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
+from synergy_ui.internal.db import Base, get_db
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Column, String, Text
 
@@ -145,3 +145,4 @@ class MemoriesTable:
 
 
 Memories = MemoriesTable()
+

@@ -78,3 +78,4 @@ def downgrade() -> None:
 
     # Drop the table
     op.drop_table("oauth_session")
+

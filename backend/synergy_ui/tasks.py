@@ -1,4 +1,4 @@
-﻿# tasks.py
+# tasks.py
 import asyncio
 from typing import Dict
 from uuid import uuid4
@@ -8,7 +8,7 @@ from redis.asyncio import Redis
 from fastapi import Request
 from typing import Dict, List, Optional
 
-from SYNERGY_UI.env import REDIS_KEY_PREFIX
+from synergy_ui.env import REDIS_KEY_PREFIX
 
 
 log = logging.getLogger(__name__)
@@ -183,3 +183,4 @@ async def stop_item_tasks(redis: Redis, item_id: str):
             return result  # Return the first failure
 
     return {"status": True, "message": f"All tasks for item {item_id} stopped."}
+

@@ -1,13 +1,13 @@
-﻿import json
+import json
 import time
 import uuid
 from typing import Optional
 from functools import lru_cache
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.utils.access_control import has_access
-from SYNERGY_UI.models.users import User, UserModel, Users, UserResponse
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.models.groups import Groups
+from synergy_ui.utils.access_control import has_access
+from synergy_ui.models.users import User, UserModel, Users, UserResponse
 
 
 from pydantic import BaseModel, ConfigDict
@@ -392,3 +392,4 @@ class NoteTable:
 
 
 Notes = NoteTable()
+

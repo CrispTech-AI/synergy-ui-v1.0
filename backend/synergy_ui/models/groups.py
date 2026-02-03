@@ -1,12 +1,12 @@
-﻿import json
+import json
 import logging
 import time
 from typing import Optional
 import uuid
 
-from SYNERGY_UI.internal.db import Base, get_db
+from synergy_ui.internal.db import Base, get_db
 
-from SYNERGY_UI.models.files import FileMetadataResponse
+from synergy_ui.models.files import FileMetadataResponse
 
 
 from pydantic import BaseModel, ConfigDict
@@ -529,3 +529,4 @@ class GroupTable:
 
 
 Groups = GroupTable()
+

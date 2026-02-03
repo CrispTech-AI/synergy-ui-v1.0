@@ -206,3 +206,4 @@ async def execute_code_jupyter(
     ) as executor:
         result = await executor.run()
         return result.model_dump()
+

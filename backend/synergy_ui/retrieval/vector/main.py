@@ -84,3 +84,4 @@ class VectorDBBase(ABC):
     def reset(self) -> None:
         """Reset the vector database by removing all collections or those matching a condition."""
         pass
+

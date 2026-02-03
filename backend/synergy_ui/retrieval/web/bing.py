@@ -1,9 +1,9 @@
-﻿import logging
+import logging
 import os
 from pprint import pprint
 from typing import Optional
 import requests
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 import argparse
 
 log = logging.getLogger(__name__)
@@ -69,3 +69,4 @@ def main():
 
     results = search_bing(args.locale, args.query, args.count, args.filter)
     pprint(results)
+

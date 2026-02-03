@@ -1,19 +1,19 @@
-﻿import chromadb
+import chromadb
 import logging
 from chromadb import Settings
 from chromadb.utils.batch_utils import create_batches
 
 from typing import Optional
 
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
-from SYNERGY_UI.retrieval.vector.utils import process_metadata
+from synergy_ui.retrieval.vector.utils import process_metadata
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     CHROMA_DATA_PATH,
     CHROMA_HTTP_HOST,
     CHROMA_HTTP_PORT,
@@ -194,3 +194,4 @@ class ChromaClient(VectorDBBase):
     def reset(self):
         # Resets the database. This will delete all collections and item entries.
         return self.client.reset()
+

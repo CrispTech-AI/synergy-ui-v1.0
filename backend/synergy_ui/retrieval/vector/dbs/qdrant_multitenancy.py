@@ -1,9 +1,9 @@
-﻿import logging
+import logging
 from typing import Optional, Tuple, List, Dict, Any
 from urllib.parse import urlparse
 
 import grpc
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     QDRANT_API_KEY,
     QDRANT_GRPC_PORT,
     QDRANT_ON_DISK,
@@ -13,7 +13,7 @@ from SYNERGY_UI.config import (
     QDRANT_TIMEOUT,
     QDRANT_HNSW_M,
 )
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
@@ -368,3 +368,4 @@ class QdrantClient(VectorDBBase):
                 filter=models.Filter(must=[_tenant_filter(tenant_id)])
             ),
         )
+

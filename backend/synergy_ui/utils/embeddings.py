@@ -1,22 +1,22 @@
-﻿import random
+import random
 import logging
 import sys
 
 from fastapi import Request
-from SYNERGY_UI.models.users import UserModel
-from SYNERGY_UI.models.models import Models
-from SYNERGY_UI.utils.models import check_model_access
-from SYNERGY_UI.env import GLOBAL_LOG_LEVEL, BYPASS_MODEL_ACCESS_CONTROL
+from synergy_ui.models.users import UserModel
+from synergy_ui.models.models import Models
+from synergy_ui.utils.models import check_model_access
+from synergy_ui.env import GLOBAL_LOG_LEVEL, BYPASS_MODEL_ACCESS_CONTROL
 
-from SYNERGY_UI.routers.openai import embeddings as openai_embeddings
-from SYNERGY_UI.routers.ollama import (
+from synergy_ui.routers.openai import embeddings as openai_embeddings
+from synergy_ui.routers.ollama import (
     embeddings as ollama_embeddings,
     GenerateEmbeddingsForm,
 )
 
 
-from SYNERGY_UI.utils.payload import convert_embedding_payload_openai_to_ollama
-from SYNERGY_UI.utils.response import convert_embedding_response_ollama_to_openai
+from synergy_ui.utils.payload import convert_embedding_payload_openai_to_ollama
+from synergy_ui.utils.response import convert_embedding_response_ollama_to_openai
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
 log = logging.getLogger(__name__)
@@ -87,3 +87,4 @@ async def generate_embeddings(
         form_data=form_data,
         user=user,
     )
+

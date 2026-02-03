@@ -1,4 +1,4 @@
-﻿import time
+import time
 import logging
 import uuid
 from typing import Optional, List
@@ -8,8 +8,8 @@ import json
 
 from cryptography.fernet import Fernet
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.env import OAUTH_SESSION_TOKEN_ENCRYPTION_KEY
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.env import OAUTH_SESSION_TOKEN_ENCRYPTION_KEY
 
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Column, String, Text, Index
@@ -274,3 +274,4 @@ class OAuthSessionTable:
 
 
 OAuthSessions = OAuthSessionTable()
+

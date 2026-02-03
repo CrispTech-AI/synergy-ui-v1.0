@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import hashlib
 import json
 import logging
@@ -20,11 +20,11 @@ from fastapi.responses import (
 from pydantic import BaseModel
 from starlette.background import BackgroundTask
 
-from SYNERGY_UI.models.models import Models
-from SYNERGY_UI.config import (
+from synergy_ui.models.models import Models
+from synergy_ui.config import (
     CACHE_DIR,
 )
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     MODELS_CACHE_TTL,
     AIOHTTP_CLIENT_SESSION_SSL,
     AIOHTTP_CLIENT_TIMEOUT,
@@ -32,23 +32,23 @@ from SYNERGY_UI.env import (
     ENABLE_FORWARD_USER_INFO_HEADERS,
     BYPASS_MODEL_ACCESS_CONTROL,
 )
-from SYNERGY_UI.models.users import UserModel
+from synergy_ui.models.users import UserModel
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
 
-from SYNERGY_UI.utils.payload import (
+from synergy_ui.utils.payload import (
     apply_model_params_to_body_openai,
     apply_system_prompt_to_body,
 )
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.utils.misc import (
     convert_logit_bias_input_to_json,
     stream_chunks_handler,
 )
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_access
-from SYNERGY_UI.utils.headers import include_user_info_headers
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_access
+from synergy_ui.utils.headers import include_user_info_headers
 
 
 log = logging.getLogger(__name__)
@@ -1149,3 +1149,4 @@ async def proxy(path: str, request: Request, user=Depends(get_verified_user)):
     finally:
         if not streaming:
             await cleanup_response(r, session)
+

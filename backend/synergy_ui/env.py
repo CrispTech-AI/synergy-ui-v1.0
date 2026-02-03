@@ -1,4 +1,4 @@
-﻿import importlib.metadata
+import importlib.metadata
 import json
 import logging
 import os
@@ -13,7 +13,7 @@ import re
 
 import markdown
 from bs4 import BeautifulSoup
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
 ####################################
 # Load .env file
@@ -886,3 +886,4 @@ PIP_PACKAGE_INDEX_OPTIONS = os.getenv("PIP_PACKAGE_INDEX_OPTIONS", "").split()
 ####################################
 
 EXTERNAL_PWA_MANIFEST_URL = os.environ.get("EXTERNAL_PWA_MANIFEST_URL")
+

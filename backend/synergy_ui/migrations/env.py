@@ -1,8 +1,8 @@
-﻿from logging.config import fileConfig
+from logging.config import fileConfig
 
 from alembic import context
-from SYNERGY_UI.models.auths import Auth
-from SYNERGY_UI.env import DATABASE_URL, DATABASE_PASSWORD
+from synergy_ui.models.auths import Auth
+from synergy_ui.env import DATABASE_URL, DATABASE_PASSWORD
 from sqlalchemy import engine_from_config, pool, create_engine
 
 # this is the Alembic Config object, which provides
@@ -106,3 +106,4 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
+

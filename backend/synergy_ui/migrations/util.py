@@ -13,3 +13,4 @@ def get_revision_id():
     import uuid
 
     return str(uuid.uuid4()).replace("-", "")[:12]
+

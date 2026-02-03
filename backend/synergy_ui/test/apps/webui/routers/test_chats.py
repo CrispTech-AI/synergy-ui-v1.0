@@ -1,4 +1,4 @@
-﻿import uuid
+import uuid
 
 from test.util.abstract_integration_test import AbstractPostgresTest
 from test.util.mock_user import mock_webui_user
@@ -12,7 +12,7 @@ class TestChats(AbstractPostgresTest):
 
     def setup_method(self):
         super().setup_method()
-        from SYNERGY_UI.models.chats import ChatForm, Chats
+        from synergy_ui.models.chats import ChatForm, Chats
 
         self.chats = Chats
         self.chats.insert_new_chat(
@@ -88,7 +88,7 @@ class TestChats(AbstractPostgresTest):
 
     def test_get_user_archived_chats(self):
         self.chats.archive_all_chats_by_user_id("2")
-        from SYNERGY_UI.internal.db import Session
+        from synergy_ui.internal.db import Session
 
         Session.commit()
         with mock_webui_user(id="2"):
@@ -234,3 +234,4 @@ class TestChats(AbstractPostgresTest):
 
         chat = self.chats.get_chat_by_id(chat_id)
         assert chat.share_id is None
+

@@ -1,4 +1,4 @@
-﻿from datetime import datetime
+from datetime import datetime
 from io import BytesIO
 from pathlib import Path
 from typing import Dict, Any, List
@@ -9,8 +9,8 @@ from markdown import markdown
 import site
 from fpdf import FPDF
 
-from SYNERGY_UI.env import STATIC_DIR, FONTS_DIR
-from SYNERGY_UI.models.chats import ChatTitleMessagesForm
+from synergy_ui.env import STATIC_DIR, FONTS_DIR
+from synergy_ui.models.chats import ChatTitleMessagesForm
 
 
 class PDFGenerator:
@@ -144,3 +144,4 @@ class PDFGenerator:
             return bytes(pdf_bytes)
         except Exception as e:
             raise e
+

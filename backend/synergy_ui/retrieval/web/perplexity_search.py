@@ -1,9 +1,9 @@
-﻿import logging
+import logging
 from typing import Optional, Literal
 import requests
 
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
-from SYNERGY_UI.utils.headers import include_user_info_headers
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.utils.headers import include_user_info_headers
 
 
 log = logging.getLogger(__name__)
@@ -72,3 +72,4 @@ def search_perplexity_search(
     except Exception as e:
         log.error(f"Error searching with Perplexity Search API: {e}")
         return []
+

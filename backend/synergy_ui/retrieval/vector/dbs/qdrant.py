@@ -1,4 +1,4 @@
-﻿from typing import Optional
+from typing import Optional
 import logging
 from urllib.parse import urlparse
 
@@ -6,13 +6,13 @@ from qdrant_client import QdrantClient as Qclient
 from qdrant_client.http.models import PointStruct
 from qdrant_client.models import models
 
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     QDRANT_URI,
     QDRANT_API_KEY,
     QDRANT_ON_DISK,
@@ -250,3 +250,4 @@ class QdrantClient(VectorDBBase):
         for collection_name in collection_names:
             if collection_name.name.startswith(self.collection_prefix):
                 self.client.delete_collection(collection_name=collection_name.name)
+

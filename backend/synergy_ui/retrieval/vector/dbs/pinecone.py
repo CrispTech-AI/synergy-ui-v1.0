@@ -1,4 +1,4 @@
-﻿from typing import Optional, List, Dict, Any, Union
+from typing import Optional, List, Dict, Any, Union
 import logging
 import time  # for measuring elapsed time
 from pinecone import Pinecone, ServerlessSpec
@@ -17,13 +17,13 @@ import functools  # for partial binding in async tasks
 import concurrent.futures  # for parallel batch upserts
 import random  # for jitter in retry backoff
 
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     PINECONE_API_KEY,
     PINECONE_ENVIRONMENT,
     PINECONE_INDEX_NAME,
@@ -31,7 +31,7 @@ from SYNERGY_UI.config import (
     PINECONE_METRIC,
     PINECONE_CLOUD,
 )
-from SYNERGY_UI.retrieval.vector.utils import process_metadata
+from synergy_ui.retrieval.vector.utils import process_metadata
 
 
 NO_LIMIT = 10000  # Reasonable limit to avoid overwhelming the system
@@ -579,3 +579,4 @@ class PineconeClient(VectorDBBase):
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Exit context manager, ensuring resources are cleaned up."""
         self.close()
+

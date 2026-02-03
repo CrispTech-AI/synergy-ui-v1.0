@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 import mimetypes
 import os
@@ -36,46 +36,46 @@ from langchain_text_splitters import (
 )
 from langchain_core.documents import Document
 
-from SYNERGY_UI.models.files import FileModel, FileUpdateForm, Files
-from SYNERGY_UI.models.knowledge import Knowledges
-from SYNERGY_UI.storage.provider import Storage
+from synergy_ui.models.files import FileModel, FileUpdateForm, Files
+from synergy_ui.models.knowledge import Knowledges
+from synergy_ui.storage.provider import Storage
 
 
-from SYNERGY_UI.retrieval.vector.factory import VECTOR_DB_CLIENT
+from synergy_ui.retrieval.vector.factory import VECTOR_DB_CLIENT
 
 # Document loaders
-from SYNERGY_UI.retrieval.loaders.main import Loader
-from SYNERGY_UI.retrieval.loaders.youtube import YoutubeLoader
+from synergy_ui.retrieval.loaders.main import Loader
+from synergy_ui.retrieval.loaders.youtube import YoutubeLoader
 
 # Web search engines
-from SYNERGY_UI.retrieval.web.main import SearchResult
-from SYNERGY_UI.retrieval.web.utils import get_web_loader
-from SYNERGY_UI.retrieval.web.ollama import search_ollama_cloud
-from SYNERGY_UI.retrieval.web.perplexity_search import search_perplexity_search
-from SYNERGY_UI.retrieval.web.brave import search_brave
-from SYNERGY_UI.retrieval.web.kagi import search_kagi
-from SYNERGY_UI.retrieval.web.mojeek import search_mojeek
-from SYNERGY_UI.retrieval.web.bocha import search_bocha
-from SYNERGY_UI.retrieval.web.duckduckgo import search_duckduckgo
-from SYNERGY_UI.retrieval.web.google_pse import search_google_pse
-from SYNERGY_UI.retrieval.web.jina_search import search_jina
-from SYNERGY_UI.retrieval.web.searchapi import search_searchapi
-from SYNERGY_UI.retrieval.web.serpapi import search_serpapi
-from SYNERGY_UI.retrieval.web.searxng import search_searxng
-from SYNERGY_UI.retrieval.web.yacy import search_yacy
-from SYNERGY_UI.retrieval.web.serper import search_serper
-from SYNERGY_UI.retrieval.web.serply import search_serply
-from SYNERGY_UI.retrieval.web.serpstack import search_serpstack
-from SYNERGY_UI.retrieval.web.tavily import search_tavily
-from SYNERGY_UI.retrieval.web.bing import search_bing
-from SYNERGY_UI.retrieval.web.azure import search_azure
-from SYNERGY_UI.retrieval.web.exa import search_exa
-from SYNERGY_UI.retrieval.web.perplexity import search_perplexity
-from SYNERGY_UI.retrieval.web.sougou import search_sougou
-from SYNERGY_UI.retrieval.web.firecrawl import search_firecrawl
-from SYNERGY_UI.retrieval.web.external import search_external
+from synergy_ui.retrieval.web.main import SearchResult
+from synergy_ui.retrieval.web.utils import get_web_loader
+from synergy_ui.retrieval.web.ollama import search_ollama_cloud
+from synergy_ui.retrieval.web.perplexity_search import search_perplexity_search
+from synergy_ui.retrieval.web.brave import search_brave
+from synergy_ui.retrieval.web.kagi import search_kagi
+from synergy_ui.retrieval.web.mojeek import search_mojeek
+from synergy_ui.retrieval.web.bocha import search_bocha
+from synergy_ui.retrieval.web.duckduckgo import search_duckduckgo
+from synergy_ui.retrieval.web.google_pse import search_google_pse
+from synergy_ui.retrieval.web.jina_search import search_jina
+from synergy_ui.retrieval.web.searchapi import search_searchapi
+from synergy_ui.retrieval.web.serpapi import search_serpapi
+from synergy_ui.retrieval.web.searxng import search_searxng
+from synergy_ui.retrieval.web.yacy import search_yacy
+from synergy_ui.retrieval.web.serper import search_serper
+from synergy_ui.retrieval.web.serply import search_serply
+from synergy_ui.retrieval.web.serpstack import search_serpstack
+from synergy_ui.retrieval.web.tavily import search_tavily
+from synergy_ui.retrieval.web.bing import search_bing
+from synergy_ui.retrieval.web.azure import search_azure
+from synergy_ui.retrieval.web.exa import search_exa
+from synergy_ui.retrieval.web.perplexity import search_perplexity
+from synergy_ui.retrieval.web.sougou import search_sougou
+from synergy_ui.retrieval.web.firecrawl import search_firecrawl
+from synergy_ui.retrieval.web.external import search_external
 
-from SYNERGY_UI.retrieval.utils import (
+from synergy_ui.retrieval.utils import (
     get_content_from_url,
     get_embedding_function,
     get_reranking_function,
@@ -85,14 +85,14 @@ from SYNERGY_UI.retrieval.utils import (
     query_doc,
     query_doc_with_hybrid_search,
 )
-from SYNERGY_UI.retrieval.vector.utils import filter_metadata
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.retrieval.vector.utils import filter_metadata
+from synergy_ui.utils.misc import (
     calculate_sha256_string,
     sanitize_text_for_db,
 )
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     ENV,
     RAG_EMBEDDING_MODEL_AUTO_UPDATE,
     RAG_EMBEDDING_MODEL_TRUST_REMOTE_CODE,
@@ -103,7 +103,7 @@ from SYNERGY_UI.config import (
     RAG_EMBEDDING_CONTENT_PREFIX,
     RAG_EMBEDDING_QUERY_PREFIX,
 )
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     DEVICE_TYPE,
     DOCKER,
     SENTENCE_TRANSFORMERS_BACKEND,
@@ -112,7 +112,7 @@ from SYNERGY_UI.env import (
     SENTENCE_TRANSFORMERS_CROSS_ENCODER_MODEL_KWARGS,
 )
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
 log = logging.getLogger(__name__)
 
@@ -162,7 +162,7 @@ def get_rf(
     if reranking_model:
         if any(model in reranking_model for model in ["jinaai/jina-colbert-v2"]):
             try:
-                from SYNERGY_UI.retrieval.models.colbert import ColBERT
+                from synergy_ui.retrieval.models.colbert import ColBERT
 
                 rf = ColBERT(
                     get_model_path(reranking_model, auto_update),
@@ -175,7 +175,7 @@ def get_rf(
         else:
             if engine == "external":
                 try:
-                    from SYNERGY_UI.retrieval.models.external import ExternalReranker
+                    from synergy_ui.retrieval.models.external import ExternalReranker
 
                     rf = ExternalReranker(
                         url=external_reranker_url,
@@ -2572,3 +2572,4 @@ async def process_files_batch(
                 )
 
     return BatchProcessFilesResponse(results=file_results, errors=file_errors)
+

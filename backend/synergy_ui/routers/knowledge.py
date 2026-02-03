@@ -1,34 +1,34 @@
-﻿from typing import List, Optional
+from typing import List, Optional
 from pydantic import BaseModel
 from fastapi import APIRouter, Depends, HTTPException, status, Request, Query
 from fastapi.concurrency import run_in_threadpool
 import logging
 
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.knowledge import (
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.knowledge import (
     KnowledgeFileListResponse,
     Knowledges,
     KnowledgeForm,
     KnowledgeResponse,
     KnowledgeUserResponse,
 )
-from SYNERGY_UI.models.files import Files, FileModel, FileMetadataResponse
-from SYNERGY_UI.retrieval.vector.factory import VECTOR_DB_CLIENT
-from SYNERGY_UI.routers.retrieval import (
+from synergy_ui.models.files import Files, FileModel, FileMetadataResponse
+from synergy_ui.retrieval.vector.factory import VECTOR_DB_CLIENT
+from synergy_ui.routers.retrieval import (
     process_file,
     ProcessFileForm,
     process_files_batch,
     BatchProcessFilesForm,
 )
-from SYNERGY_UI.storage.provider import Storage
+from synergy_ui.storage.provider import Storage
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.utils.auth import get_verified_user
-from SYNERGY_UI.utils.access_control import has_access, has_permission
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.utils.auth import get_verified_user
+from synergy_ui.utils.access_control import has_access, has_permission
 
 
-from SYNERGY_UI.config import BYPASS_ADMIN_ACCESS_CONTROL
-from SYNERGY_UI.models.models import Models, ModelForm
+from synergy_ui.config import BYPASS_ADMIN_ACCESS_CONTROL
+from synergy_ui.models.models import Models, ModelForm
 
 
 log = logging.getLogger(__name__)
@@ -790,3 +790,4 @@ async def add_files_to_knowledge_batch(
         **knowledge.model_dump(),
         files=Knowledges.get_file_metadatas_by_id(knowledge.id),
     )
+

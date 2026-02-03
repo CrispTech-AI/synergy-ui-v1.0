@@ -24,3 +24,4 @@ def upgrade():
 
 def downgrade():
     op.drop_column("file", "access_control")
+

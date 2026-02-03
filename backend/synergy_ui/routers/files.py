@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 import uuid
 import json
@@ -23,31 +23,31 @@ from fastapi import (
 
 from fastapi.responses import FileResponse, StreamingResponse
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.retrieval.vector.factory import VECTOR_DB_CLIENT
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.retrieval.vector.factory import VECTOR_DB_CLIENT
 
-from SYNERGY_UI.models.channels import Channels
-from SYNERGY_UI.models.users import Users
-from SYNERGY_UI.models.files import (
+from synergy_ui.models.channels import Channels
+from synergy_ui.models.users import Users
+from synergy_ui.models.files import (
     FileForm,
     FileModel,
     FileModelResponse,
     Files,
 )
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.knowledge import Knowledges
-from SYNERGY_UI.models.groups import Groups
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.knowledge import Knowledges
+from synergy_ui.models.groups import Groups
 
 
-from SYNERGY_UI.routers.retrieval import ProcessFileForm, process_file
-from SYNERGY_UI.routers.audio import transcribe
+from synergy_ui.routers.retrieval import ProcessFileForm, process_file
+from synergy_ui.routers.audio import transcribe
 
-from SYNERGY_UI.storage.provider import Storage
+from synergy_ui.storage.provider import Storage
 
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_access
-from SYNERGY_UI.utils.misc import strict_match_mime_type
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_access
+from synergy_ui.utils.misc import strict_match_mime_type
 from pydantic import BaseModel
 
 log = logging.getLogger(__name__)
@@ -768,3 +768,4 @@ async def delete_file_by_id(id: str, user=Depends(get_verified_user)):
             status_code=status.HTTP_404_NOT_FOUND,
             detail=ERROR_MESSAGES.NOT_FOUND,
         )
+

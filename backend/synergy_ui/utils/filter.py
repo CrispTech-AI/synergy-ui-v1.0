@@ -1,11 +1,11 @@
-﻿import inspect
+import inspect
 import logging
 
-from SYNERGY_UI.utils.plugin import (
+from synergy_ui.utils.plugin import (
     load_function_module_by_id,
     get_function_module_from_cache,
 )
-from SYNERGY_UI.models.functions import Functions
+from synergy_ui.models.functions import Functions
 
 log = logging.getLogger(__name__)
 
@@ -132,3 +132,4 @@ async def process_filter_functions(
             del form_data["files"]
 
     return form_data, {}
+

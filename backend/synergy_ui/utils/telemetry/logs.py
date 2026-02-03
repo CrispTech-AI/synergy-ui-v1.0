@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from base64 import b64encode
 from opentelemetry.sdk._logs import (
     LoggingHandler,
@@ -11,7 +11,7 @@ from opentelemetry.exporter.otlp.proto.http._log_exporter import (
 from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
 from opentelemetry._logs import set_logger_provider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     OTEL_SERVICE_NAME,
     OTEL_LOGS_EXPORTER_OTLP_ENDPOINT,
     OTEL_LOGS_EXPORTER_OTLP_INSECURE,
@@ -51,3 +51,4 @@ def setup_logging():
 
 
 otel_handler = setup_logging()
+

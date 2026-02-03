@@ -1,12 +1,12 @@
-﻿import json
+import json
 import time
 import uuid
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.models.tags import TagModel, Tag, Tags
-from SYNERGY_UI.models.users import Users, User, UserNameResponse
-from SYNERGY_UI.models.channels import Channels, ChannelMember
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.models.tags import TagModel, Tag, Tags
+from synergy_ui.models.users import Users, User, UserNameResponse
+from synergy_ui.models.channels import Channels, ChannelMember
 
 
 from pydantic import BaseModel, ConfigDict, field_validator
@@ -473,3 +473,4 @@ class MessageTable:
 
 
 Messages = MessageTable()
+

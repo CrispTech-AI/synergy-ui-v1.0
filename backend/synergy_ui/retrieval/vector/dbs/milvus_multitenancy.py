@@ -1,7 +1,7 @@
-﻿import logging
+import logging
 from typing import Optional, Tuple, List, Dict, Any
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     MILVUS_URI,
     MILVUS_TOKEN,
     MILVUS_DB,
@@ -12,7 +12,7 @@ from SYNERGY_UI.config import (
     MILVUS_HNSW_EFCONSTRUCTION,
     MILVUS_IVF_FLAT_NLIST,
 )
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
@@ -285,3 +285,4 @@ class MilvusClient(VectorDBBase):
 
     def insert(self, collection_name: str, items: List[VectorItem]):
         return self.upsert(collection_name, items)
+

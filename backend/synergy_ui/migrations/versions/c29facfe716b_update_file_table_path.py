@@ -77,3 +77,4 @@ def downgrade():
         batch_op.alter_column(
             "meta", type_=sa.Text(), existing_type=sa.JSON(), existing_nullable=True
         )
+

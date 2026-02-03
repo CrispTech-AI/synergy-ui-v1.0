@@ -1,4 +1,4 @@
-﻿from SYNERGY_UI.routers.images import (
+from synergy_ui.routers.images import (
     get_image_data,
     upload_image,
 )
@@ -13,11 +13,11 @@ from fastapi import (
 from typing import Optional
 from pathlib import Path
 
-from SYNERGY_UI.storage.provider import Storage
+from synergy_ui.storage.provider import Storage
 
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.files import Files
-from SYNERGY_UI.routers.files import upload_file_handler
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.files import Files
+from synergy_ui.routers.files import upload_file_handler
 
 import mimetypes
 import base64
@@ -175,3 +175,4 @@ def get_image_base64_from_file_id(id: str) -> Optional[str]:
             return None
     except Exception as e:
         return None
+

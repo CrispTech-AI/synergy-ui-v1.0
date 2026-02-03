@@ -1,14 +1,14 @@
-﻿import time
+import time
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.users import Users, UserResponse
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.users import Users, UserResponse
 
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Column, String, Text, JSON
 
-from SYNERGY_UI.utils.access_control import has_access
+from synergy_ui.utils.access_control import has_access
 
 ####################
 # Prompts DB Schema
@@ -165,3 +165,4 @@ class PromptsTable:
 
 
 Prompts = PromptsTable()
+

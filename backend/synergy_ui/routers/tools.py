@@ -1,34 +1,34 @@
-﻿import logging
+import logging
 from pathlib import Path
 from typing import Optional
 import time
 import re
 import aiohttp
-from SYNERGY_UI.models.groups import Groups
+from synergy_ui.models.groups import Groups
 from pydantic import BaseModel, HttpUrl
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 
 
-from SYNERGY_UI.models.oauth_sessions import OAuthSessions
-from SYNERGY_UI.models.tools import (
+from synergy_ui.models.oauth_sessions import OAuthSessions
+from synergy_ui.models.tools import (
     ToolForm,
     ToolModel,
     ToolResponse,
     ToolUserResponse,
     Tools,
 )
-from SYNERGY_UI.utils.plugin import (
+from synergy_ui.utils.plugin import (
     load_tool_module_by_id,
     replace_imports,
     get_tool_module_from_cache,
 )
-from SYNERGY_UI.utils.tools import get_tool_specs
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_access, has_permission
-from SYNERGY_UI.utils.tools import get_tool_servers
+from synergy_ui.utils.tools import get_tool_specs
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_access, has_permission
+from synergy_ui.utils.tools import get_tool_servers
 
-from SYNERGY_UI.config import CACHE_DIR, BYPASS_ADMIN_ACCESS_CONTROL
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.config import CACHE_DIR, BYPASS_ADMIN_ACCESS_CONTROL
+from synergy_ui.constants import ERROR_MESSAGES
 
 
 log = logging.getLogger(__name__)
@@ -643,3 +643,4 @@ async def update_tools_user_valves_by_id(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=ERROR_MESSAGES.NOT_FOUND,
         )
+

@@ -128,3 +128,4 @@ def rollback_external(migrator: Migrator, database: pw.Database, *, fake=False):
 
     # Finally, alter the timestamp field to not allow nulls if that was the original setting
     migrator.change_fields("chat", timestamp=pw.BigIntegerField(null=False))
+

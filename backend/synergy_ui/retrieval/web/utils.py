@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import logging
 import socket
 import ssl
@@ -25,10 +25,10 @@ from langchain_community.document_loaders import PlaywrightURLLoader, WebBaseLoa
 from langchain_community.document_loaders.base import BaseLoader
 from langchain_core.documents import Document
 
-from SYNERGY_UI.retrieval.loaders.tavily import TavilyLoader
-from SYNERGY_UI.retrieval.loaders.external_web import ExternalWebLoader
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.config import (
+from synergy_ui.retrieval.loaders.tavily import TavilyLoader
+from synergy_ui.retrieval.loaders.external_web import ExternalWebLoader
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.config import (
     ENABLE_RAG_LOCAL_WEB_FETCH,
     PLAYWRIGHT_WS_URL,
     PLAYWRIGHT_TIMEOUT,
@@ -42,7 +42,7 @@ from SYNERGY_UI.config import (
     EXTERNAL_WEB_LOADER_API_KEY,
     WEB_FETCH_FILTER_LIST,
 )
-from SYNERGY_UI.utils.misc import is_string_allowed
+from synergy_ui.utils.misc import is_string_allowed
 
 log = logging.getLogger(__name__)
 
@@ -723,3 +723,4 @@ def get_web_loader(
             f"Invalid WEB_LOADER_ENGINE: {WEB_LOADER_ENGINE.value}. "
             "Please set it to 'safe_web', 'playwright', 'firecrawl', or 'tavily'."
         )
+

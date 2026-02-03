@@ -89,3 +89,4 @@ class TestPrompts(AbstractPostgresTest):
             response = self.fast_api_client.get(self.create_url("/"))
         assert response.status_code == 200
         assert len(response.json()) == 1
+

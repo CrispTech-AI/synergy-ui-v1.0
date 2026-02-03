@@ -1,4 +1,4 @@
-﻿from typing import Optional, List, Dict, Any, Tuple
+from typing import Optional, List, Dict, Any, Tuple
 import logging
 import json
 from sqlalchemy import (
@@ -27,14 +27,14 @@ from sqlalchemy.ext.mutable import MutableDict
 from sqlalchemy.exc import NoSuchTableError
 
 
-from SYNERGY_UI.retrieval.vector.utils import process_metadata
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.utils import process_metadata
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     PGVECTOR_DB_URL,
     PGVECTOR_INITIALIZE_MAX_VECTOR_LENGTH,
     PGVECTOR_CREATE_EXTENSION,
@@ -90,7 +90,7 @@ class PgvectorClient(VectorDBBase):
 
         # if no pgvector uri, use the existing database connection
         if not PGVECTOR_DB_URL:
-            from SYNERGY_UI.internal.db import Session
+            from synergy_ui.internal.db import Session
 
             self.session = Session
         else:
@@ -712,3 +712,4 @@ class PgvectorClient(VectorDBBase):
     def delete_collection(self, collection_name: str) -> None:
         self.delete(collection_name)
         log.info(f"Collection '{collection_name}' deleted.")
+

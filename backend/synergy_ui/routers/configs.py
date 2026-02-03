@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import copy
 from fastapi import APIRouter, Depends, Request, HTTPException
 from pydantic import BaseModel, ConfigDict
@@ -6,20 +6,20 @@ import aiohttp
 
 from typing import Optional
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.config import get_config, save_config
-from SYNERGY_UI.config import BannerModel
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.config import get_config, save_config
+from synergy_ui.config import BannerModel
 
-from SYNERGY_UI.utils.tools import (
+from synergy_ui.utils.tools import (
     get_tool_server_data,
     get_tool_server_url,
     set_tool_servers,
 )
-from SYNERGY_UI.utils.mcp.client import MCPClient
-from SYNERGY_UI.models.oauth_sessions import OAuthSessions
+from synergy_ui.utils.mcp.client import MCPClient
+from synergy_ui.models.oauth_sessions import OAuthSessions
 
 
-from SYNERGY_UI.utils.oauth import (
+from synergy_ui.utils.oauth import (
     get_discovery_urls,
     get_oauth_client_info_with_dynamic_client_registration,
     encrypt_data,
@@ -534,3 +534,4 @@ async def get_banners(
     user=Depends(get_verified_user),
 ):
     return request.app.state.config.BANNERS
+

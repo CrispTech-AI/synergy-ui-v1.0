@@ -1,4 +1,4 @@
-﻿"""Add channel file table
+"""Add channel file table
 
 Revision ID: 6283dc0e4d8d
 Revises: 3e0e00844bb0
@@ -52,3 +52,4 @@ def upgrade() -> None:
 
 def downgrade() -> None:
     op.drop_table("channel_file")
+

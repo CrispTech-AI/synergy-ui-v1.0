@@ -1,4 +1,4 @@
-﻿"""init
+"""init
 
 Revision ID: 7e5b5dc7342b
 Revises:
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 from alembic import op
 
 import SYNERGY_UI.internal.db
-from SYNERGY_UI.internal.db import JSONField
-from SYNERGY_UI.migrations.util import get_existing_tables
+from synergy_ui.internal.db import JSONField
+from synergy_ui.migrations.util import get_existing_tables
 
 # revision identifiers, used by Alembic.
 revision: str = "7e5b5dc7342b"
@@ -202,3 +202,4 @@ def downgrade() -> None:
     op.drop_table("chat")
     op.drop_table("auth")
     # ### end Alembic commands ###
+

@@ -1,8 +1,8 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 
 log = logging.getLogger(__name__)
 
@@ -87,3 +87,4 @@ def search_searxng(
         )
         for result in sorted_results[:count]
     ]
+

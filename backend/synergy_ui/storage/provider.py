@@ -1,4 +1,4 @@
-﻿import os
+import os
 import shutil
 import json
 import logging
@@ -9,7 +9,7 @@ from typing import BinaryIO, Tuple, Dict
 import boto3
 from botocore.config import Config
 from botocore.exceptions import ClientError
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     S3_ACCESS_KEY_ID,
     S3_BUCKET_NAME,
     S3_ENDPOINT_URL,
@@ -29,7 +29,7 @@ from SYNERGY_UI.config import (
 )
 from google.cloud import storage
 from google.cloud.exceptions import GoogleCloudError, NotFound
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
 from azure.core.exceptions import ResourceNotFoundError
@@ -372,3 +372,4 @@ def get_storage_provider(storage_provider: str):
 
 
 Storage = get_storage_provider(STORAGE_PROVIDER)
+

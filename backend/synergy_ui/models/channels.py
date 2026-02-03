@@ -1,10 +1,10 @@
-﻿import json
+import json
 import time
 import uuid
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.models.groups import Groups
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.models.groups import Groups
 
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy.dialects.postgresql import JSONB
@@ -905,3 +905,4 @@ class ChannelTable:
 
 
 Channels = ChannelTable()
+

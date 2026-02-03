@@ -1,4 +1,4 @@
-﻿import hashlib
+import hashlib
 import re
 import threading
 import time
@@ -13,7 +13,7 @@ import mimeparse
 
 
 import collections.abc
-from SYNERGY_UI.env import CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE
+from synergy_ui.env import CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE
 
 log = logging.getLogger(__name__)
 
@@ -717,3 +717,4 @@ def stream_chunks_handler(stream: aiohttp.StreamReader):
             yield b"\n"
 
     return yield_safe_stream_chunks()
+

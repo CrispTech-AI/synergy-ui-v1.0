@@ -128,3 +128,4 @@ def rollback(migrator: Migrator, database: pw.Database, *, fake=False):
         "user",
         profile_image_url=pw.CharField(),
     )
+

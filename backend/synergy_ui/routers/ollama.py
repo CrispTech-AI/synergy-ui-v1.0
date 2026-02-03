@@ -1,4 +1,4 @@
-﻿# TODO: Implement a more intelligent load balancing mechanism for distributing requests among multiple backend instances.
+# TODO: Implement a more intelligent load balancing mechanism for distributing requests among multiple backend instances.
 # Current implementation uses a simple round-robin approach (random.choice). Consider incorporating algorithms like weighted round-robin,
 # least connections, or least response time for better resource utilization and performance optimization.
 
@@ -17,11 +17,11 @@ import aiohttp
 from aiocache import cached
 import requests
 
-from SYNERGY_UI.utils.headers import include_user_info_headers
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.users import UserModel
+from synergy_ui.utils.headers import include_user_info_headers
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.users import UserModel
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     ENABLE_FORWARD_USER_INFO_HEADERS,
 )
 
@@ -40,23 +40,23 @@ from pydantic import BaseModel, ConfigDict, validator
 from starlette.background import BackgroundTask
 
 
-from SYNERGY_UI.models.models import Models
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.models.models import Models
+from synergy_ui.utils.misc import (
     calculate_sha256,
 )
-from SYNERGY_UI.utils.payload import (
+from synergy_ui.utils.payload import (
     apply_model_params_to_body_ollama,
     apply_model_params_to_body_openai,
     apply_system_prompt_to_body,
 )
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_access
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_access
 
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     UPLOAD_DIR,
 )
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     ENV,
     MODELS_CACHE_TTL,
     AIOHTTP_CLIENT_SESSION_SSL,
@@ -64,7 +64,7 @@ from SYNERGY_UI.env import (
     AIOHTTP_CLIENT_TIMEOUT_MODEL_LIST,
     BYPASS_MODEL_ACCESS_CONTROL,
 )
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
 log = logging.getLogger(__name__)
 
@@ -1806,3 +1806,4 @@ async def upload_model(
             yield f"data: {json.dumps(res)}\n\n"
 
     return StreamingResponse(file_process_stream(), media_type="text/event-stream")
+

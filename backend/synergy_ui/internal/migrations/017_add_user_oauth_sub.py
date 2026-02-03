@@ -43,3 +43,4 @@ def rollback(migrator: Migrator, database: pw.Database, *, fake=False):
     """Write your rollback migrations here."""
 
     migrator.remove_fields("user", "oauth_sub")
+

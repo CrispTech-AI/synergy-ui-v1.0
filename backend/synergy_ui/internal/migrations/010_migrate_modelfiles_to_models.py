@@ -1,4 +1,4 @@
-﻿"""Peewee migrations -- 009_add_models.py.
+"""Peewee migrations -- 009_add_models.py.
 
 Some examples (model - class or model name)::
 
@@ -30,7 +30,7 @@ import peewee as pw
 from peewee_migrate import Migrator
 import json
 
-from SYNERGY_UI.utils.misc import parse_ollama_modelfile
+from synergy_ui.utils.misc import parse_ollama_modelfile
 
 with suppress(ImportError):
     import playhouse.postgres_ext as pw_pext
@@ -128,3 +128,4 @@ def move_data_back_to_modelfile(migrator: Migrator, database: pw.Database):
             modelfile=modelfile_data,
             timestamp=model.created_at,
         )
+

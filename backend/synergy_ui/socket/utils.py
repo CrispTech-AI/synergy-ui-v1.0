@@ -1,7 +1,7 @@
-﻿import json
+import json
 import uuid
-from SYNERGY_UI.utils.redis import get_redis_connection
-from SYNERGY_UI.env import REDIS_KEY_PREFIX
+from synergy_ui.utils.redis import get_redis_connection
+from synergy_ui.env import REDIS_KEY_PREFIX
 from typing import Optional, List, Tuple
 import pycrdt as Y
 
@@ -225,3 +225,4 @@ class YdocManager:
                 del self._updates[document_id]
             if document_id in self._users:
                 del self._users[document_id]
+

@@ -1,19 +1,19 @@
-﻿import json
+import json
 import logging
 import time
 from typing import Optional
 import uuid
 
-from SYNERGY_UI.internal.db import Base, get_db
+from synergy_ui.internal.db import Base, get_db
 
-from SYNERGY_UI.models.files import (
+from synergy_ui.models.files import (
     File,
     FileModel,
     FileMetadataResponse,
     FileModelResponse,
 )
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.users import User, UserModel, Users, UserResponse
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.users import User, UserModel, Users, UserResponse
 
 
 from pydantic import BaseModel, ConfigDict
@@ -28,8 +28,8 @@ from sqlalchemy import (
     or_,
 )
 
-from SYNERGY_UI.utils.access_control import has_access
-from SYNERGY_UI.utils.db.access_control import has_permission
+from synergy_ui.utils.access_control import has_access
+from synergy_ui.utils.db.access_control import has_permission
 
 
 log = logging.getLogger(__name__)
@@ -606,3 +606,4 @@ class KnowledgeTable:
 
 
 Knowledges = KnowledgeTable()
+

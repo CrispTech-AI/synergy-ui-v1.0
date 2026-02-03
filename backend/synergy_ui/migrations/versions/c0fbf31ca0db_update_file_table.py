@@ -30,3 +30,4 @@ def downgrade():
     op.drop_column("file", "updated_at")
     op.drop_column("file", "data")
     op.drop_column("file", "hash")
+

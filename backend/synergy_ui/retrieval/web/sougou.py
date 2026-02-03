@@ -1,9 +1,9 @@
-﻿import logging
+import logging
 import json
 from typing import Optional, List
 
 
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 
 log = logging.getLogger(__name__)
 
@@ -56,3 +56,4 @@ def search_sougou(
     except TencentCloudSDKException as err:
         log.error(f"Error in Sougou search: {err}")
         return []
+

@@ -1,6 +1,6 @@
-﻿import json
+import json
 from uuid import uuid4
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.utils.misc import (
     openai_chat_chunk_message_template,
     openai_chat_completion_message_template,
 )
@@ -187,3 +187,4 @@ def convert_embedding_response_ollama_to_openai(response) -> dict:
 
     # Fallback: return as is if unrecognized
     return response
+

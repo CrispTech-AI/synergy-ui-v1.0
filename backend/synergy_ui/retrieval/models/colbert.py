@@ -1,4 +1,4 @@
-﻿import os
+import os
 import logging
 import torch
 import numpy as np
@@ -6,7 +6,7 @@ from colbert.infra import ColBERTConfig
 from colbert.modeling.checkpoint import Checkpoint
 
 
-from SYNERGY_UI.retrieval.models.base_reranker import BaseReranker
+from synergy_ui.retrieval.models.base_reranker import BaseReranker
 
 log = logging.getLogger(__name__)
 
@@ -85,3 +85,4 @@ class ColBERT(BaseReranker):
         )
 
         return scores
+

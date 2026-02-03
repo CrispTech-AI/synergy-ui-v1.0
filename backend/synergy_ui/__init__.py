@@ -1,4 +1,4 @@
-﻿import base64
+import base64
 import os
 import random
 from pathlib import Path
@@ -15,7 +15,7 @@ KEY_FILE = Path.cwd() / ".webui_secret_key"
 
 def version_callback(value: bool):
     if value:
-        from SYNERGY_UI.env import VERSION
+        from synergy_ui.env import VERSION
 
         typer.echo(f"Synergy UI version: {VERSION}")
         raise typer.Exit()
@@ -73,7 +73,7 @@ def serve(
             os.environ["LD_LIBRARY_PATH"] = ":".join(LD_LIBRARY_PATH)
 
     import SYNERGY_UI.main  # we need set environment variables before importing main
-    from SYNERGY_UI.env import UVICORN_WORKERS  # Import the workers setting
+    from synergy_ui.env import UVICORN_WORKERS  # Import the workers setting
 
     uvicorn.run(
         "SYNERGY_UI.main:app",
@@ -101,3 +101,4 @@ def dev(
 
 if __name__ == "__main__":
     app()
+

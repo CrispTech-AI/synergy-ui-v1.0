@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 import base64
 import io
@@ -9,12 +9,12 @@ from fastapi.responses import Response, StreamingResponse, FileResponse
 from pydantic import BaseModel, ConfigDict
 
 
-from SYNERGY_UI.models.auths import Auths
-from SYNERGY_UI.models.oauth_sessions import OAuthSessions
+from synergy_ui.models.auths import Auths
+from synergy_ui.models.oauth_sessions import OAuthSessions
 
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.users import (
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.users import (
     UserModel,
     UserGroupIdsModel,
     UserGroupIdsListResponse,
@@ -27,17 +27,17 @@ from SYNERGY_UI.models.users import (
     UserUpdateForm,
 )
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.env import STATIC_DIR
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.env import STATIC_DIR
 
 
-from SYNERGY_UI.utils.auth import (
+from synergy_ui.utils.auth import (
     get_admin_user,
     get_password_hash,
     get_verified_user,
     validate_password,
 )
-from SYNERGY_UI.utils.access_control import get_permissions, has_permission
+from synergy_ui.utils.access_control import get_permissions, has_permission
 
 
 log = logging.getLogger(__name__)
@@ -619,3 +619,4 @@ async def delete_user_by_id(user_id: str, user=Depends(get_admin_user)):
 @router.get("/{user_id}/groups")
 async def get_user_groups_by_id(user_id: str, user=Depends(get_admin_user)):
     return Groups.get_groups_by_member_id(user_id)
+

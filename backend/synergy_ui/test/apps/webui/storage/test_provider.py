@@ -1,10 +1,10 @@
-﻿import io
+import io
 import os
 import boto3
 import pytest
 from botocore.exceptions import ClientError
 from moto import mock_aws
-from SYNERGY_UI.storage import provider
+from synergy_ui.storage import provider
 from gcp_storage_emulator.server import create_server
 from google.cloud import storage
 from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient
@@ -433,3 +433,4 @@ class TestAzureStorageProvider:
         )
         with pytest.raises(Exception, match="Blob not found"):
             self.Storage.get_file(file_url)
+

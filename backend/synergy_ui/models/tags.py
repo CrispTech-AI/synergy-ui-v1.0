@@ -1,9 +1,9 @@
-﻿import logging
+import logging
 import time
 import uuid
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
+from synergy_ui.internal.db import Base, get_db
 
 
 from pydantic import BaseModel, ConfigDict
@@ -110,3 +110,4 @@ class TagTable:
 
 
 Tags = TagTable()
+

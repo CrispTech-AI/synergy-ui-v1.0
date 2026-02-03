@@ -1,8 +1,8 @@
-﻿import logging
+import logging
 from typing import Optional, Literal
 import requests
 
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 
 MODELS = Literal[
     "sonar",
@@ -101,3 +101,4 @@ def search_perplexity(
     except Exception as e:
         log.error(f"Error searching with Perplexity API: {e}")
         return []
+

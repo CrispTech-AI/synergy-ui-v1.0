@@ -77,3 +77,4 @@ def rollback(migrator: Migrator, database: pw.Database, *, fake=False):
 
     # Finally, alter the timestamp field to not allow nulls if that was the original setting
     migrator.change_fields("user", timestamp=pw.BigIntegerField(null=False))
+

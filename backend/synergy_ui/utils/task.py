@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import math
 import re
 from datetime import datetime
@@ -6,9 +6,9 @@ from typing import Optional, Any
 import uuid
 
 
-from SYNERGY_UI.utils.misc import get_last_user_message, get_messages_content
+from synergy_ui.utils.misc import get_last_user_message, get_messages_content
 
-from SYNERGY_UI.config import DEFAULT_RAG_TEMPLATE
+from synergy_ui.config import DEFAULT_RAG_TEMPLATE
 
 
 log = logging.getLogger(__name__)
@@ -346,3 +346,4 @@ def moa_response_generation_template(
 def tools_function_calling_generation_template(template: str, tools_specs: str) -> str:
     template = template.replace("{{TOOLS}}", tools_specs)
     return template
+

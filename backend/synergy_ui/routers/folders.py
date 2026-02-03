@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 import shutil
 import uuid
@@ -8,28 +8,28 @@ from pydantic import BaseModel
 import mimetypes
 
 
-from SYNERGY_UI.models.folders import (
+from synergy_ui.models.folders import (
     FolderForm,
     FolderUpdateForm,
     FolderModel,
     FolderNameIdResponse,
     Folders,
 )
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.files import Files
-from SYNERGY_UI.models.knowledge import Knowledges
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.files import Files
+from synergy_ui.models.knowledge import Knowledges
 
 
-from SYNERGY_UI.config import UPLOAD_DIR
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.config import UPLOAD_DIR
+from synergy_ui.constants import ERROR_MESSAGES
 
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status, Request
 from fastapi.responses import FileResponse, StreamingResponse
 
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_permission
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_permission
 
 
 log = logging.getLogger(__name__)
@@ -323,3 +323,4 @@ async def delete_folder_by_id(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=ERROR_MESSAGES.NOT_FOUND,
         )
+

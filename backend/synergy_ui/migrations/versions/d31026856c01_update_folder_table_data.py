@@ -21,3 +21,4 @@ def upgrade():
 
 def downgrade():
     op.drop_column("folder", "data")
+

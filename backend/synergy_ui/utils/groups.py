@@ -1,5 +1,5 @@
-﻿import logging
-from SYNERGY_UI.models.groups import Groups
+import logging
+from synergy_ui.models.groups import Groups
 
 log = logging.getLogger(__name__)
 
@@ -22,3 +22,4 @@ def apply_default_group_assignment(
             log.error(
                 f"Failed to add user {user_id} to default group {default_group_id}: {e}"
             )
+

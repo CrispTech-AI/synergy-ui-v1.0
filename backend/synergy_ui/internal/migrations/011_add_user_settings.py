@@ -46,3 +46,4 @@ def rollback(migrator: Migrator, database: pw.Database, *, fake=False):
 
     # Remove the settings field
     migrator.remove_fields("user", "settings")
+

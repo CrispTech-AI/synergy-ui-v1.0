@@ -1,11 +1,11 @@
-﻿import os
+import os
 import json
 import logging
 from contextlib import contextmanager
 from typing import Any, Optional
 
-from SYNERGY_UI.internal.wrappers import register_connection
-from SYNERGY_UI.env import (
+from synergy_ui.internal.wrappers import register_connection
+from synergy_ui.env import (
     SYNERGY_UI_DIR,
     DATABASE_URL,
     DATABASE_SCHEMA,
@@ -158,3 +158,4 @@ def get_session():
 
 
 get_db = contextmanager(get_session)
+

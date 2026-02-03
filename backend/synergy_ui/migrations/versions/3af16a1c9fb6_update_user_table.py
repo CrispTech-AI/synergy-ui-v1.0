@@ -30,3 +30,4 @@ def downgrade() -> None:
     op.drop_column("user", "bio")
     op.drop_column("user", "gender")
     op.drop_column("user", "date_of_birth")
+

@@ -1,4 +1,4 @@
-﻿from test.util.abstract_integration_test import AbstractPostgresTest
+from test.util.abstract_integration_test import AbstractPostgresTest
 from test.util.mock_user import mock_webui_user
 
 
@@ -7,7 +7,7 @@ class TestModels(AbstractPostgresTest):
 
     def setup_class(cls):
         super().setup_class()
-        from SYNERGY_UI.models.models import Model
+        from synergy_ui.models.models import Model
 
         cls.models = Model
 
@@ -59,3 +59,4 @@ class TestModels(AbstractPostgresTest):
             response = self.fast_api_client.get(self.create_url("/"))
         assert response.status_code == 200
         assert len(response.json()) == 0
+

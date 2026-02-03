@@ -1,4 +1,4 @@
-﻿from pymilvus import MilvusClient as Client
+from pymilvus import MilvusClient as Client
 from pymilvus import FieldSchema, DataType
 from pymilvus import connections, Collection
 
@@ -6,14 +6,14 @@ import json
 import logging
 from typing import Optional
 
-from SYNERGY_UI.retrieval.vector.utils import process_metadata
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.utils import process_metadata
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     MILVUS_URI,
     MILVUS_DB,
     MILVUS_TOKEN,
@@ -389,3 +389,4 @@ class MilvusClient(VectorDBBase):
                 except Exception as e:
                     log.error(f"Error deleting collection {collection_name_full}: {e}")
         log.info(f"Milvus reset complete. Deleted collections: {deleted_collections}")
+

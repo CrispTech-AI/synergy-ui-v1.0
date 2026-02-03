@@ -1,4 +1,4 @@
-﻿from fastapi import (
+from fastapi import (
     Depends,
     FastAPI,
     File,
@@ -18,14 +18,14 @@ from pydantic import BaseModel
 from starlette.responses import FileResponse
 from typing import Optional
 
-from SYNERGY_UI.env import AIOHTTP_CLIENT_SESSION_SSL
-from SYNERGY_UI.config import CACHE_DIR
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.env import AIOHTTP_CLIENT_SESSION_SSL
+from synergy_ui.config import CACHE_DIR
+from synergy_ui.constants import ERROR_MESSAGES
 
 
-from SYNERGY_UI.routers.openai import get_all_models_responses
+from synergy_ui.routers.openai import get_all_models_responses
 
-from SYNERGY_UI.utils.auth import get_admin_user
+from synergy_ui.utils.auth import get_admin_user
 
 log = logging.getLogger(__name__)
 
@@ -507,3 +507,4 @@ async def update_pipeline_valves(
             status_code=(r.status_code if r is not None else status.HTTP_404_NOT_FOUND),
             detail=detail if detail else "Pipeline not found",
         )
+

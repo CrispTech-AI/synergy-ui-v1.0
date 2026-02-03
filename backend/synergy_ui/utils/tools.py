@@ -1,4 +1,4 @@
-﻿import inspect
+import inspect
 import logging
 import re
 import inspect
@@ -34,11 +34,11 @@ from langchain_core.utils.function_calling import (
 )
 
 
-from SYNERGY_UI.utils.misc import is_string_allowed
-from SYNERGY_UI.models.tools import Tools
-from SYNERGY_UI.models.users import UserModel
-from SYNERGY_UI.utils.plugin import load_tool_module_by_id
-from SYNERGY_UI.env import (
+from synergy_ui.utils.misc import is_string_allowed
+from synergy_ui.models.tools import Tools
+from synergy_ui.models.users import UserModel
+from synergy_ui.utils.plugin import load_tool_module_by_id
+from synergy_ui.env import (
     AIOHTTP_CLIENT_TIMEOUT,
     AIOHTTP_CLIENT_TIMEOUT_TOOL_SERVER_DATA,
     AIOHTTP_CLIENT_SESSION_TOOL_SERVER_SSL,
@@ -856,3 +856,4 @@ def get_tool_server_url(url: Optional[str], path: str) -> str:
         # Ensure the path starts with a slash
         path = f"/{path}"
     return f"{url}{path}"
+

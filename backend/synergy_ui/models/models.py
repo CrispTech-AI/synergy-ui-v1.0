@@ -1,11 +1,11 @@
-﻿import logging
+import logging
 import time
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, JSONField, get_db
+from synergy_ui.internal.db import Base, JSONField, get_db
 
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.users import User, UserModel, Users, UserResponse
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.users import User, UserModel, Users, UserResponse
 
 
 from pydantic import BaseModel, ConfigDict
@@ -17,7 +17,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import BigInteger, Column, Text, JSON, Boolean
 
 
-from SYNERGY_UI.utils.access_control import has_access
+from synergy_ui.utils.access_control import has_access
 
 
 log = logging.getLogger(__name__)
@@ -464,3 +464,4 @@ class ModelsTable:
 
 
 Models = ModelsTable()
+

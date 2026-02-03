@@ -1,4 +1,4 @@
-﻿from test.util.abstract_integration_test import AbstractPostgresTest
+from test.util.abstract_integration_test import AbstractPostgresTest
 from test.util.mock_user import mock_webui_user
 
 
@@ -25,7 +25,7 @@ class TestUsers(AbstractPostgresTest):
 
     def setup_class(cls):
         super().setup_class()
-        from SYNERGY_UI.models.users import Users
+        from synergy_ui.models.users import Users
 
         cls.users = Users
 
@@ -165,3 +165,4 @@ class TestUsers(AbstractPostgresTest):
         assert len(response.json()) == 1
         data = response.json()
         _assert_user(data, "1")
+

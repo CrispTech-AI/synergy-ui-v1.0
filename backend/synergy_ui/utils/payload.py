@@ -1,5 +1,5 @@
-﻿from SYNERGY_UI.utils.task import prompt_template, prompt_variables_template
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.utils.task import prompt_template, prompt_variables_template
+from synergy_ui.utils.misc import (
     deep_update,
     add_or_update_system_message,
     replace_system_message_content,
@@ -389,3 +389,4 @@ def convert_embedding_payload_openai_to_ollama(openai_payload: dict) -> dict:
             ollama_payload[optional_key] = openai_payload[optional_key]
 
     return ollama_payload
+

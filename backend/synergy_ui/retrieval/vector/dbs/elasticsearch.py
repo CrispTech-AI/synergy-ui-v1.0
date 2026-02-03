@@ -1,16 +1,16 @@
-﻿from elasticsearch import Elasticsearch, BadRequestError
+from elasticsearch import Elasticsearch, BadRequestError
 from typing import Optional
 import ssl
 from elasticsearch.helpers import bulk, scan
 
-from SYNERGY_UI.retrieval.vector.utils import process_metadata
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.utils import process_metadata
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     ELASTICSEARCH_URL,
     ELASTICSEARCH_CA_CERTS,
     ELASTICSEARCH_API_KEY,
@@ -300,3 +300,4 @@ class ElasticsearchClient(VectorDBBase):
         indices = self.client.indices.get(index=f"{self.index_prefix}*")
         for index in indices:
             self.client.indices.delete(index=index)
+

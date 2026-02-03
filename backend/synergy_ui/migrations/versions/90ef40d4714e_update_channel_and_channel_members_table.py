@@ -1,4 +1,4 @@
-﻿"""Update channel and channel members table
+"""Update channel and channel members table
 
 Revision ID: 90ef40d4714e
 Revises: b10670c03dd5
@@ -79,3 +79,4 @@ def downgrade() -> None:
     op.drop_table("channel_webhook")
 
     pass
+

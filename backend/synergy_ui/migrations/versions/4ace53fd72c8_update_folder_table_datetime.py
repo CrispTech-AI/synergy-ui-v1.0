@@ -65,3 +65,4 @@ def downgrade():
             server_default=sa.func.now(),  # Restoring server default on downgrade
             onupdate=sa.func.now(),  # Restoring onupdate behavior if it was there
         )
+

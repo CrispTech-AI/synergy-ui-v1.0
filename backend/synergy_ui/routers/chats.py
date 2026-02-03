@@ -1,11 +1,11 @@
-﻿import json
+import json
 import logging
 from typing import Optional
 
 
-from SYNERGY_UI.utils.misc import get_message_list
-from SYNERGY_UI.socket.main import get_event_emitter
-from SYNERGY_UI.models.chats import (
+from synergy_ui.utils.misc import get_message_list
+from synergy_ui.socket.main import get_event_emitter
+from synergy_ui.models.chats import (
     ChatForm,
     ChatImportForm,
     ChatUsageStatsListResponse,
@@ -14,17 +14,17 @@ from SYNERGY_UI.models.chats import (
     Chats,
     ChatTitleIdResponse,
 )
-from SYNERGY_UI.models.tags import TagModel, Tags
-from SYNERGY_UI.models.folders import Folders
+from synergy_ui.models.tags import TagModel, Tags
+from synergy_ui.models.folders import Folders
 
-from SYNERGY_UI.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
+from synergy_ui.constants import ERROR_MESSAGES
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from pydantic import BaseModel
 
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_permission
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_permission
 
 log = logging.getLogger(__name__)
 
@@ -1065,3 +1065,4 @@ async def delete_all_tags_by_id(id: str, user=Depends(get_verified_user)):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail=ERROR_MESSAGES.NOT_FOUND
         )
+

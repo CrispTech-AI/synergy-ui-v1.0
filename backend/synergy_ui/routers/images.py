@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import base64
 import uuid
 import io
@@ -14,15 +14,15 @@ import requests
 from fastapi import APIRouter, Depends, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse
 
-from SYNERGY_UI.config import CACHE_DIR
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.env import ENABLE_FORWARD_USER_INFO_HEADERS
+from synergy_ui.config import CACHE_DIR
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.env import ENABLE_FORWARD_USER_INFO_HEADERS
 
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.routers.files import upload_file_handler, get_file_content_by_id
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.headers import include_user_info_headers
-from SYNERGY_UI.utils.images.comfyui import (
+from synergy_ui.models.chats import Chats
+from synergy_ui.routers.files import upload_file_handler, get_file_content_by_id
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.headers import include_user_info_headers
+from synergy_ui.utils.images.comfyui import (
     ComfyUICreateImageForm,
     ComfyUIEditImageForm,
     ComfyUIWorkflow,
@@ -1100,3 +1100,4 @@ async def image_edits(
                 error = data
 
         raise HTTPException(status_code=400, detail=ERROR_MESSAGES.DEFAULT(error))
+

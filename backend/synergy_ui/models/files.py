@@ -1,8 +1,8 @@
-﻿import logging
+import logging
 import time
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, JSONField, get_db
+from synergy_ui.internal.db import Base, JSONField, get_db
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Column, String, Text, JSON
 
@@ -293,3 +293,4 @@ class FilesTable:
 
 
 Files = FilesTable()
+

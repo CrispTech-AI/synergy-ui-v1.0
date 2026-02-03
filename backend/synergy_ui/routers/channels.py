@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 from typing import Optional
 
@@ -7,13 +7,13 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status, Backgrou
 from pydantic import BaseModel
 from pydantic import field_validator
 
-from SYNERGY_UI.socket.main import (
+from synergy_ui.socket.main import (
     emit_to_users,
     enter_room_for_users,
     sio,
     get_user_ids_from_room,
 )
-from SYNERGY_UI.models.users import (
+from synergy_ui.models.users import (
     UserIdNameResponse,
     UserIdNameStatusResponse,
     UserListResponse,
@@ -22,15 +22,15 @@ from SYNERGY_UI.models.users import (
     UserNameResponse,
 )
 
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.channels import (
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.channels import (
     Channels,
     ChannelModel,
     ChannelForm,
     ChannelResponse,
     CreateChannelForm,
 )
-from SYNERGY_UI.models.messages import (
+from synergy_ui.models.messages import (
     Messages,
     MessageModel,
     MessageResponse,
@@ -39,28 +39,28 @@ from SYNERGY_UI.models.messages import (
 )
 
 
-from SYNERGY_UI.utils.files import get_image_base64_from_file_id
+from synergy_ui.utils.files import get_image_base64_from_file_id
 
-from SYNERGY_UI.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
+from synergy_ui.constants import ERROR_MESSAGES
 
 
-from SYNERGY_UI.utils.models import (
+from synergy_ui.utils.models import (
     get_all_models,
     get_filtered_models,
 )
-from SYNERGY_UI.utils.chat import generate_chat_completion
+from synergy_ui.utils.chat import generate_chat_completion
 
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import (
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import (
     has_access,
     get_users_with_access,
     get_permitted_group_and_user_ids,
     has_permission,
 )
-from SYNERGY_UI.utils.webhook import post_webhook
-from SYNERGY_UI.utils.channels import extract_mentions, replace_mentions
+from synergy_ui.utils.webhook import post_webhook
+from synergy_ui.utils.channels import extract_mentions, replace_mentions
 
 log = logging.getLogger(__name__)
 
@@ -1738,3 +1738,4 @@ async def delete_message_by_id(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail=ERROR_MESSAGES.DEFAULT()
         )
+

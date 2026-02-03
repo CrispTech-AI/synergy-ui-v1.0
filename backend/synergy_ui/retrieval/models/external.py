@@ -1,12 +1,12 @@
-﻿import logging
+import logging
 import requests
 from typing import Optional, List, Tuple
 from urllib.parse import quote
 
 
-from SYNERGY_UI.env import ENABLE_FORWARD_USER_INFO_HEADERS
-from SYNERGY_UI.retrieval.models.base_reranker import BaseReranker
-from SYNERGY_UI.utils.headers import include_user_info_headers
+from synergy_ui.env import ENABLE_FORWARD_USER_INFO_HEADERS
+from synergy_ui.retrieval.models.base_reranker import BaseReranker
+from synergy_ui.utils.headers import include_user_info_headers
 
 
 log = logging.getLogger(__name__)
@@ -70,3 +70,4 @@ class ExternalReranker(BaseReranker):
         except Exception as e:
             log.exception(f"Error in external reranking: {e}")
             return None
+

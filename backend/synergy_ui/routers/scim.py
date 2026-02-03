@@ -1,4 +1,4 @@
-﻿"""
+"""
 Experimental SCIM 2.0 Implementation for Synergy UI
 Provides System for Cross-domain Identity Management endpoints for users and groups
 
@@ -15,15 +15,15 @@ from fastapi import APIRouter, Depends, HTTPException, Request, Query, Header, s
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, ConfigDict
 
-from SYNERGY_UI.models.users import Users, UserModel
-from SYNERGY_UI.models.groups import Groups, GroupModel
-from SYNERGY_UI.utils.auth import (
+from synergy_ui.models.users import Users, UserModel
+from synergy_ui.models.groups import Groups, GroupModel
+from synergy_ui.utils.auth import (
     get_admin_user,
     get_current_user,
     decode_token,
     get_verified_user,
 )
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
 log = logging.getLogger(__name__)
 
@@ -767,7 +767,7 @@ async def create_group(
             member_ids.append(member.value)
 
     # Create group
-    from SYNERGY_UI.models.groups import GroupForm
+    from synergy_ui.models.groups import GroupForm
 
     form = GroupForm(
         name=group_data.displayName,
@@ -791,7 +791,7 @@ async def create_group(
 
     # Add members if provided
     if member_ids:
-        from SYNERGY_UI.models.groups import GroupUpdateForm
+        from synergy_ui.models.groups import GroupUpdateForm
 
         update_form = GroupUpdateForm(
             name=new_group.name,
@@ -822,7 +822,7 @@ async def update_group(
         )
 
     # Build update form
-    from SYNERGY_UI.models.groups import GroupUpdateForm
+    from synergy_ui.models.groups import GroupUpdateForm
 
     update_form = GroupUpdateForm(
         name=group_data.displayName if group_data.displayName else group.name,
@@ -860,7 +860,7 @@ async def patch_group(
             detail=f"Group {group_id} not found",
         )
 
-    from SYNERGY_UI.models.groups import GroupUpdateForm
+    from synergy_ui.models.groups import GroupUpdateForm
 
     update_form = GroupUpdateForm(
         name=group.name,
@@ -927,3 +927,4 @@ async def delete_group(
         )
 
     return None
+

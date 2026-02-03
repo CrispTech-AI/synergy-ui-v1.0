@@ -1,9 +1,9 @@
-﻿import logging
+import logging
 from dataclasses import dataclass
 from typing import Optional
 
 import requests
-from SYNERGY_UI.retrieval.web.main import SearchResult
+from synergy_ui.retrieval.web.main import SearchResult
 
 log = logging.getLogger(__name__)
 
@@ -72,3 +72,4 @@ def search_exa(
     except Exception as e:
         log.error(f"Error searching Exa: {e}")
         return []
+

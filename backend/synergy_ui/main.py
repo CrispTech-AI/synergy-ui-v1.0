@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import inspect
 import json
 import logging
@@ -57,17 +57,17 @@ from starsessions import (
 )
 from starsessions.stores.redis import RedisStore
 
-from SYNERGY_UI.utils import logger
-from SYNERGY_UI.utils.audit import AuditLevel, AuditLoggingMiddleware
-from SYNERGY_UI.utils.logger import start_logger
-from SYNERGY_UI.socket.main import (
+from synergy_ui.utils import logger
+from synergy_ui.utils.audit import AuditLevel, AuditLoggingMiddleware
+from synergy_ui.utils.logger import start_logger
+from synergy_ui.socket.main import (
     MODELS,
     app as socket_app,
     periodic_usage_pool_cleanup,
     get_event_emitter,
     get_models_in_use,
 )
-from SYNERGY_UI.routers import (
+from synergy_ui.routers import (
     audio,
     images,
     ollama,
@@ -95,21 +95,21 @@ from SYNERGY_UI.routers import (
     scim,
 )
 
-from SYNERGY_UI.routers.retrieval import (
+from synergy_ui.routers.retrieval import (
     get_embedding_function,
     get_reranking_function,
     get_ef,
     get_rf,
 )
 
-from SYNERGY_UI.internal.db import Session, engine
+from synergy_ui.internal.db import Session, engine
 
-from SYNERGY_UI.models.functions import Functions
-from SYNERGY_UI.models.models import Models
-from SYNERGY_UI.models.users import UserModel, Users
-from SYNERGY_UI.models.chats import Chats
+from synergy_ui.models.functions import Functions
+from synergy_ui.models.models import Models
+from synergy_ui.models.users import UserModel, Users
+from synergy_ui.models.chats import Chats
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     # Ollama
     ENABLE_OLLAMA_API,
     OLLAMA_BASE_URLS,
@@ -438,7 +438,7 @@ from SYNERGY_UI.config import (
     AppConfig,
     reset_config,
 )
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     ENABLE_CUSTOM_MODEL_FALLBACK,
     LICENSE_KEY,
     AUDIT_EXCLUDED_PATHS,
@@ -479,30 +479,30 @@ from SYNERGY_UI.env import (
 )
 
 
-from SYNERGY_UI.utils.models import (
+from synergy_ui.utils.models import (
     get_all_models,
     get_all_base_models,
     check_model_access,
     get_filtered_models,
 )
-from SYNERGY_UI.utils.chat import (
+from synergy_ui.utils.chat import (
     generate_chat_completion as chat_completion_handler,
     chat_completed as chat_completed_handler,
     chat_action as chat_action_handler,
 )
-from SYNERGY_UI.utils.embeddings import generate_embeddings
-from SYNERGY_UI.utils.middleware import process_chat_payload, process_chat_response
-from SYNERGY_UI.utils.access_control import has_access
+from synergy_ui.utils.embeddings import generate_embeddings
+from synergy_ui.utils.middleware import process_chat_payload, process_chat_response
+from synergy_ui.utils.access_control import has_access
 
-from SYNERGY_UI.utils.auth import (
+from synergy_ui.utils.auth import (
     get_license_data,
     get_http_authorization_cred,
     decode_token,
     get_admin_user,
     get_verified_user,
 )
-from SYNERGY_UI.utils.plugin import install_tool_and_function_dependencies
-from SYNERGY_UI.utils.oauth import (
+from synergy_ui.utils.plugin import install_tool_and_function_dependencies
+from synergy_ui.utils.oauth import (
     get_oauth_client_info_with_dynamic_client_registration,
     encrypt_data,
     decrypt_data,
@@ -510,10 +510,10 @@ from SYNERGY_UI.utils.oauth import (
     OAuthClientManager,
     OAuthClientInformationFull,
 )
-from SYNERGY_UI.utils.security_headers import SecurityHeadersMiddleware
-from SYNERGY_UI.utils.redis import get_redis_connection
+from synergy_ui.utils.security_headers import SecurityHeadersMiddleware
+from synergy_ui.utils.redis import get_redis_connection
 
-from SYNERGY_UI.tasks import (
+from synergy_ui.tasks import (
     redis_task_command_listener,
     list_task_ids_by_item_id,
     create_task,
@@ -521,10 +521,10 @@ from SYNERGY_UI.tasks import (
     list_tasks,
 )  # Import from tasks.py
 
-from SYNERGY_UI.utils.redis import get_sentinels_from_env
+from synergy_ui.utils.redis import get_sentinels_from_env
 
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
 
 if SAFE_MODE:
@@ -666,7 +666,7 @@ app.state.LICENSE_METADATA = None
 ########################################
 
 if ENABLE_OTEL:
-    from SYNERGY_UI.utils.telemetry.setup import setup as setup_opentelemetry
+    from synergy_ui.utils.telemetry.setup import setup as setup_opentelemetry
 
     setup_opentelemetry(app=app, db_engine=engine)
 
@@ -1255,7 +1255,7 @@ class RedirectMiddleware(BaseHTTPMiddleware):
                 if text:
                     urls = re.match(r"https://\S+", text)
                     if urls:
-                        from SYNERGY_UI.retrieval.loaders.youtube import _parse_video_id
+                        from synergy_ui.retrieval.loaders.youtube import _parse_video_id
 
                         if youtube_video_id := _parse_video_id(urls[0]):
                             redirect_params["youtube"] = youtube_video_id
@@ -2384,3 +2384,4 @@ else:
     log.warning(
         f"Frontend build directory not found at '{FRONTEND_BUILD_DIR}'. Serving API only."
     )
+

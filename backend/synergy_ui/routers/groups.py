@@ -1,10 +1,10 @@
-﻿import os
+import os
 from pathlib import Path
 from typing import Optional
 import logging
 
-from SYNERGY_UI.models.users import Users, UserInfoResponse
-from SYNERGY_UI.models.groups import (
+from synergy_ui.models.users import Users, UserInfoResponse
+from synergy_ui.models.groups import (
     Groups,
     GroupForm,
     GroupUpdateForm,
@@ -12,11 +12,11 @@ from SYNERGY_UI.models.groups import (
     UserIdsForm,
 )
 
-from SYNERGY_UI.config import CACHE_DIR
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.config import CACHE_DIR
+from synergy_ui.constants import ERROR_MESSAGES
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
 
 
 log = logging.getLogger(__name__)
@@ -241,3 +241,4 @@ async def delete_group_by_id(id: str, user=Depends(get_admin_user)):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=ERROR_MESSAGES.DEFAULT(e),
         )
+

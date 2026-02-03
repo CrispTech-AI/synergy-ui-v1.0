@@ -1,4 +1,4 @@
-﻿import requests
+import requests
 import logging
 from typing import Iterator, List, Union
 
@@ -49,3 +49,4 @@ class ExternalWebLoader(BaseLoader):
                     log.error(f"Error extracting content from batch {urls}: {e}")
                 else:
                     raise e
+

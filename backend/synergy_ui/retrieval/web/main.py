@@ -1,12 +1,12 @@
-﻿import validators
+import validators
 
 from typing import Optional
 from urllib.parse import urlparse
 
 from pydantic import BaseModel
 
-from SYNERGY_UI.retrieval.web.utils import resolve_hostname
-from SYNERGY_UI.utils.misc import is_string_allowed
+from synergy_ui.retrieval.web.utils import resolve_hostname
+from synergy_ui.utils.misc import is_string_allowed
 
 
 def get_filtered_results(results, filter_list):
@@ -44,3 +44,4 @@ class SearchResult(BaseModel):
     link: str
     title: Optional[str]
     snippet: Optional[str]
+

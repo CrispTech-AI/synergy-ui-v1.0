@@ -1,4 +1,4 @@
-﻿"""Update user table
+"""Update user table
 
 Revision ID: b10670c03dd5
 Revises: 2f1211949ecc
@@ -249,3 +249,4 @@ def downgrade() -> None:
     _convert_column_to_text("user", "info")
     # Convert settings (JSON) â†’ TEXT
     _convert_column_to_text("user", "settings")
+

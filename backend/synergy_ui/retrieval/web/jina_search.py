@@ -1,7 +1,7 @@
-﻿import logging
+import logging
 
 import requests
-from SYNERGY_UI.retrieval.web.main import SearchResult
+from synergy_ui.retrieval.web.main import SearchResult
 from yarl import URL
 
 log = logging.getLogger(__name__)
@@ -44,3 +44,4 @@ def search_jina(api_key: str, query: str, count: int) -> list[SearchResult]:
         )
 
     return results
+

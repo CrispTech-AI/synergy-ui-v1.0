@@ -1,4 +1,4 @@
-﻿from test.util.abstract_integration_test import AbstractPostgresTest
+from test.util.abstract_integration_test import AbstractPostgresTest
 from test.util.mock_user import mock_webui_user
 
 
@@ -7,8 +7,8 @@ class TestAuths(AbstractPostgresTest):
 
     def setup_class(cls):
         super().setup_class()
-        from SYNERGY_UI.models.auths import Auths
-        from SYNERGY_UI.models.users import Users
+        from synergy_ui.models.auths import Auths
+        from synergy_ui.models.users import Users
 
         cls.users = Users
         cls.auths = Auths
@@ -26,7 +26,7 @@ class TestAuths(AbstractPostgresTest):
         }
 
     def test_update_profile(self):
-        from SYNERGY_UI.utils.auth import get_password_hash
+        from synergy_ui.utils.auth import get_password_hash
 
         user = self.auths.insert_new_auth(
             email="john.doe@synergyui.com",
@@ -47,7 +47,7 @@ class TestAuths(AbstractPostgresTest):
         assert db_user.profile_image_url == "/user2.png"
 
     def test_update_password(self):
-        from SYNERGY_UI.utils.auth import get_password_hash
+        from synergy_ui.utils.auth import get_password_hash
 
         user = self.auths.insert_new_auth(
             email="john.doe@synergyui.com",
@@ -74,7 +74,7 @@ class TestAuths(AbstractPostgresTest):
         assert new_auth is not None
 
     def test_signin(self):
-        from SYNERGY_UI.utils.auth import get_password_hash
+        from synergy_ui.utils.auth import get_password_hash
 
         user = self.auths.insert_new_auth(
             email="john.doe@synergyui.com",
@@ -198,3 +198,4 @@ class TestAuths(AbstractPostgresTest):
             response = self.fast_api_client.get(self.create_url("/api_key"))
         assert response.status_code == 200
         assert response.json() == {"api_key": "abc"}
+
