@@ -1356,7 +1356,8 @@ export const getBackendConfig = async () => {
 		credentials: 'include',
 		headers: {
 			'Content-Type': 'application/json'
-		}
+		},
+		signal: AbortSignal.timeout(5000) // 5 second timeout
 	})
 		.then(async (res) => {
 			if (!res.ok) throw await res.json();
