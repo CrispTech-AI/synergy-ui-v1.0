@@ -1,9 +1,9 @@
 ﻿from typing import Optional, Set, Union, List, Dict, Any
-from SYNERGY_UI.models.users import Users, UserModel
-from SYNERGY_UI.models.groups import Groups
+from synergy_ui.models.users import Users, UserModel
+from synergy_ui.models.groups import Groups
 
 
-from SYNERGY_UI.config import DEFAULT_USER_PERMISSIONS
+from synergy_ui.config import DEFAULT_USER_PERMISSIONS
 import json
 
 

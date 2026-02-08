@@ -2,7 +2,7 @@
 from typing import Optional, Literal
 import requests
 
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 
 MODELS = Literal[
     "sonar",

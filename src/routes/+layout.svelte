@@ -10,6 +10,7 @@
 
 	import { onMount, tick, setContext, onDestroy } from 'svelte';
 	import {
+		appData,
 		config,
 		user,
 		settings,

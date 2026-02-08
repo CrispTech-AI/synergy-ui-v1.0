@@ -6,7 +6,7 @@ import aiohttp
 from pathlib import Path
 from typing import Optional
 
-from SYNERGY_UI.models.functions import (
+from synergy_ui.models.functions import (
     FunctionForm,
     FunctionModel,
     FunctionResponse,
@@ -14,15 +14,15 @@ from SYNERGY_UI.models.functions import (
     FunctionWithValvesModel,
     Functions,
 )
-from SYNERGY_UI.utils.plugin import (
+from synergy_ui.utils.plugin import (
     load_function_module_by_id,
     replace_imports,
     get_function_module_from_cache,
 )
-from SYNERGY_UI.config import CACHE_DIR
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.config import CACHE_DIR
+from synergy_ui.constants import ERROR_MESSAGES
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
 from pydantic import BaseModel, HttpUrl
 
 

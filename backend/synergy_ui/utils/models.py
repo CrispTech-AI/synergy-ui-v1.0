@@ -6,30 +6,30 @@ import sys
 from aiocache import cached
 from fastapi import Request
 
-from SYNERGY_UI.socket.utils import RedisDict
-from SYNERGY_UI.routers import openai, ollama
-from SYNERGY_UI.functions import get_function_models
+from synergy_ui.socket.utils import RedisDict
+from synergy_ui.routers import openai, ollama
+from synergy_ui.functions import get_function_models
 
 
-from SYNERGY_UI.models.functions import Functions
-from SYNERGY_UI.models.models import Models
-from SYNERGY_UI.models.groups import Groups
+from synergy_ui.models.functions import Functions
+from synergy_ui.models.models import Models
+from synergy_ui.models.groups import Groups
 
 
-from SYNERGY_UI.utils.plugin import (
+from synergy_ui.utils.plugin import (
     load_function_module_by_id,
     get_function_module_from_cache,
 )
-from SYNERGY_UI.utils.access_control import has_access
+from synergy_ui.utils.access_control import has_access
 
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     BYPASS_ADMIN_ACCESS_CONTROL,
     DEFAULT_ARENA_MODEL,
 )
 
-from SYNERGY_UI.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
-from SYNERGY_UI.models.users import UserModel
+from synergy_ui.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
+from synergy_ui.models.users import UserModel
 
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)

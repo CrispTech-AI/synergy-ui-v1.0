@@ -1,7 +1,7 @@
 ﻿import pytest
 from unittest.mock import Mock, patch, AsyncMock
 import redis
-from SYNERGY_UI.utils.redis import (
+from synergy_ui.utils.redis import (
     SentinelRedisProxy,
     parse_redis_service_url,
     get_redis_connection,

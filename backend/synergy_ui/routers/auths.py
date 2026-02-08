@@ -7,7 +7,7 @@ from aiohttp import ClientSession
 import urllib
 
 
-from SYNERGY_UI.models.auths import (
+from synergy_ui.models.auths import (
     AddUserForm,
     ApiKey,
     Auths,
@@ -18,17 +18,17 @@ from SYNERGY_UI.models.auths import (
     SignupForm,
     UpdatePasswordForm,
 )
-from SYNERGY_UI.models.users import (
+from synergy_ui.models.users import (
     UserProfileImageResponse,
     Users,
     UpdateProfileForm,
     UserStatus,
 )
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.oauth_sessions import OAuthSessions
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.oauth_sessions import OAuthSessions
 
-from SYNERGY_UI.constants import ERROR_MESSAGES, WEBHOOK_MESSAGES
-from SYNERGY_UI.env import (
+from synergy_ui.constants import ERROR_MESSAGES, WEBHOOK_MESSAGES
+from synergy_ui.env import (
     WEBUI_AUTH,
     WEBUI_AUTH_TRUSTED_EMAIL_HEADER,
     WEBUI_AUTH_TRUSTED_NAME_HEADER,
@@ -40,7 +40,7 @@ from SYNERGY_UI.env import (
 )
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import RedirectResponse, Response, JSONResponse
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     OPENID_PROVIDER_URL,
     ENABLE_OAUTH_SIGNUP,
     ENABLE_LDAP,
@@ -48,8 +48,8 @@ from SYNERGY_UI.config import (
 )
 from pydantic import BaseModel
 
-from SYNERGY_UI.utils.misc import parse_duration, validate_email_format
-from SYNERGY_UI.utils.auth import (
+from synergy_ui.utils.misc import parse_duration, validate_email_format
+from synergy_ui.utils.auth import (
     validate_password,
     verify_password,
     decode_token,
@@ -62,12 +62,12 @@ from SYNERGY_UI.utils.auth import (
     get_password_hash,
     get_http_authorization_cred,
 )
-from SYNERGY_UI.utils.webhook import post_webhook
-from SYNERGY_UI.utils.access_control import get_permissions, has_permission
-from SYNERGY_UI.utils.groups import apply_default_group_assignment
+from synergy_ui.utils.webhook import post_webhook
+from synergy_ui.utils.access_control import get_permissions, has_permission
+from synergy_ui.utils.groups import apply_default_group_assignment
 
-from SYNERGY_UI.utils.redis import get_redis_client
-from SYNERGY_UI.utils.rate_limit import RateLimiter
+from synergy_ui.utils.redis import get_redis_client
+from synergy_ui.utils.rate_limit import RateLimiter
 
 
 from typing import Optional, List

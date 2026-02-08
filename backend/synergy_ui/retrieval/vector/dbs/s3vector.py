@@ -1,11 +1,11 @@
-﻿from SYNERGY_UI.retrieval.vector.utils import process_metadata
-from SYNERGY_UI.retrieval.vector.main import (
+﻿from synergy_ui.retrieval.vector.utils import process_metadata
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     GetResult,
     SearchResult,
 )
-from SYNERGY_UI.config import S3_VECTOR_BUCKET_NAME, S3_VECTOR_REGION
+from synergy_ui.config import S3_VECTOR_BUCKET_NAME, S3_VECTOR_REGION
 from typing import List, Optional, Dict, Any, Union
 import logging
 import boto3

@@ -5,7 +5,7 @@ import logging
 
 import redis
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     REDIS_CLUSTER,
     REDIS_SOCKET_CONNECT_TIMEOUT,
     REDIS_SENTINEL_HOSTS,

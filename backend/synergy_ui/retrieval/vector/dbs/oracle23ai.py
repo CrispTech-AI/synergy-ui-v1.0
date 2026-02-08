@@ -36,14 +36,14 @@ import json
 import array
 import oracledb
 
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     ORACLE_DB_USE_WALLET,
     ORACLE_DB_USER,
     ORACLE_DB_PASSWORD,

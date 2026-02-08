@@ -1,16 +1,16 @@
 ﻿import time
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, JSONField, get_db
+from synergy_ui.internal.db import Base, JSONField, get_db
 
 
-from SYNERGY_UI.env import DATABASE_USER_ACTIVE_STATUS_UPDATE_INTERVAL
+from synergy_ui.env import DATABASE_USER_ACTIVE_STATUS_UPDATE_INTERVAL
 
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.groups import Groups, GroupMember
-from SYNERGY_UI.models.channels import ChannelMember
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.groups import Groups, GroupMember
+from synergy_ui.models.channels import ChannelMember
 
-from SYNERGY_UI.utils.misc import throttle
+from synergy_ui.utils.misc import throttle
 
 
 from pydantic import BaseModel, ConfigDict

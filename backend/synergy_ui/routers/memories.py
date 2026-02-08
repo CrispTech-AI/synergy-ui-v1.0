@@ -4,9 +4,9 @@ import logging
 import asyncio
 from typing import Optional
 
-from SYNERGY_UI.models.memories import Memories, MemoryModel
-from SYNERGY_UI.retrieval.vector.factory import VECTOR_DB_CLIENT
-from SYNERGY_UI.utils.auth import get_verified_user
+from synergy_ui.models.memories import Memories, MemoryModel
+from synergy_ui.retrieval.vector.factory import VECTOR_DB_CLIENT
+from synergy_ui.utils.auth import get_verified_user
 
 
 log = logging.getLogger(__name__)

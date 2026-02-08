@@ -14,48 +14,48 @@ from fastapi import Request, status
 from starlette.responses import Response, StreamingResponse, JSONResponse
 
 
-from SYNERGY_UI.models.users import UserModel
+from synergy_ui.models.users import UserModel
 
-from SYNERGY_UI.socket.main import (
+from synergy_ui.socket.main import (
     sio,
     get_event_call,
     get_event_emitter,
 )
-from SYNERGY_UI.functions import generate_function_chat_completion
+from synergy_ui.functions import generate_function_chat_completion
 
-from SYNERGY_UI.routers.openai import (
+from synergy_ui.routers.openai import (
     generate_chat_completion as generate_openai_chat_completion,
 )
 
-from SYNERGY_UI.routers.ollama import (
+from synergy_ui.routers.ollama import (
     generate_chat_completion as generate_ollama_chat_completion,
 )
 
-from SYNERGY_UI.routers.pipelines import (
+from synergy_ui.routers.pipelines import (
     process_pipeline_inlet_filter,
     process_pipeline_outlet_filter,
 )
 
-from SYNERGY_UI.models.functions import Functions
-from SYNERGY_UI.models.models import Models
+from synergy_ui.models.functions import Functions
+from synergy_ui.models.models import Models
 
 
-from SYNERGY_UI.utils.plugin import (
+from synergy_ui.utils.plugin import (
     load_function_module_by_id,
     get_function_module_from_cache,
 )
-from SYNERGY_UI.utils.models import get_all_models, check_model_access
-from SYNERGY_UI.utils.payload import convert_payload_openai_to_ollama
-from SYNERGY_UI.utils.response import (
+from synergy_ui.utils.models import get_all_models, check_model_access
+from synergy_ui.utils.payload import convert_payload_openai_to_ollama
+from synergy_ui.utils.response import (
     convert_response_ollama_to_openai,
     convert_streaming_response_ollama_to_openai,
 )
-from SYNERGY_UI.utils.filter import (
+from synergy_ui.utils.filter import (
     get_sorted_filter_ids,
     process_filter_functions,
 )
 
-from SYNERGY_UI.env import GLOBAL_LOG_LEVEL, BYPASS_MODEL_ACCESS_CONTROL
+from synergy_ui.env import GLOBAL_LOG_LEVEL, BYPASS_MODEL_ACCESS_CONTROL
 
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)

@@ -1,16 +1,16 @@
 ﻿from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 
-from SYNERGY_UI.models.prompts import (
+from synergy_ui.models.prompts import (
     PromptForm,
     PromptUserResponse,
     PromptModel,
     Prompts,
 )
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_access, has_permission
-from SYNERGY_UI.config import BYPASS_ADMIN_ACCESS_CONTROL
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_access, has_permission
+from synergy_ui.config import BYPASS_ADMIN_ACCESS_CONTROL
 
 router = APIRouter()
 

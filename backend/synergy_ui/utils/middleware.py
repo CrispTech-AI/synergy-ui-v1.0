@@ -24,40 +24,40 @@ from fastapi.responses import HTMLResponse
 from starlette.responses import Response, StreamingResponse, JSONResponse
 
 
-from SYNERGY_UI.utils.misc import is_string_allowed
-from SYNERGY_UI.models.oauth_sessions import OAuthSessions
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.folders import Folders
-from SYNERGY_UI.models.users import Users
-from SYNERGY_UI.socket.main import (
+from synergy_ui.utils.misc import is_string_allowed
+from synergy_ui.models.oauth_sessions import OAuthSessions
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.folders import Folders
+from synergy_ui.models.users import Users
+from synergy_ui.socket.main import (
     get_event_call,
     get_event_emitter,
 )
-from SYNERGY_UI.routers.tasks import (
+from synergy_ui.routers.tasks import (
     generate_queries,
     generate_title,
     generate_follow_ups,
     generate_image_prompt,
     generate_chat_tags,
 )
-from SYNERGY_UI.routers.retrieval import (
+from synergy_ui.routers.retrieval import (
     process_web_search,
     SearchForm,
 )
-from SYNERGY_UI.routers.images import (
+from synergy_ui.routers.images import (
     image_generations,
     CreateImageForm,
     image_edits,
     EditImageForm,
 )
-from SYNERGY_UI.routers.pipelines import (
+from synergy_ui.routers.pipelines import (
     process_pipeline_inlet_filter,
     process_pipeline_outlet_filter,
 )
-from SYNERGY_UI.routers.memories import query_memory, QueryMemoryForm
+from synergy_ui.routers.memories import query_memory, QueryMemoryForm
 
-from SYNERGY_UI.utils.webhook import post_webhook
-from SYNERGY_UI.utils.files import (
+from synergy_ui.utils.webhook import post_webhook
+from synergy_ui.utils.files import (
     convert_markdown_base64_images,
     get_file_url_from_base64,
     get_image_base64_from_url,
@@ -65,20 +65,20 @@ from SYNERGY_UI.utils.files import (
 )
 
 
-from SYNERGY_UI.models.users import UserModel
-from SYNERGY_UI.models.functions import Functions
-from SYNERGY_UI.models.models import Models
+from synergy_ui.models.users import UserModel
+from synergy_ui.models.functions import Functions
+from synergy_ui.models.models import Models
 
-from SYNERGY_UI.retrieval.utils import get_sources_from_items
+from synergy_ui.retrieval.utils import get_sources_from_items
 
 
-from SYNERGY_UI.utils.chat import generate_chat_completion
-from SYNERGY_UI.utils.task import (
+from synergy_ui.utils.chat import generate_chat_completion
+from synergy_ui.utils.task import (
     get_task_model_id,
     rag_template,
     tools_function_calling_generation_template,
 )
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.utils.misc import (
     deep_update,
     extract_urls,
     get_message_list,
@@ -92,25 +92,25 @@ from SYNERGY_UI.utils.misc import (
     convert_logit_bias_input_to_json,
     get_content_from_message,
 )
-from SYNERGY_UI.utils.tools import get_tools, get_updated_tool_function
-from SYNERGY_UI.utils.plugin import load_function_module_by_id
-from SYNERGY_UI.utils.filter import (
+from synergy_ui.utils.tools import get_tools, get_updated_tool_function
+from synergy_ui.utils.plugin import load_function_module_by_id
+from synergy_ui.utils.filter import (
     get_sorted_filter_ids,
     process_filter_functions,
 )
-from SYNERGY_UI.utils.code_interpreter import execute_code_jupyter
-from SYNERGY_UI.utils.payload import apply_system_prompt_to_body
-from SYNERGY_UI.utils.mcp.client import MCPClient
+from synergy_ui.utils.code_interpreter import execute_code_jupyter
+from synergy_ui.utils.payload import apply_system_prompt_to_body
+from synergy_ui.utils.mcp.client import MCPClient
 
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     CACHE_DIR,
     DEFAULT_VOICE_MODE_PROMPT_TEMPLATE,
     DEFAULT_TOOLS_FUNCTION_CALLING_PROMPT_TEMPLATE,
     DEFAULT_CODE_INTERPRETER_PROMPT,
     CODE_INTERPRETER_BLOCKED_MODULES,
 )
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     GLOBAL_LOG_LEVEL,
     ENABLE_CHAT_RESPONSE_BASE64_IMAGE_URL_CONVERSION,
     CHAT_RESPONSE_STREAM_DELTA_CHUNK_SIZE,
@@ -119,7 +119,7 @@ from SYNERGY_UI.env import (
     ENABLE_REALTIME_CHAT_SAVE,
     ENABLE_QUERIES_CACHE,
 )
-from SYNERGY_UI.constants import TASKS
+from synergy_ui.constants import TASKS
 
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)

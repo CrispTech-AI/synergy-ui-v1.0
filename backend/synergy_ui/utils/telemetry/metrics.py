@@ -37,7 +37,7 @@ from opentelemetry.sdk.metrics.export import (
 )
 from opentelemetry.sdk.resources import Resource
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     OTEL_SERVICE_NAME,
     OTEL_METRICS_EXPORTER_OTLP_ENDPOINT,
     OTEL_METRICS_BASIC_AUTH_USERNAME,
@@ -45,7 +45,7 @@ from SYNERGY_UI.env import (
     OTEL_METRICS_OTLP_SPAN_EXPORTER,
     OTEL_METRICS_EXPORTER_OTLP_INSECURE,
 )
-from SYNERGY_UI.models.users import Users
+from synergy_ui.models.users import Users
 
 _EXPORT_INTERVAL_MILLIS = 10_000  # 10 seconds
 

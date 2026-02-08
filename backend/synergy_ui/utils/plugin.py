@@ -7,9 +7,9 @@ import types
 import tempfile
 import logging
 
-from SYNERGY_UI.env import PIP_OPTIONS, PIP_PACKAGE_INDEX_OPTIONS
-from SYNERGY_UI.models.functions import Functions
-from SYNERGY_UI.models.tools import Tools
+from synergy_ui.env import PIP_OPTIONS, PIP_PACKAGE_INDEX_OPTIONS
+from synergy_ui.models.functions import Functions
+from synergy_ui.models.tools import Tools
 
 log = logging.getLogger(__name__)
 
@@ -55,10 +55,10 @@ def replace_imports(content):
     Replace the import paths in the content.
     """
     replacements = {
-        "from utils": "from SYNERGY_UI.utils",
-        "from apps": "from SYNERGY_UI.apps",
-        "from main": "from SYNERGY_UI.main",
-        "from config": "from SYNERGY_UI.config",
+        "from utils": "from synergy_ui.utils",
+        "from apps": "from synergy_ui.apps",
+        "from main": "from synergy_ui.main",
+        "from config": "from synergy_ui.config",
     }
 
     for old, new in replacements.items():

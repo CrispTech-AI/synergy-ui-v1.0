@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 import requests
-from SYNERGY_UI.retrieval.web.main import SearchResult
+from synergy_ui.retrieval.web.main import SearchResult
 
 log = logging.getLogger(__name__)
 

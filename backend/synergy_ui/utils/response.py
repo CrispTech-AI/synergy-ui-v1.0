@@ -1,6 +1,6 @@
 ﻿import json
 from uuid import uuid4
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.utils.misc import (
     openai_chat_chunk_message_template,
     openai_chat_completion_message_template,
 )

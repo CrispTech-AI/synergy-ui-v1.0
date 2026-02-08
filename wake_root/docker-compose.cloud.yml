@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:3000"
+    restart: always
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    volumes:
+      - openwebui_data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    restart: always
+  ollama:
+    image: ollama/ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: always
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup
+    restart: always
+volumes:
+  openwebui_data:
+  ollama_data:

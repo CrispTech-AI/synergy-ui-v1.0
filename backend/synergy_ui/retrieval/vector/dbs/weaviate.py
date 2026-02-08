@@ -3,14 +3,14 @@ import re
 import uuid
 from typing import Any, Dict, List, Optional, Union
 
-from SYNERGY_UI.retrieval.vector.main import (
+from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
     SearchResult,
     GetResult,
 )
-from SYNERGY_UI.retrieval.vector.utils import process_metadata
-from SYNERGY_UI.config import (
+from synergy_ui.retrieval.vector.utils import process_metadata
+from synergy_ui.config import (
     WEAVIATE_HTTP_HOST,
     WEAVIATE_HTTP_PORT,
     WEAVIATE_GRPC_PORT,

@@ -5,7 +5,7 @@ from urllib.parse import quote
 
 from langchain_core.document_loaders import BaseLoader
 from langchain_core.documents import Document
-from SYNERGY_UI.utils.headers import include_user_info_headers
+from synergy_ui.utils.headers import include_user_info_headers
 
 log = logging.getLogger(__name__)
 

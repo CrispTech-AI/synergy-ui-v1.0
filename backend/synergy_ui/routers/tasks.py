@@ -6,8 +6,8 @@ from typing import Optional
 import logging
 import re
 
-from SYNERGY_UI.utils.chat import generate_chat_completion
-from SYNERGY_UI.utils.task import (
+from synergy_ui.utils.chat import generate_chat_completion
+from synergy_ui.utils.task import (
     title_generation_template,
     follow_up_generation_template,
     query_generation_template,
@@ -17,14 +17,14 @@ from SYNERGY_UI.utils.task import (
     emoji_generation_template,
     moa_response_generation_template,
 )
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.constants import TASKS
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.constants import TASKS
 
-from SYNERGY_UI.routers.pipelines import process_pipeline_inlet_filter
+from synergy_ui.routers.pipelines import process_pipeline_inlet_filter
 
-from SYNERGY_UI.utils.task import get_task_model_id
+from synergy_ui.utils.task import get_task_model_id
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     DEFAULT_TITLE_GENERATION_PROMPT_TEMPLATE,
     DEFAULT_FOLLOW_UP_GENERATION_PROMPT_TEMPLATE,
     DEFAULT_TAGS_GENERATION_PROMPT_TEMPLATE,

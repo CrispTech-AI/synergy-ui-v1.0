@@ -3,8 +3,8 @@ import time
 import uuid
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.models.users import User
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.models.users import User
 
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Column, Text, JSON, Boolean

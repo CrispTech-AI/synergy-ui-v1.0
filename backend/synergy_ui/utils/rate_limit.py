@@ -1,6 +1,6 @@
 ﻿import time
 from typing import Optional, Dict
-from SYNERGY_UI.env import REDIS_KEY_PREFIX
+from synergy_ui.env import REDIS_KEY_PREFIX
 
 
 class RateLimiter:

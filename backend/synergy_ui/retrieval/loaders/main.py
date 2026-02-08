@@ -23,14 +23,14 @@ from langchain_community.document_loaders import (
 )
 from langchain_core.documents import Document
 
-from SYNERGY_UI.retrieval.loaders.external_document import ExternalDocumentLoader
+from synergy_ui.retrieval.loaders.external_document import ExternalDocumentLoader
 
-from SYNERGY_UI.retrieval.loaders.mistral import MistralLoader
-from SYNERGY_UI.retrieval.loaders.datalab_marker import DatalabMarkerLoader
-from SYNERGY_UI.retrieval.loaders.mineru import MinerULoader
+from synergy_ui.retrieval.loaders.mistral import MistralLoader
+from synergy_ui.retrieval.loaders.datalab_marker import DatalabMarkerLoader
+from synergy_ui.retrieval.loaders.mineru import MinerULoader
 
 
-from SYNERGY_UI.env import GLOBAL_LOG_LEVEL
+from synergy_ui.env import GLOBAL_LOG_LEVEL
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
 log = logging.getLogger(__name__)

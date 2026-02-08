@@ -9,20 +9,20 @@ from typing import Dict, Set
 from redis import asyncio as aioredis
 import pycrdt as Y
 
-from SYNERGY_UI.models.users import Users, UserNameResponse
-from SYNERGY_UI.models.channels import Channels
-from SYNERGY_UI.models.chats import Chats
-from SYNERGY_UI.models.notes import Notes, NoteUpdateForm
-from SYNERGY_UI.utils.redis import (
+from synergy_ui.models.users import Users, UserNameResponse
+from synergy_ui.models.channels import Channels
+from synergy_ui.models.chats import Chats
+from synergy_ui.models.notes import Notes, NoteUpdateForm
+from synergy_ui.utils.redis import (
     get_sentinels_from_env,
     get_sentinel_url_from_env,
 )
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     CORS_ALLOW_ORIGIN,
 )
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     VERSION,
     ENABLE_WEBSOCKET_SUPPORT,
     WEBSOCKET_MANAGER,
@@ -38,14 +38,14 @@ from SYNERGY_UI.env import (
     WEBSOCKET_SERVER_LOGGING,
     WEBSOCKET_SERVER_ENGINEIO_LOGGING,
 )
-from SYNERGY_UI.utils.auth import decode_token
-from SYNERGY_UI.socket.utils import RedisDict, RedisLock, YdocManager
-from SYNERGY_UI.tasks import create_task, stop_item_tasks
-from SYNERGY_UI.utils.redis import get_redis_connection
-from SYNERGY_UI.utils.access_control import has_access, get_users_with_access
+from synergy_ui.utils.auth import decode_token
+from synergy_ui.socket.utils import RedisDict, RedisLock, YdocManager
+from synergy_ui.tasks import create_task, stop_item_tasks
+from synergy_ui.utils.redis import get_redis_connection
+from synergy_ui.utils.access_control import has_access, get_users_with_access
 
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     GLOBAL_LOG_LEVEL,
 )
 

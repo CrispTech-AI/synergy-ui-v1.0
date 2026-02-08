@@ -1,7 +1,7 @@
 ﻿import logging
 from typing import Optional
 
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 from ddgs import DDGS
 from ddgs.exceptions import RatelimitException
 

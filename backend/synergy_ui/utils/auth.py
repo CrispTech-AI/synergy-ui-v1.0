@@ -22,12 +22,12 @@ from typing import Optional, Union, List, Dict
 from opentelemetry import trace
 
 
-from SYNERGY_UI.utils.access_control import has_permission
-from SYNERGY_UI.models.users import Users
+from synergy_ui.utils.access_control import has_permission
+from synergy_ui.models.users import Users
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     ENABLE_PASSWORD_VALIDATION,
     OFFLINE_MODE,
     LICENSE_BLOB,

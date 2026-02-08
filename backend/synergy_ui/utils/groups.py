@@ -1,5 +1,5 @@
 ﻿import logging
-from SYNERGY_UI.models.groups import Groups
+from synergy_ui.models.groups import Groups
 
 log = logging.getLogger(__name__)
 

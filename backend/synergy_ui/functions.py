@@ -19,34 +19,34 @@ from fastapi import (
 from starlette.responses import Response, StreamingResponse
 
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.socket.main import (
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.socket.main import (
     get_event_call,
     get_event_emitter,
 )
 
 
-from SYNERGY_UI.models.users import UserModel
-from SYNERGY_UI.models.functions import Functions
-from SYNERGY_UI.models.models import Models
+from synergy_ui.models.users import UserModel
+from synergy_ui.models.functions import Functions
+from synergy_ui.models.models import Models
 
-from SYNERGY_UI.utils.plugin import (
+from synergy_ui.utils.plugin import (
     load_function_module_by_id,
     get_function_module_from_cache,
 )
-from SYNERGY_UI.utils.tools import get_tools
-from SYNERGY_UI.utils.access_control import has_access
+from synergy_ui.utils.tools import get_tools
+from synergy_ui.utils.access_control import has_access
 
-from SYNERGY_UI.env import GLOBAL_LOG_LEVEL
+from synergy_ui.env import GLOBAL_LOG_LEVEL
 
-from SYNERGY_UI.utils.misc import (
+from synergy_ui.utils.misc import (
     add_or_update_system_message,
     get_last_user_message,
     prepend_to_first_user_message_content,
     openai_chat_chunk_message_template,
     openai_chat_completion_message_template,
 )
-from SYNERGY_UI.utils.payload import (
+from synergy_ui.utils.payload import (
     apply_model_params_to_body_openai,
     apply_system_prompt_to_body,
 )

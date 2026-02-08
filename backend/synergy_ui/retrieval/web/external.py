@@ -6,8 +6,8 @@ import requests
 from fastapi import Request
 
 
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
-from SYNERGY_UI.utils.headers import include_user_info_headers
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.utils.headers import include_user_info_headers
 
 
 log = logging.getLogger(__name__)

@@ -33,10 +33,10 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 
-from SYNERGY_UI.utils.misc import strict_match_mime_type
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.headers import include_user_info_headers
-from SYNERGY_UI.config import (
+from synergy_ui.utils.misc import strict_match_mime_type
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.headers import include_user_info_headers
+from synergy_ui.config import (
     WHISPER_MODEL_AUTO_UPDATE,
     WHISPER_MODEL_DIR,
     CACHE_DIR,
@@ -44,8 +44,8 @@ from SYNERGY_UI.config import (
     ELEVENLABS_API_BASE_URL,
 )
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.env import (
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.env import (
     ENV,
     AIOHTTP_CLIENT_SESSION_SSL,
     AIOHTTP_CLIENT_TIMEOUT,

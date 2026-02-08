@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   ollama:
     devices:
@@ -6,3 +8,11 @@ services:
     image: ollama/ollama:${OLLAMA_DOCKER_TAG-rocm}
     environment:
       - 'HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION-11.0.0}'
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama:

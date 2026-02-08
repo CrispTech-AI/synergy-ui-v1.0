@@ -1,15 +1,18 @@
-import { mount, unmount } from 'svelte';
-import { createClassComponent } from 'svelte/legacy';
+import { onMount, onDestroy } from 'svelte';
+import tippy, { type Instance as TippyInstance } from 'tippy.js';
 
-import tippy from 'tippy.js';
-
-export function getSuggestionRenderer(Component: any, ComponentProps = {}) {
+/**
+ * Svelte 5–compatible suggestion renderer
+ * Replaces deprecated `svelte/legacy` createClassComponent
+ */
+export function getSuggestionRenderer(Component: any, ComponentProps: Record<string, any> = {}) {
 	return function suggestionRenderer() {
-		let component = null;
+		let component: any = null;
+		let componentInstance: any = null;
 		let container: HTMLDivElement | null = null;
 
 		let popup: TippyInstance | null = null;
-		let refEl: HTMLDivElement | null = null; // dummy reference
+		let refEl: HTMLDivElement | null = null;
 
 		return {
 			onStart: (props: any) => {
@@ -17,22 +20,23 @@ export function getSuggestionRenderer(Component: any, ComponentProps = {}) {
 				container.className = 'suggestion-list-container';
 				document.body.appendChild(container);
 
-				// mount Svelte component
-				component = createClassComponent({
-					component: Component,
+				// Mount Svelte component (Svelte 5 API)
+				const componentInstance = new Component({
 					target: container,
 					props: {
 						char: props?.text,
 						query: props?.query,
-						command: (item) => {
+						command: (item: any) => {
 							props.command({ id: item.id, label: item.label });
 						},
 						...ComponentProps
 					},
-					context: new Map<string, any>([['i18n', ComponentProps?.i18n]])
+					context: new Map<string, any>([
+						['i18n', ComponentProps?.i18n]
+					])
 				});
 
-				// Create a tiny reference element so outside taps are truly "outside"
+				// Dummy reference element to anchor the tooltip
 				refEl = document.createElement('div');
 				Object.assign(refEl.style, {
 					position: 'fixed',
@@ -59,8 +63,8 @@ export function getSuggestionRenderer(Component: any, ComponentProps = {}) {
 							{
 								name: 'preventOverflow',
 								options: {
-									boundary: 'viewport', // keep within the viewport
-									altAxis: true, // also prevent overflow on the cross axis (X)
+									boundary: 'viewport',
+									altAxis: true,
 									tether: true,
 									padding: 8
 								}
@@ -72,36 +76,38 @@ export function getSuggestionRenderer(Component: any, ComponentProps = {}) {
 									fallbackPlacements: ['top-end', 'bottom-start', 'bottom-end']
 								}
 							},
-							// Ensure transforms don’t cause layout widening in some browsers
-							{ name: 'computeStyles', options: { adaptive: true } }
+							{
+								name: 'computeStyles',
+								options: { adaptive: true }
+							}
 						]
 					},
-					// Helps avoid accidental focus/hover “linking” from far away elements
 					interactiveBorder: 8
 				});
-				popup?.show();
+
+				popup.show();
 			},
 
 			onUpdate: (props: any) => {
 				if (!component) return;
 
-				component.$set({
+				component.$set?.({
 					query: props.query,
-					command: (item) => {
+					command: (item: any) => {
 						props.command({ id: item.id, label: item.label });
 					}
 				});
 
 				if (props.clientRect && popup) {
-					popup.setProps({ getReferenceClientRect: props.clientRect as any });
+					popup.setProps({
+						getReferenceClientRect: props.clientRect as any
+					});
 				}
 			},
 
 			onKeyDown: (props: any) => {
-				// forward to the Svelte component’s handler
-				// (expose this from component as `export function onKeyDown(evt)`)
-				// @ts-ignore
-				return component?._onKeyDown?.(props.event) ?? false;
+				// Forward key handling to component if exposed
+				return component?.onKeyDown?.(props.event) ?? false;
 			},
 
 			onExit: () => {
@@ -109,9 +115,9 @@ export function getSuggestionRenderer(Component: any, ComponentProps = {}) {
 				popup = null;
 
 				try {
-					component.$destroy();
+					if (componentInstance) componentInstance.$destroy();
 				} catch (e) {
-					console.error('Error unmounting component:', e);
+					console.error('Error unmounting suggestion component:', e);
 				}
 
 				component = null;

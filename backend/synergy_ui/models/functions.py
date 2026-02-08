@@ -2,8 +2,8 @@
 import time
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, JSONField, get_db
-from SYNERGY_UI.models.users import Users, UserModel
+from synergy_ui.internal.db import Base, JSONField, get_db
+from synergy_ui.models.users import Users, UserModel
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Boolean, Column, String, Text, Index
 

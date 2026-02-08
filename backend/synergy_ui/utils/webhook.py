@@ -2,8 +2,8 @@
 import logging
 import aiohttp
 
-from SYNERGY_UI.config import WEBUI_FAVICON_URL
-from SYNERGY_UI.env import VERSION
+from synergy_ui.config import WEBUI_FAVICON_URL
+from synergy_ui.env import VERSION
 
 log = logging.getLogger(__name__)
 

@@ -9,8 +9,8 @@ from markdown import markdown
 import site
 from fpdf import FPDF
 
-from SYNERGY_UI.env import STATIC_DIR, FONTS_DIR
-from SYNERGY_UI.models.chats import ChatTitleMessagesForm
+from synergy_ui.env import STATIC_DIR, FONTS_DIR
+from synergy_ui.models.chats import ChatTitleMessagesForm
 
 
 class PDFGenerator:

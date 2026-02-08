@@ -92,7 +92,7 @@ class AbstractPostgresTest(AbstractIntegrationTest):
             db = None
             while retries > 0:
                 try:
-                    from SYNERGY_UI.config import SYNERGY_UI_DIR
+                    from synergy_ui.config import SYNERGY_UI_DIR
 
                     db = create_engine(database_url, pool_pre_ping=True)
                     db = db.connect()
@@ -115,7 +115,7 @@ class AbstractPostgresTest(AbstractIntegrationTest):
             pytest.fail(f"Could not setup test environment: {ex}")
 
     def _check_db_connection(self):
-        from SYNERGY_UI.internal.db import Session
+        from synergy_ui.internal.db import Session
 
         retries = 10
         while retries > 0:
@@ -139,7 +139,7 @@ class AbstractPostgresTest(AbstractIntegrationTest):
         cls.docker_client.containers.get(cls.DOCKER_CONTAINER_NAME).remove(force=True)
 
     def teardown_method(self):
-        from SYNERGY_UI.internal.db import Session
+        from synergy_ui.internal.db import Session
 
         # rollback everything not yet committed
         Session.commit()

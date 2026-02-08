@@ -24,9 +24,9 @@ from asgiref.typing import (
 from loguru import logger
 from starlette.requests import Request
 
-from SYNERGY_UI.env import AUDIT_LOG_LEVEL, MAX_BODY_LOG_SIZE
-from SYNERGY_UI.utils.auth import get_current_user, get_http_authorization_cred
-from SYNERGY_UI.models.users import UserModel
+from synergy_ui.env import AUDIT_LOG_LEVEL, MAX_BODY_LOG_SIZE
+from synergy_ui.utils.auth import get_current_user, get_http_authorization_cred
+from synergy_ui.models.users import UserModel
 
 
 if TYPE_CHECKING:

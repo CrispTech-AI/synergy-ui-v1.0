@@ -2,8 +2,8 @@
 import uuid
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.models.users import UserModel, UserProfileImageResponse, Users
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.models.users import UserModel, UserProfileImageResponse, Users
 from pydantic import BaseModel
 from sqlalchemy import Boolean, Column, String, Text
 

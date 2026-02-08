@@ -9,7 +9,7 @@ from typing import List, Dict, Any
 from contextlib import asynccontextmanager
 
 from langchain_core.documents import Document
-from SYNERGY_UI.env import GLOBAL_LOG_LEVEL
+from synergy_ui.env import GLOBAL_LOG_LEVEL
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
 log = logging.getLogger(__name__)

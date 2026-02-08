@@ -2,18 +2,18 @@
 import logging
 import markdown
 
-from SYNERGY_UI.models.chats import ChatTitleMessagesForm
-from SYNERGY_UI.config import DATA_DIR, ENABLE_ADMIN_EXPORT
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.models.chats import ChatTitleMessagesForm
+from synergy_ui.config import DATA_DIR, ENABLE_ADMIN_EXPORT
+from synergy_ui.constants import ERROR_MESSAGES
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from pydantic import BaseModel
 from starlette.responses import FileResponse
 
 
-from SYNERGY_UI.utils.misc import get_gravatar_url
-from SYNERGY_UI.utils.pdf_generator import PDFGenerator
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.code_interpreter import execute_code_jupyter
+from synergy_ui.utils.misc import get_gravatar_url
+from synergy_ui.utils.pdf_generator import PDFGenerator
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.code_interpreter import execute_code_jupyter
 
 
 log = logging.getLogger(__name__)
@@ -110,7 +110,7 @@ async def download_db(user=Depends(get_admin_user)):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=ERROR_MESSAGES.ACCESS_PROHIBITED,
         )
-    from SYNERGY_UI.internal.db import engine
+    from synergy_ui.internal.db import engine
 
     if engine.name != "sqlite":
         raise HTTPException(

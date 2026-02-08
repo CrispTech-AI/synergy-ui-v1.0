@@ -13,7 +13,7 @@ import mimeparse
 
 
 import collections.abc
-from SYNERGY_UI.env import CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE
+from synergy_ui.env import CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE
 
 log = logging.getLogger(__name__)
 

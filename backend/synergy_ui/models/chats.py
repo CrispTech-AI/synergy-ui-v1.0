@@ -4,10 +4,10 @@ import time
 import uuid
 from typing import Optional
 
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.models.tags import TagModel, Tag, Tags
-from SYNERGY_UI.models.folders import Folders
-from SYNERGY_UI.utils.misc import sanitize_data_for_db, sanitize_text_for_db
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.models.tags import TagModel, Tag, Tags
+from synergy_ui.models.folders import Folders
+from synergy_ui.utils.misc import sanitize_data_for_db, sanitize_text_for_db
 
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import (

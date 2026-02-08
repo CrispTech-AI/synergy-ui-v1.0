@@ -3,7 +3,7 @@ from typing import Optional
 
 import requests
 import json
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 
 log = logging.getLogger(__name__)
 

@@ -27,13 +27,13 @@ from starlette.responses import RedirectResponse
 from typing import Optional
 
 
-from SYNERGY_UI.models.auths import Auths
-from SYNERGY_UI.models.oauth_sessions import OAuthSessions
-from SYNERGY_UI.models.users import Users
+from synergy_ui.models.auths import Auths
+from synergy_ui.models.oauth_sessions import OAuthSessions
+from synergy_ui.models.users import Users
 
 
-from SYNERGY_UI.models.groups import Groups, GroupModel, GroupUpdateForm, GroupForm
-from SYNERGY_UI.config import (
+from synergy_ui.models.groups import Groups, GroupModel, GroupUpdateForm, GroupForm
+from synergy_ui.config import (
     DEFAULT_USER_ROLE,
     ENABLE_OAUTH_SIGNUP,
     OAUTH_MERGE_ACCOUNTS_BY_EMAIL,
@@ -60,8 +60,8 @@ from SYNERGY_UI.config import (
     JWT_EXPIRES_IN,
     AppConfig,
 )
-from SYNERGY_UI.constants import ERROR_MESSAGES, WEBHOOK_MESSAGES
-from SYNERGY_UI.env import (
+from synergy_ui.constants import ERROR_MESSAGES, WEBHOOK_MESSAGES
+from synergy_ui.env import (
     AIOHTTP_CLIENT_SESSION_SSL,
     WEBUI_NAME,
     WEBUI_AUTH_COOKIE_SAME_SITE,
@@ -70,10 +70,10 @@ from SYNERGY_UI.env import (
     ENABLE_OAUTH_EMAIL_FALLBACK,
     OAUTH_CLIENT_INFO_ENCRYPTION_KEY,
 )
-from SYNERGY_UI.utils.misc import parse_duration
-from SYNERGY_UI.utils.auth import get_password_hash, create_token
-from SYNERGY_UI.utils.webhook import post_webhook
-from SYNERGY_UI.utils.groups import apply_default_group_assignment
+from synergy_ui.utils.misc import parse_duration
+from synergy_ui.utils.auth import get_password_hash, create_token
+from synergy_ui.utils.webhook import post_webhook
+from synergy_ui.utils.groups import apply_default_group_assignment
 
 from mcp.shared.auth import (
     OAuthClientMetadata as MCPOAuthClientMetadata,
@@ -101,7 +101,7 @@ class OAuthClientInformationFull(OAuthClientMetadata):
     server_metadata: Optional[OAuthMetadata] = None  # Fetched from the OAuth server
 
 
-from SYNERGY_UI.env import GLOBAL_LOG_LEVEL
+from synergy_ui.env import GLOBAL_LOG_LEVEL
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
 log = logging.getLogger(__name__)

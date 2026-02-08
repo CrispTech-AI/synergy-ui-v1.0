@@ -6,11 +6,11 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Request, status, BackgroundTasks
 from pydantic import BaseModel
 
-from SYNERGY_UI.socket.main import sio
+from synergy_ui.socket.main import sio
 
-from SYNERGY_UI.models.groups import Groups
-from SYNERGY_UI.models.users import Users, UserResponse
-from SYNERGY_UI.models.notes import (
+from synergy_ui.models.groups import Groups
+from synergy_ui.models.users import Users, UserResponse
+from synergy_ui.models.notes import (
     NoteListResponse,
     Notes,
     NoteModel,
@@ -18,16 +18,16 @@ from SYNERGY_UI.models.notes import (
     NoteUserResponse,
 )
 
-from SYNERGY_UI.config import (
+from synergy_ui.config import (
     BYPASS_ADMIN_ACCESS_CONTROL,
     ENABLE_ADMIN_CHAT_ACCESS,
     ENABLE_ADMIN_EXPORT,
 )
-from SYNERGY_UI.constants import ERROR_MESSAGES
+from synergy_ui.constants import ERROR_MESSAGES
 
 
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
-from SYNERGY_UI.utils.access_control import has_access, has_permission
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.utils.access_control import has_access, has_permission
 
 log = logging.getLogger(__name__)
 

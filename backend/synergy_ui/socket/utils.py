@@ -1,7 +1,7 @@
 ﻿import json
 import uuid
-from SYNERGY_UI.utils.redis import get_redis_connection
-from SYNERGY_UI.env import REDIS_KEY_PREFIX
+from synergy_ui.utils.redis import get_redis_connection
+from synergy_ui.env import REDIS_KEY_PREFIX
 from typing import Optional, List, Tuple
 import pycrdt as Y
 

@@ -3,9 +3,10 @@ import logging
 import sys
 from typing import TYPE_CHECKING
 
+from synergy_ui.constants import ERROR_MESSAGES
 from loguru import logger
 from opentelemetry import trace
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     AUDIT_UVICORN_LOGGER_NAMES,
     AUDIT_LOG_FILE_ROTATION_SIZE,
     AUDIT_LOG_LEVEL,
@@ -68,7 +69,7 @@ class InterceptHandler(logging.Handler):
             **self._get_extras()
         ).log(level, record.getMessage())
         if ENABLE_OTEL and ENABLE_OTEL_LOGS:
-            from SYNERGY_UI.utils.telemetry.logs import otel_handler
+            from synergy_ui.utils.telemetry.logs import otel_handler
 
             otel_handler.emit(record)
 

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: supabase
+    image: postgres:15
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: supersecret
+      POSTGRES_DB: synergy_memory
+    volumes:
+      - supabase_data:/var/lib/postgresql/data
+
+  qdrant:
+    container_name: qdrant
+    image: qdrant/qdrant:latest
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+volumes:
+  supabase_data:
+  qdrant_data:

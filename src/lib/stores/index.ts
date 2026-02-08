@@ -153,6 +153,8 @@ type OllamaModelDetails = {
 };
 
 type Settings = {
+
+	showFormattingToolbar: boolean | undefined;
 	pinnedModels?: never[];
 	toolServers?: never[];
 	detectArtifacts?: boolean;

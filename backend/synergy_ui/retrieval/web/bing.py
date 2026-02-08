@@ -3,7 +3,7 @@ import os
 from pprint import pprint
 from typing import Optional
 import requests
-from SYNERGY_UI.retrieval.web.main import SearchResult, get_filtered_results
+from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 import argparse
 
 log = logging.getLogger(__name__)

@@ -7,7 +7,7 @@ class TestModels(AbstractPostgresTest):
 
     def setup_class(cls):
         super().setup_class()
-        from SYNERGY_UI.models.models import Model
+        from synergy_ui.models.models import Model
 
         cls.models = Model
 

@@ -2,8 +2,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 from pydantic import BaseModel
 
-from SYNERGY_UI.models.users import Users, UserModel
-from SYNERGY_UI.models.feedbacks import (
+from synergy_ui.models.users import Users, UserModel
+from synergy_ui.models.feedbacks import (
     FeedbackIdResponse,
     FeedbackModel,
     FeedbackResponse,
@@ -13,8 +13,8 @@ from SYNERGY_UI.models.feedbacks import (
     Feedbacks,
 )
 
-from SYNERGY_UI.constants import ERROR_MESSAGES
-from SYNERGY_UI.utils.auth import get_admin_user, get_verified_user
+from synergy_ui.constants import ERROR_MESSAGES
+from synergy_ui.utils.auth import get_admin_user, get_verified_user
 
 router = APIRouter()
 

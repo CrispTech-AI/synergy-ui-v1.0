@@ -11,9 +11,9 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from sqlalchemy import Engine
 from base64 import b64encode
 
-from SYNERGY_UI.utils.telemetry.instrumentors import Instrumentor
-from SYNERGY_UI.utils.telemetry.metrics import setup_metrics
-from SYNERGY_UI.env import (
+from synergy_ui.utils.telemetry.instrumentors import Instrumentor
+from synergy_ui.utils.telemetry.metrics import setup_metrics
+from synergy_ui.env import (
     OTEL_SERVICE_NAME,
     OTEL_EXPORTER_OTLP_ENDPOINT,
     OTEL_EXPORTER_OTLP_INSECURE,

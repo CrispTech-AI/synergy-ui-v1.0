@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: synergy_ui
+Version: 0.6.43
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: loguru
+Requires-Dist: typer
+Requires-Dist: starlette
+Dynamic: requires-dist

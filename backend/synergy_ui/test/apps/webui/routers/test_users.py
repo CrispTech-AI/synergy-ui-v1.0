@@ -25,7 +25,7 @@ class TestUsers(AbstractPostgresTest):
 
     def setup_class(cls):
         super().setup_class()
-        from SYNERGY_UI.models.users import Users
+        from synergy_ui.models.users import Users
 
         cls.users = Users
 

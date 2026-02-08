@@ -16,7 +16,7 @@ from sqlalchemy import JSON, Column, DateTime, Integer, func
 from authlib.integrations.starlette_client import OAuth
 
 
-from SYNERGY_UI.env import (
+from synergy_ui.env import (
     DATA_DIR,
     DATABASE_URL,
     ENV,
@@ -32,8 +32,8 @@ from SYNERGY_UI.env import (
     WEBUI_NAME,
     log,
 )
-from SYNERGY_UI.internal.db import Base, get_db
-from SYNERGY_UI.utils.redis import get_redis_connection
+from synergy_ui.internal.db import Base, get_db
+from synergy_ui.utils.redis import get_redis_connection
 
 
 class EndpointFilter(logging.Filter):

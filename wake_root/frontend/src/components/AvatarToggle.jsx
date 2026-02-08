@@ -1,0 +1,1 @@
+// Avatar toggle component
