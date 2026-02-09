@@ -68,7 +68,7 @@ from synergy_ui.socket.main import (
     get_models_in_use,
 )
 from synergy_ui.routers import (
-    audio,
+    # audio,
     images,
     ollama,
     openai,
@@ -1380,7 +1380,7 @@ app.include_router(pipelines.router, prefix="/api/v1/pipelines", tags=["pipeline
 app.include_router(tasks.router, prefix="/api/v1/tasks", tags=["tasks"])
 app.include_router(images.router, prefix="/api/v1/images", tags=["images"])
 
-app.include_router(audio.router, prefix="/api/v1/audio", tags=["audio"])
+# app.include_router(audio.router, prefix="/api/v1/audio", tags=["audio"])
 app.include_router(retrieval.router, prefix="/api/v1/retrieval", tags=["retrieval"])
 
 app.include_router(configs.router, prefix="/api/v1/configs", tags=["configs"])

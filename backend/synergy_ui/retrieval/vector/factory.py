@@ -60,9 +60,10 @@ class Vector:
 
                 return ElasticsearchClient()
             case VectorType.CHROMA:
-                from synergy_ui.retrieval.vector.dbs.chroma import ChromaClient
+                # from synergy_ui.retrieval.vector.dbs.chroma import ChromaClient
 
-                return ChromaClient()
+                # return ChromaClient()
+                raise NotImplementedError("ChromaDB is disabled")
             case VectorType.ORACLE23AI:
                 from synergy_ui.retrieval.vector.dbs.oracle23ai import Oracle23aiClient
 
@@ -75,5 +76,7 @@ class Vector:
                 raise ValueError(f"Unsupported vector type: {vector_type}")
 
 
-VECTOR_DB_CLIENT = Vector.get_vector(VECTOR_DB)
+VECTOR_DB_CLIENT = None
+if VECTOR_DB and VECTOR_DB.lower() != "none":
+    VECTOR_DB_CLIENT = Vector.get_vector(VECTOR_DB)
 
