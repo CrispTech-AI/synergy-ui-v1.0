@@ -1,9 +1,10 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 image_name="synergy-ui"
 container_name="synergy-ui"
 host_port=3000
-container_port=8080
+container_port=4173
+
 
 docker build -t "$image_name" .
 docker stop "$container_name" &>/dev/null || true

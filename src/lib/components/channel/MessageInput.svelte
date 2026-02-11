@@ -450,7 +450,10 @@
 				chatInput.scrollTop = chatInput.scrollHeight;
 			}
 		}
-	};
+	}
+};
+
+
 
 	let showCommands = false;
 	$: showCommands = ['/'].includes(command?.charAt(0));
@@ -646,16 +649,31 @@
 		}
 	});
 
+</script>
+
+<style>
+	/* Make FilesOverlay full screen */
+	.FilesOverlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 50;
+	}
+</style>
+
 {#if loaded}
 	<FilesOverlay show={draggedOver} />
 
-	{#if acceptFiles}
-		<input
+{#if acceptFiles}
+	<input
 			bind:this={filesInputElement}
 			bind:files={inputFiles}
 			type="file"
 			hidden
 			multiple
+			accept="image/*,video/*,audio/*"
 			on:change={async () => {
 				if (inputFiles && inputFiles.length > 0) {
 					inputFilesHandler(Array.from(inputFiles));
@@ -862,7 +880,8 @@
 								<div
 									class="scrollbar-hidden rtl:text-right ltr:text-left bg-transparent dark:text-gray-100 outline-hidden w-full pt-2.5 pb-[5px] px-1 resize-none h-fit max-h-96 overflow-auto"
 								>
-									{#key $settings?.richTextInput && $settings?.showFormattingToolbar}
+									{#if $settings?.richTextInput && $settings?.showFormattingToolbar}
+
 										<RichTextInput
 											id="chat-input"
 											bind:this={chatInputElement}
@@ -882,58 +901,8 @@
 											bind:value={content}
 											class="scrollbar-hidden rtl:text-right ltr:text-left bg-transparent dark:text-gray-100 outline-hidden w-full pt-2.5 pb-[5px] px-1 resize-none h-fit max-h-96 overflow-auto"
 											{placeholder}
-											on:keydown={async (e: any) => {
-												const isCtrlPressed = (e as any).ctrlKey || (e as any).metaKey; // metaKey is for Cmd key on Mac
-
-												const suggestionsContainerElement =
-													document.getElementById('suggestions-container');
-
-												if (!suggestionsContainerElement) {
-													if (
-														!$mobile ||
-														!(
-															'ontouchstart' in window ||
-															navigator.maxTouchPoints > 0 ||
-															navigator.msMaxTouchPoints > 0
-														)
-													) {
-														// Prevent Enter key from creating a new line
-														// Uses keyCode '13' for Enter key for chinese/japanese keyboards
-														if ((e as any).keyCode === 13 && !(e as any).shiftKey) {
-															if (!((e as any).ctrlKey || (e as any).metaKey)) {
-																e.preventDefault();
-																return;
-															}
-
-															// Submit on content when Enter key is pressed
-															if (content !== '' && (e as any).keyCode === 13 && !(e as any).shiftKey) {
-																submitHandler();
-															}
-														}
-													}
-
-													if (e.key === 'Escape') {
-														console.info('Escape');
-														replyToMessage = null;
-													}
-												}}
-											on:paste={async (e: any) => {
-												e = e.detail.event;
-
-												const clipboardData = (e as any).clipboardData || (window as any).clipboardData;
-
-												if (clipboardData && clipboardData.items) {
-													for (const item of clipboardData.items) {
-														const file = item.getAsFile();
-														if (file) {
-															await inputFilesHandler([file]);
-															e.preventDefault();
-														}
-													}
-												}
-											}}
-										/>
-									{/key}
+                                        />
+									{/if}
 								</div>
 							</div>
 
@@ -1089,3 +1058,4 @@
 </div>
 </div>
 </svelte:component>
+</script>

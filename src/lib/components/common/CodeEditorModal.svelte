@@ -6,24 +6,20 @@
 
 	const i18n = getContext('i18n');
 
-	let {
-		show = $bindable(),
-		value = $bindable(),
-		lang = 'python',
-		onChange = () => {},
-		onSave = () => {}
-	} = $props();
+	export let show;
+	export let value;
+	export let lang = 'python';
+	export let onChange = () => {};
+	export let onSave = () => {};
 
 	let boilerplate = ``;
 
-	let codeEditor = $state(null);
-	let _content = $state(value);
+	let codeEditor = null;
+	let _content = value;
 
-	$effect(() => {
-		if (_content) {
-			value = _content;
-		}
-	});
+	$: if (_content) {
+		value = _content;
+	}
 </script>
 
 <Drawer bind:show>
@@ -37,7 +33,7 @@
 			<button
 				class="self-center"
 				aria-label="Close"
-				onclick={() => {
+				on:click={() => {
 					show = false;
 				}}
 			>
