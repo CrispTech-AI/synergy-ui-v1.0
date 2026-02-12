@@ -1,0 +1,154 @@
+# CrispTech AI Stack - Local Version
+# Includes: Synergy UI x2, LocalAI, OpenWebUI, AnythingLLM, Gradio, Streamlit, and system tools
+
+version: '3.8'
+
+services:
+
+  # --- Synergy UI Production ---
+  synergy-ui-prod:
+    image: ghcr.io/crisptech/synergy-ui:latest
+    container_name: synergy-ui-prod
+    ports:
+      - "3000:3000"
+    restart: always
+    volumes:
+      - ./data/synergy-ui-prod:/app/data
+
+  # --- Synergy UI Dev/Test ---
+  synergy-ui-dev:
+    image: ghcr.io/crisptech/synergy-ui-dev:latest
+    container_name: synergy-ui-dev
+    ports:
+      - "3001:3000"
+    restart: always
+    volumes:
+      - ./data/synergy-ui-dev:/app/data
+
+  # --- LocalAI ---
+  localai:
+    image: quay.io/go-skynet/local-ai:latest
+    container_name: localai
+    ports:
+      - "8081:8080"
+    environment:
+      - MODELS_PATH=/models
+    volumes:
+      - ./models:/models
+      - ./data/localai:/data
+    restart: always
+
+  # --- Open WebUI (Stock) ---
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3003:3000"
+    volumes:
+      - ./data/open-webui:/app/data
+    restart: always
+
+  # --- AnythingLLM ---
+  anything-llm:
+    image: mintplexlabs/anything-llm:latest
+    container_name: anything-llm
+    ports:
+      - "3002:3002"
+    restart: always
+    volumes:
+      - ./data/anything-llm:/app/data
+
+  # --- Gradio ---
+  gradio-interface:
+    build: ./gradio
+    container_name: gradio-interface
+    ports:
+      - "7860:7860"
+    restart: always
+
+  # --- Streamlit ---
+  streamlit-interface:
+    build: ./streamlit
+    container_name: streamlit-interface
+    ports:
+      - "8501:8501"
+    restart: always
+
+  # --- Supabase ---
+  supabase:
+    image: supabase/postgres:15
+    container_name: supabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/supabase:/var/lib/postgresql/data
+    restart: always
+
+  # --- Qdrant ---
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./data/qdrant:/qdrant/storage
+    restart: always
+
+  # --- Flowise ---
+  flowise:
+    image: flowiseai/flowise
+    container_name: flowise
+    ports:
+      - "3004:3000"
+    restart: always
+    volumes:
+      - ./data/flowise:/root/.flowise
+
+  # --- N8N ---
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    restart: always
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=supabase
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=n8n
+      - DB_POSTGRESDB_USER=postgres
+      - DB_POSTGRESDB_PASSWORD=password
+
+  # --- SearXNG (Private Search) ---
+  searxng:
+    image: searxng/searxng
+    container_name: searxng
+    ports:
+      - "8888:8080"
+    restart: always
+
+  # --- Caddy (Reverse Proxy) ---
+  caddy:
+    image: caddy
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+      - ./caddy_config:/config
+    restart: always
+
+  # --- Watchtower (Auto Updates) ---
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+networks:
+  default:
+    name: crisptech-ai
+

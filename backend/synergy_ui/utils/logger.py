@@ -3,6 +3,7 @@ import logging
 import sys
 from typing import TYPE_CHECKING
 
+from synergy_ui.constants import ERROR_MESSAGES
 from loguru import logger
 from opentelemetry import trace
 from synergy_ui.env import (

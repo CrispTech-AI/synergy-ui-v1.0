@@ -2,8 +2,13 @@ import logging
 from typing import Optional
 
 from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
+<<<<<<< HEAD
 from ddgs import DDGS
 from ddgs.exceptions import RatelimitException
+=======
+from duckduckgo_search import DDGS
+from duckduckgo_search.exceptions import RatelimitException
+>>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 
 log = logging.getLogger(__name__)
 

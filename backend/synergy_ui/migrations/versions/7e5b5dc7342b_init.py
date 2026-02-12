@@ -11,7 +11,7 @@ from typing import Sequence, Union
 import sqlalchemy as sa
 from alembic import op
 
-import SYNERGY_UI.internal.db
+import synergy_ui.internal.db
 from synergy_ui.internal.db import JSONField
 from synergy_ui.migrations.util import get_existing_tables
 

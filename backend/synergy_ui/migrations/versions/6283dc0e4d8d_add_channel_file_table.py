@@ -10,7 +10,7 @@ from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
-import SYNERGY_UI.internal.db
+import synergy_ui.internal.db
 
 
 # revision identifiers, used by Alembic.

@@ -4,7 +4,7 @@
 
 	import { tick, getContext, onMount, onDestroy } from 'svelte';
 
-	const i18n = getContext('i18n');
+	const i18n = getContext('i18n') as any;
 
 	import { config, mobile, settings, socket, user } from '$lib/stores';
 	import {
@@ -42,17 +42,17 @@
 	import XMark from '../icons/XMark.svelte';
 
 	export let placeholder = $i18n.t('Type here...');
-	export let chatInputElement;
+	export let chatInputElement: any = null;
 
 	export let id = null;
 	export let channel = null;
 
-	export let typingUsers = [];
+	export let typingUsers: any[] = [];
 	export let inputLoading = false;
 
-	export let onSubmit: Function = (e) => {};
-	export let onChange: Function = (e) => {};
-	export let onStop: Function = (e) => {};
+	export let onSubmit: Function = (e: any) => {};
+	export let onChange: Function = (e: any) => {};
+	export let onStop: Function = (e: any) => {};
 
 	export let scrollEnd = true;
 	export let scrollToBottom: Function = () => {};
@@ -64,7 +64,7 @@
 	export let userSuggestions = false;
 	export let channelSuggestions = false;
 
-	export let replyToMessage = null;
+	export let replyToMessage: any = null;
 
 	export let typingUsersClassName = 'from-white dark:from-gray-900';
 
@@ -73,10 +73,10 @@
 
 	let recording = false;
 	let content = '';
-	let files = [];
+	let files: any[] = [];
 
-	let filesInputElement;
-	let inputFiles;
+	let filesInputElement: HTMLInputElement | null = null;
+	let inputFiles: FileList | null = null;
 
 	let showInputVariablesModal = false;
 	let inputVariablesModalCallback: (variableValues: Record<string, any>) => void;
@@ -214,222 +214,9 @@
 		return text;
 	};
 
-	const replaceVariables = (variables: Record<string, any>) => {
-		console.log('Replacing variables:', variables);
-
-		const chatInput = document.getElementById('chat-input');
-
-		if (chatInput) {
-			chatInputElement.replaceVariables(variables);
-			chatInputElement.focus();
-		}
-	};
-
-	export const setText = async (text?: string, cb?: (text: string) => void) => {
-		const chatInput = document.getElementById('chat-input');
-
-		if (chatInput) {
-			if (text !== '') {
-				text = await textVariableHandler(text || '');
-			}
-
-			chatInputElement?.setText(text);
-			chatInputElement?.focus();
-
-			if (text !== '') {
-				text = await inputVariableHandler(text);
-			}
-
-			await tick();
-			if (cb) await cb(text);
-		}
-	};
-
-	const getCommand = () => {
-		const chatInput = document.getElementById('chat-input');
-		let word = '';
-
-		if (chatInput) {
-			word = chatInputElement?.getWordAtDocPos();
-		}
-
-		return word;
-	};
-
-	const replaceCommandWithText = (text) => {
-		const chatInput = document.getElementById('chat-input');
-		if (!chatInput) return;
-
-		chatInputElement?.replaceCommandWithText(text);
-	};
-
-	const insertTextAtCursor = async (text: string) => {
-		const chatInput = document.getElementById('chat-input');
-		if (!chatInput) return;
-
-		text = await textVariableHandler(text);
-
-		if (command) {
-			replaceCommandWithText(text);
-		} else {
-			chatInputElement?.insertContent(text);
-		}
-
-		await tick();
-		text = await inputVariableHandler(text);
-		await tick();
-
-		const chatInputContainer = document.getElementById('chat-input-container');
-		if (chatInputContainer) {
-			chatInputContainer.scrollTop = chatInputContainer.scrollHeight;
-		}
-
-		await tick();
-		if (chatInput) {
-			chatInput.focus();
-			chatInput.dispatchEvent(new Event('input'));
-
-			const words = extractCurlyBraceWords(prompt);
-
-			if (words.length > 0) {
-				const word = words.at(0);
-				await tick();
-			} else {
-				chatInput.scrollTop = chatInput.scrollHeight;
-			}
-		}
-	};
-
 	let command = '';
 
-	export let showCommands = false;
-	$: showCommands = ['/'].includes(command?.charAt(0));
-	let suggestions = null;
-
-	const screenCaptureHandler = async () => {
-		try {
-			// Request screen media
-			const mediaStream = await navigator.mediaDevices.getDisplayMedia({
-				video: { cursor: 'never' },
-				audio: false
-			});
-			// Once the user selects a screen, temporarily create a video element
-			const video = document.createElement('video');
-			video.srcObject = mediaStream;
-			// Ensure the video loads without affecting user experience or tab switching
-			await video.play();
-			// Set up the canvas to match the video dimensions
-			const canvas = document.createElement('canvas');
-			canvas.width = video.videoWidth;
-			canvas.height = video.videoHeight;
-			// Grab a single frame from the video stream using the canvas
-			const context = canvas.getContext('2d');
-			context.drawImage(video, 0, 0, canvas.width, canvas.height);
-			// Stop all video tracks (stop screen sharing) after capturing the image
-			mediaStream.getTracks().forEach((track) => track.stop());
-
-			// bring back focus to this current tab, so that the user can see the screen capture
-			window.focus();
-
-			// Convert the canvas to a Base64 image URL
-			const imageUrl = canvas.toDataURL('image/png');
-			const blob = await (await fetch(imageUrl)).blob();
-			const file = new File([blob], `screen-capture-${Date.now()}.png`, { type: 'image/png' });
-			inputFilesHandler([file]);
-			// Clean memory: Clear video srcObject
-			video.srcObject = null;
-		} catch (error) {
-			// Handle any errors (e.g., user cancels screen sharing)
-			console.error('Error capturing screen:', error);
-		}
-	};
-
-	const inputFilesHandler = async (inputFiles) => {
-		inputFiles.forEach(async (file) => {
-			console.info('Processing file:', {
-				name: file.name,
-				type: file.type,
-				size: file.size,
-				extension: file.name.split('.').at(-1)
-			});
-
-			if (
-				($config?.file?.max_size ?? null) !== null &&
-				file.size > ($config?.file?.max_size ?? 0) * 1024 * 1024
-			) {
-				console.error('File exceeds max size limit:', {
-					fileSize: file.size,
-					maxSize: ($config?.file?.max_size ?? 0) * 1024 * 1024
-				});
-				toast.error(
-					$i18n.t(`File size should not exceed {{maxSize}} MB.`, {
-						maxSize: $config?.file?.max_size
-					})
-				);
-				return;
-			}
-
-			if (file['type'].startsWith('image/')) {
-				const compressImageHandler = async (imageUrl, settings = {}, config = {}) => {
-					// Quick shortcut so we don’t do unnecessary work.
-					const settingsCompression = settings?.imageCompression ?? false;
-					const configWidth = config?.file?.image_compression?.width ?? null;
-					const configHeight = config?.file?.image_compression?.height ?? null;
-
-					// If neither settings nor config wants compression, return original URL.
-					if (!settingsCompression && !configWidth && !configHeight) {
-						return imageUrl;
-					}
-
-					// Default to null (no compression unless set)
-					let width = null;
-					let height = null;
-
-					// If user/settings want compression, pick their preferred size.
-					if (settingsCompression) {
-						width = settings?.imageCompressionSize?.width ?? null;
-						height = settings?.imageCompressionSize?.height ?? null;
-					}
-
-					// Apply config limits as an upper bound if any
-					if (configWidth && (width === null || width > configWidth)) {
-						width = configWidth;
-					}
-					if (configHeight && (height === null || height > configHeight)) {
-						height = configHeight;
-					}
-
-					// Do the compression if required
-					if (width || height) {
-						return await compressImage(imageUrl, width, height);
-					}
-					return imageUrl;
-				};
-
-				let reader = new FileReader();
-
-				reader.onload = async (event) => {
-					let imageUrl = event.target.result;
-
-					// Compress the image if settings or config require it
-					if ($settings?.imageCompression && $settings?.imageCompressionInChannels) {
-						imageUrl = await compressImageHandler(imageUrl, $settings, $config);
-					}
-
-					const blob = await (await fetch(imageUrl)).blob();
-					const compressedFile = new File([blob], file.name, { type: file.type });
-
-					uploadFileHandler(compressedFile, false);
-				};
-
-				reader.readAsDataURL(file['type'] === 'image/heic' ? await convertHeicToJpeg(file) : file);
-			} else {
-				uploadFileHandler(file);
-			}
-		});
-	};
-
-	const uploadFileHandler = async (file, process = true) => {
+	const uploadFileHandler = async (file: File, process = true) => {
 		const tempItemId = uuidv4();
 		const fileItem = {
 			type: 'file',
@@ -455,7 +242,7 @@
 			// During the file upload, file content is automatically extracted.
 			// If the file is an audio file, provide the language for STT.
 			let metadata = {
-				channel_id: channel.id,
+				channel_id: channel?.id ?? null,
 				// If the file is an audio file, provide the language for STT.
 				...((file.type.startsWith('audio/') || file.type.startsWith('video/')) &&
 				$settings?.audio?.stt?.language
@@ -484,7 +271,7 @@
 				fileItem.id = uploadedFile.id;
 				fileItem.collection_name =
 					uploadedFile?.meta?.collection_name || uploadedFile?.collection_name;
-				fileItem.content_type = uploadedFile.meta?.content_type || uploadedFile.content_type;
+				(fileItem as any).content_type = uploadedFile.meta?.content_type || uploadedFile.content_type;
 				fileItem.url = `${uploadedFile.id}`;
 
 				files = files;
@@ -497,13 +284,228 @@
 		}
 	};
 
+	const inputFilesHandler = async (inputFiles: File[] | FileList) => {
+		Array.from(inputFiles).forEach(async (file: File) => {
+			console.info('Processing file:', {
+				name: file.name,
+				type: file.type,
+				size: file.size,
+				extension: file.name.split('.').at(-1)
+			});
+
+			if (
+				(($config as any)?.file?.max_size ?? null) !== null &&
+				file.size > (($config as any)?.file?.max_size ?? 0) * 1024 * 1024
+			) {
+				console.error('File exceeds max size limit:', {
+					fileSize: file.size,
+					maxSize: ($config as any)?.file?.max_size ?? 0 * 1024 * 1024
+				});
+				toast.error(
+					$i18n.t(`File size should not exceed {{maxSize}} MB.`, {
+						maxSize: ($config as any)?.file?.max_size
+					})
+				);
+				return;
+			}
+
+			if (file['type'].startsWith('image/')) {
+				const compressImageHandler = async (imageUrl: string, settings: any = {}, config: any = {}) => {
+					// Quick shortcut so we don't do unnecessary work.
+					const settingsCompression = settings?.imageCompression ?? false;
+					const configWidth = (config as any)?.file?.image_compression?.width ?? null;
+					const configHeight = (config as any)?.file?.image_compression?.height ?? null;
+
+					// If neither settings nor config wants compression, return original URL.
+					if (!settingsCompression && !configWidth && !configHeight) {
+						return imageUrl;
+					}
+
+					// Default to null (no compression unless set)
+					let width = null;
+					let height = null;
+
+					// Use settings if provided, otherwise use config
+					if (settingsCompression) {
+						width = settings?.imageCompression?.width ?? null;
+						height = settings?.imageCompression?.height ?? null;
+					}
+
+					if (configWidth || configHeight) {
+						width = configWidth;
+						height = configHeight;
+					}
+
+					return await compressImage(imageUrl, width, height);
+				};
+
+				const reader = new FileReader();
+
+				reader.onload = async (event: ProgressEvent<FileReader>) => {
+					const imageUrl = event.target?.result as string;
+
+					if (imageUrl) {
+						const compressedImageUrl = await compressImageHandler(imageUrl, $settings, $config);
+
+						if (compressedImageUrl) {
+							const blob = await fetch(compressedImageUrl as string).then((res) => res.blob());
+							const compressedFile = new File([blob], file.name, {
+								type: file.type
+							});
+
+							uploadFileHandler(compressedFile, false);
+						} else {
+							uploadFileHandler(file, false);
+						}
+					}
+				};
+
+				reader.readAsDataURL(file);
+			} else {
+				uploadFileHandler(file, false);
+			}
+		});
+	};
+
+	const replaceVariables = (variables: Record<string, any>) => {
+		console.log('Replacing variables:', variables);
+
+		const chatInput = document.getElementById('chat-input') as HTMLTextAreaElement | null;
+
+		if (chatInputElement) {
+			chatInputElement.replaceVariables(variables);
+			chatInputElement.focus();
+		}
+	};
+
+	export const setText = async (text?: string, cb?: (text: string) => void) => {
+		if (chatInputElement) {
+			if (text !== '') {
+				text = await textVariableHandler(text || '');
+			}
+
+			chatInputElement.setText(text);
+			chatInputElement.focus();
+
+			if (text !== '') {
+				text = await inputVariableHandler(text);
+			}
+
+			await tick();
+			if (cb) await cb(text);
+		}
+	};
+
+	const getCommand = () => {
+		const chatInput = document.getElementById('chat-input');
+		let word = '';
+
+		if (chatInputElement) {
+			word = chatInputElement.getWordAtDocPos();
+		}
+
+		return word;
+	};
+
+	const replaceCommandWithText = (text: string) => {
+		const chatInput = document.getElementById('chat-input');
+		if (chatInputElement) {
+			chatInputElement.replaceCommandWithText(text);
+		}
+	};
+
+	const insertTextAtCursor = async (text: string) => {
+		const chatInput = document.getElementById('chat-input');
+		if (!chatInput) return;
+
+		text = await textVariableHandler(text);
+
+		if (command) {
+			replaceCommandWithText(text);
+		} else {
+		if (chatInputElement) {
+			chatInputElement.insertContent(text);
+		}
+
+		await tick();
+		text = await inputVariableHandler(text);
+		await tick();
+
+		const chatInputContainer = document.getElementById('chat-input-container');
+		if (chatInputContainer) {
+			chatInputContainer.scrollTop = chatInputContainer.scrollHeight;
+		}
+
+		await tick();
+		if (chatInput) {
+			chatInput.focus();
+			chatInput.dispatchEvent(new Event('input'));
+
+			const words = extractCurlyBraceWords(prompt);
+
+			if (words.length > 0) {
+				const word = words.at(0);
+				await tick();
+			} else {
+				chatInput.scrollTop = chatInput.scrollHeight;
+			}
+		}
+	}
+};
+
+
+
+	let showCommands = false;
+	$: showCommands = ['/'].includes(command?.charAt(0));
+	let suggestions: any = null;
+
+	const screenCaptureHandler = async () => {
+		try {
+			// Request screen media
+			const mediaStream = await navigator.mediaDevices.getDisplayMedia({
+				video: true as any,
+				audio: false
+			});
+			// Once the user selects a screen, temporarily create a video element
+			const video = document.createElement('video');
+			video.srcObject = mediaStream;
+			// Ensure the video loads without affecting user experience or tab switching
+			await video.play();
+			// Set up the canvas to match the video dimensions
+			const canvas = document.createElement('canvas');
+			canvas.width = video.videoWidth;
+			canvas.height = video.videoHeight;
+			// Grab a single frame from the video stream using the canvas
+			const context = canvas.getContext('2d');
+			if (context) {
+				context.drawImage(video, 0, 0, canvas.width, canvas.height);
+			}
+			// Stop all video tracks (stop screen sharing) after capturing the image
+			mediaStream.getTracks().forEach((track) => track.stop());
+
+			// bring back focus to this current tab, so that the user can see the screen capture
+			window.focus();
+
+			// Convert the canvas to a Base64 image URL
+			const imageUrl = canvas.toDataURL('image/png');
+			const blob = await (await fetch(imageUrl)).blob();
+			const file = new File([blob], `screen-capture-${Date.now()}.png`, { type: 'image/png' });
+			inputFilesHandler([file]);
+			// Clean memory: Clear video srcObject
+			video.srcObject = null;
+		} catch (error) {
+			// Handle any errors (e.g., user cancels screen sharing)
+			console.error('Error capturing screen:', error);
+		}
+	};
+
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.key === 'Escape') {
 			draggedOver = false;
 		}
 	};
 
-	const onDragOver = (e) => {
+	const onDragOver = (e: DragEvent) => {
 		e.preventDefault();
 
 		// Check if a file is being draggedOver.
@@ -514,18 +516,18 @@
 		}
 	};
 
-	const onDragLeave = () => {
+	const onDragLeave = (e: DragEvent) => {
 		draggedOver = false;
 	};
 
-	const onDrop = async (e) => {
+	const onDrop = async (e: DragEvent) => {
 		e.preventDefault();
 
 		if (e.dataTransfer?.files && acceptFiles) {
-			const inputFiles = Array.from(e.dataTransfer?.files);
-			if (inputFiles && inputFiles.length > 0) {
-				console.log(inputFiles);
-				inputFilesHandler(inputFiles);
+			const droppedFiles = Array.from(e.dataTransfer.files || []) as File[];
+			if (droppedFiles && droppedFiles.length > 0) {
+				console.log(droppedFiles);
+				inputFilesHandler(droppedFiles);
 			}
 		}
 
@@ -646,18 +648,32 @@
 			dropzoneElement?.removeEventListener('dragleave', onDragLeave);
 		}
 	});
+
 </script>
+
+<style>
+	/* Make FilesOverlay full screen */
+	.FilesOverlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 50;
+	}
+</style>
 
 {#if loaded}
 	<FilesOverlay show={draggedOver} />
 
-	{#if acceptFiles}
-		<input
+{#if acceptFiles}
+	<input
 			bind:this={filesInputElement}
 			bind:files={inputFiles}
 			type="file"
 			hidden
 			multiple
+			accept="image/*,video/*,audio/*"
 			on:change={async () => {
 				if (inputFiles && inputFiles.length > 0) {
 					inputFilesHandler(Array.from(inputFiles));
@@ -665,7 +681,9 @@
 					toast.error($i18n.t(`File not found.`));
 				}
 
-				filesInputElement.value = '';
+				if (filesInputElement) {
+					filesInputElement.files = inputFiles;
+				}
 			}}
 		/>
 	{/if}
@@ -862,33 +880,28 @@
 								<div
 									class="scrollbar-hidden rtl:text-right ltr:text-left bg-transparent dark:text-gray-100 outline-hidden w-full pt-2.5 pb-[5px] px-1 resize-none h-fit max-h-96 overflow-auto"
 								>
-									{#key $settings?.richTextInput && $settings?.showFormattingToolbar}
+									{#if $settings?.richTextInput && $settings?.showFormattingToolbar}
+
 										<RichTextInput
 											id="chat-input"
 											bind:this={chatInputElement}
 											json={true}
 											messageInput={true}
 											editable={!disabled}
-											{placeholder}
-											richText={$settings?.richTextInput ?? true}
-											showFormattingToolbar={$settings?.showFormattingToolbar ?? false}
-											shiftEnter={!($settings?.ctrlEnterToSend ?? false) &&
-												!$mobile &&
-												!(
-													'ontouchstart' in window ||
-													navigator.maxTouchPoints > 0 ||
-													navigator.msMaxTouchPoints > 0
-												)}
-											largeTextAsFile={$settings?.largeTextAsFile ?? false}
-											floatingMenuPlacement={'top-start'}
-											{suggestions}
+											placeholder={placeholder}
 											onChange={(e) => {
 												const { md } = e;
 												content = md;
 												command = getCommand();
 											}}
+										/>
+									{:else}
+										<textarea
+											bind:this={chatInputElement}
+											bind:value={content}
+											class="scrollbar-hidden rtl:text-right ltr:text-left bg-transparent dark:text-gray-100 outline-hidden w-full pt-2.5 pb-[5px] px-1 resize-none h-fit max-h-96 overflow-auto"
+											{placeholder}
 											on:keydown={async (e) => {
-												e = e.detail.event;
 												const isCtrlPressed = e.ctrlKey || e.metaKey; // metaKey is for Cmd key on Mac
 
 												const suggestionsContainerElement =
@@ -906,24 +919,25 @@
 														// Prevent Enter key from creating a new line
 														// Uses keyCode '13' for Enter key for chinese/japanese keyboards
 														if (e.keyCode === 13 && !e.shiftKey) {
-															e.preventDefault();
-														}
+															if (!(e.ctrlKey || e.metaKey)) {
+																e.preventDefault();
+																return;
+															}
 
-														// Submit the content when Enter key is pressed
-														if (content !== '' && e.keyCode === 13 && !e.shiftKey) {
-															submitHandler();
+															// Submit on content when Enter key is pressed
+															if (content !== '' && e.keyCode === 13 && !e.shiftKey) {
+																submitHandler();
+															}
 														}
 													}
-												}
 
-												if (e.key === 'Escape') {
-													console.info('Escape');
-													replyToMessage = null;
-												}
-											}}
+													if (e.key === 'Escape') {
+														console.info('Escape');
+														replyToMessage = null;
+													}
+												}}}
 											on:paste={async (e) => {
 												e = e.detail.event;
-												console.log(e);
 
 												const clipboardData = e.clipboardData || window.clipboardData;
 
@@ -938,7 +952,7 @@
 												}
 											}}
 										/>
-									{/key}
+									{/if}
 								</div>
 							</div>
 
@@ -949,7 +963,9 @@
 											<InputMenu
 												{screenCaptureHandler}
 												uploadFilesHandler={() => {
-													filesInputElement.click();
+													if (filesInputElement) {
+														filesInputElement.click();
+													}
 												}}
 											>
 												<button
@@ -1082,7 +1098,7 @@
 						</div>
 					</form>
 				{/if}
-			</div>
-		</div>
-	</div>
+                        </div>
+                </div>
+        </div>
 {/if}

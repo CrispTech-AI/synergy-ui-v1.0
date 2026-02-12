@@ -1,10 +1,11 @@
 ﻿<script lang="ts">
+	// TypeScript configuration updated - IDE refresh needed
 	import { toast } from 'svelte-sonner';
 	import { goto } from '$app/navigation';
 	import { prompts } from '$lib/stores';
-	import { onMount, tick, getContext } from 'svelte';
+	import { onMount, getContext } from 'svelte';
 
-	const i18n = getContext('i18n');
+	const i18n = getContext('i18n') as any;
 
 	import { createNewPrompt, getPrompts } from '$lib/apis/prompts';
 	import PromptEditor from '$lib/components/workspace/Prompts/PromptEditor.svelte';
@@ -13,13 +14,18 @@
 		title: string;
 		command: string;
 		content: string;
-		access_control: any | null;
+		access_control: Record<string, any> | null;
 	} | null = null;
 
 	let clone = false;
 
-	const onSubmit = async (_prompt) => {
-		const res = await createNewPrompt(localStorage.token, _prompt).catch((error) => {
+	const onSubmit = async (_prompt: {
+		title: string;
+		command: string;
+		content: string;
+		access_control?: Record<string, any>;
+	}) => {
+		const res = await createNewPrompt(localStorage.token, _prompt).catch((error: Error) => {
 			toast.error(`${error}`);
 			return null;
 		});
@@ -49,7 +55,7 @@
 				title: _prompt.title,
 				command: _prompt.command,
 				content: _prompt.content,
-				access_control: _prompt.access_control !== undefined ? _prompt.access_control : {}
+				access_control: _prompt.access_control !== undefined ? _prompt.access_control : null
 			};
 		});
 
@@ -68,12 +74,12 @@
 				title: _prompt.title,
 				command: _prompt.command,
 				content: _prompt.content,
-				access_control: _prompt.access_control !== undefined ? _prompt.access_control : {}
+				access_control: _prompt.access_control !== undefined ? _prompt.access_control : null
 			};
 		}
 	});
 </script>
 
 {#key prompt}
-	<PromptEditor {prompt} {onSubmit} {clone} />
+	<PromptEditor {prompt} {onSubmit} />
 {/key}

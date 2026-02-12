@@ -12,7 +12,7 @@ from alembic import op
 import sqlalchemy as sa
 
 
-import SYNERGY_UI.internal.db
+import synergy_ui.internal.db
 import json
 import time
 

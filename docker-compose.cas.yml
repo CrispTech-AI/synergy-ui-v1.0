@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # CrispTech Stack - Local Development
+  synergy-ui:
+    container_name: synergy-ui-local
+    image: synergy-ui:latest
+    build: ./backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=postgresql://postgres:supersecret@supabase:5432/synergy_memory
+      - QDRANT_URI=http://qdrant:6333
+      - WEBUI_AUTH=True
+      - ENABLE_SIGNUP=False
+      - CORS_ALLOW_ORIGIN=*
+      - GLOBAL_LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./backend:/app/backend
+    depends_on:
+      - supabase
+      - qdrant
+
+  # Existing Local Services
+  supabase:
+    container_name: supabase
+    image: postgres:15
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: supersecret
+      POSTGRES_DB: synergy_memory
+    volumes:
+      - supabase_data:/var/lib/postgresql/data
+
+  qdrant:
+    container_name: qdrant
+    image: qdrant/qdrant:latest
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  # Optional: VoiceConnect Bridge
+  voiceconnect:
+    container_name: voiceconnect
+    image: crisp-tech/voiceconnect:latest
+    restart: unless-stopped
+    ports:
+      - "39603:39603"
+    environment:
+      - BRIDGE_MODE=local
+      - WS_PORT=39603
+    volumes:
+      - ./wake_root:/app/wake_root
+
+volumes:
+  supabase_data:
+  qdrant_data:
+  synergy_data:

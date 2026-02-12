@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 ﻿localhostls
+>>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 #!/usr/bin/env bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -51,7 +54,7 @@ if [ -n "$SPACE_ID" ]; then
   echo "Configuring for HuggingFace Space deployment"
   if [ -n "$ADMIN_USER_EMAIL" ] && [ -n "$ADMIN_USER_PASSWORD" ]; then
     echo "Admin user configured, creating"
-    WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" uvicorn SYNERGY_UI.main:app --host "$HOST" --port "$PORT" --forwarded-allow-ips '*' &
+    WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" uvicorn synergy_ui.main:app --host "$HOST" --port "$PORT" --forwarded-allow-ips '*' &
     webui_pid=$!
     echo "Waiting for webui to start..."
     while ! curl -s "http://localhost:${PORT}/health" > /dev/null; do
@@ -70,7 +73,13 @@ if [ -n "$SPACE_ID" ]; then
   export WEBUI_URL=${SPACE_HOST}
 fi
 
-PYTHON_CMD=$(command -v python3 || command -v python)
+if [ -f "$SCRIPT_DIR/venv/bin/python" ]; then
+    PYTHON_CMD="$SCRIPT_DIR/venv/bin/python"
+    echo "Using virtual environment: $PYTHON_CMD"
+else
+    PYTHON_CMD=$(command -v python3 || command -v python)
+    echo "Using system python: $PYTHON_CMD"
+fi
 UVICORN_WORKERS="${UVICORN_WORKERS:-1}"
 
 # If script is called with arguments, use them; otherwise use default workers
@@ -81,7 +90,7 @@ else
 fi
 
 # Run uvicorn
-WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec "$PYTHON_CMD" -m uvicorn SYNERGY_UI.main:app \
+WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec "$PYTHON_CMD" -m uvicorn synergy_ui.main:app \
     --host "$HOST" \
     --port "$PORT" \
     --forwarded-allow-ips '*' \

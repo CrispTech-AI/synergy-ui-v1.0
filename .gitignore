@@ -11,3 +11,4 @@ venv/
 .Python
 backend/*/data/
 *.log
+wake_root/supabase

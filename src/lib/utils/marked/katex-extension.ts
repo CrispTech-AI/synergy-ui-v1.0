@@ -133,7 +133,7 @@ function katexTokenizer(src, tokens, displayMode: boolean) {
 	}
 }
 
-function inlineKatex(options) {
+function inlineKatex() {
 	return {
 		name: 'inlineKatex',
 		level: 'inline',

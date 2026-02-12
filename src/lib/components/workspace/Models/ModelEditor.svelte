@@ -396,12 +396,12 @@
 					inputFiles &&
 					inputFiles.length > 0 &&
 					['image/gif', 'image/webp', 'image/jpeg', 'image/png', 'image/svg+xml'].includes(
-						(inputFiles[0] as any)?.['type']
+						(inputFiles[0]?.type)
 					)
 				) {
 					reader.readAsDataURL(inputFiles[0]);
 				} else {
-					console.log(`Unsupported File Type '${(inputFiles[0] as any)?.['type']}'.`);
+					console.log(`Unsupported File Type '${(inputFiles[0]?.type)}'.`);
 					inputFiles = null;
 				}
 			}}
