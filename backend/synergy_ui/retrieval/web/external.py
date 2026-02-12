@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional, List
 
 import requests
@@ -58,3 +58,4 @@ def search_external(
     except Exception as e:
         log.error(f"Error in External search: {e}")
         return []
+

@@ -105,3 +105,4 @@ def downgrade():
 
     # Step 4: Rename 'old_chat' back to 'chat'
     op.alter_column("chat", "old_chat", new_column_name="chat", existing_type=sa.Text())
+

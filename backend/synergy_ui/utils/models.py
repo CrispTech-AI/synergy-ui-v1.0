@@ -1,4 +1,4 @@
-﻿import time
+import time
 import logging
 import asyncio
 import sys
@@ -404,3 +404,4 @@ def get_filtered_models(models, user):
         return filtered_models
     else:
         return models
+

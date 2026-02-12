@@ -1,4 +1,4 @@
-﻿from elasticsearch import Elasticsearch, BadRequestError
+from elasticsearch import Elasticsearch, BadRequestError
 from typing import Optional
 import ssl
 from elasticsearch.helpers import bulk, scan
@@ -300,3 +300,4 @@ class ElasticsearchClient(VectorDBBase):
         indices = self.client.indices.get(index=f"{self.index_prefix}*")
         for index in indices:
             self.client.indices.delete(index=index)
+

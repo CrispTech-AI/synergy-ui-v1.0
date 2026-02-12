@@ -1,4 +1,4 @@
-﻿import time
+import time
 import logging
 import sys
 
@@ -445,3 +445,4 @@ async def chat_action(request: Request, action_id: str, form_data: dict, user: A
             return Exception(f"Error: {e}")
 
     return data
+

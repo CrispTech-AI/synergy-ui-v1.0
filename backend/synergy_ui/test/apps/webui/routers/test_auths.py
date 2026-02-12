@@ -1,4 +1,4 @@
-﻿from test.util.abstract_integration_test import AbstractPostgresTest
+from test.util.abstract_integration_test import AbstractPostgresTest
 from test.util.mock_user import mock_webui_user
 
 
@@ -198,3 +198,4 @@ class TestAuths(AbstractPostgresTest):
             response = self.fast_api_client.get(self.create_url("/api_key"))
         assert response.status_code == 200
         assert response.json() == {"api_key": "abc"}
+

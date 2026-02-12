@@ -1,4 +1,4 @@
-﻿from typing import List, Optional
+from typing import List, Optional
 from pydantic import BaseModel
 from fastapi import APIRouter, Depends, HTTPException, status, Request, Query
 from fastapi.concurrency import run_in_threadpool
@@ -790,3 +790,4 @@ async def add_files_to_knowledge_batch(
         **knowledge.model_dump(),
         files=Knowledges.get_file_metadatas_by_id(knowledge.id),
     )
+

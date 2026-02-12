@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿from synergy_ui.routers.images import (
+=======
+from synergy_ui.routers.images import (
+>>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
     get_image_data,
     upload_image,
 )
@@ -175,3 +179,4 @@ def get_image_base64_from_file_id(id: str) -> Optional[str]:
             return None
     except Exception as e:
         return None
+

@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import math
 import re
 from datetime import datetime
@@ -346,3 +346,4 @@ def moa_response_generation_template(
 def tools_function_calling_generation_template(template: str, tools_specs: str) -> str:
     template = template.replace("{{TOOLS}}", tools_specs)
     return template
+

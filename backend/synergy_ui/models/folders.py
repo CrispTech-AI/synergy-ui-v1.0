@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import time
 import uuid
 from typing import Optional
@@ -362,3 +362,4 @@ class FolderTable:
 
 
 Folders = FolderTable()
+

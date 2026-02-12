@@ -1,4 +1,4 @@
-﻿import hashlib
+import hashlib
 import re
 import threading
 import time
@@ -717,3 +717,4 @@ def stream_chunks_handler(stream: aiohttp.StreamReader):
             yield b"\n"
 
     return yield_safe_stream_chunks()
+

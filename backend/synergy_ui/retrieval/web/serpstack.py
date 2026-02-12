@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
@@ -44,3 +44,4 @@ def search_serpstack(
         )
         for result in results[:count]
     ]
+

@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import time
 from typing import Optional
 
@@ -293,3 +293,4 @@ class FilesTable:
 
 
 Files = FilesTable()
+

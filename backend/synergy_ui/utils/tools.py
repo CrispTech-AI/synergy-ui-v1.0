@@ -1,4 +1,4 @@
-﻿import inspect
+import inspect
 import logging
 import re
 import inspect
@@ -856,3 +856,4 @@ def get_tool_server_url(url: Optional[str], path: str) -> str:
         # Ensure the path starts with a slash
         path = f"/{path}"
     return f"{url}{path}"
+

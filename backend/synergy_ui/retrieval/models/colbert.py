@@ -1,4 +1,4 @@
-﻿import os
+import os
 import logging
 import torch
 import numpy as np
@@ -85,3 +85,4 @@ class ColBERT(BaseReranker):
         )
 
         return scores
+

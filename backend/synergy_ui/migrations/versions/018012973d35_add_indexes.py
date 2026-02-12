@@ -44,3 +44,4 @@ def downgrade():
     # Function table index
 
     op.drop_index("is_global_idx", table_name="function")
+

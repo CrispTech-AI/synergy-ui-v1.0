@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional, Literal
 import requests
 
@@ -72,3 +72,4 @@ def search_perplexity_search(
     except Exception as e:
         log.error(f"Error searching with Perplexity Search API: {e}")
         return []
+

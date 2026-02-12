@@ -1,4 +1,4 @@
-﻿from datetime import datetime
+from datetime import datetime
 from io import BytesIO
 from pathlib import Path
 from typing import Dict, Any, List
@@ -144,3 +144,4 @@ class PDFGenerator:
             return bytes(pdf_bytes)
         except Exception as e:
             raise e
+

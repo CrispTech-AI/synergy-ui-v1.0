@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 from urllib.parse import urlencode
 
@@ -65,3 +65,4 @@ def search_serply(
         )
         for result in results[:count]
     ]
+

@@ -46,3 +46,4 @@ def downgrade():
     op.drop_table("channel")
 
     op.drop_table("message")
+

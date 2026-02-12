@@ -1,4 +1,4 @@
-﻿import json
+import json
 import time
 import uuid
 from typing import Optional
@@ -392,3 +392,4 @@ class NoteTable:
 
 
 Notes = NoteTable()
+

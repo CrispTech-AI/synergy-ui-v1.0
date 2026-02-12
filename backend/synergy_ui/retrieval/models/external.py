@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import requests
 from typing import Optional, List, Tuple
 from urllib.parse import quote
@@ -70,3 +70,4 @@ class ExternalReranker(BaseReranker):
         except Exception as e:
             log.exception(f"Error in external reranking: {e}")
             return None
+

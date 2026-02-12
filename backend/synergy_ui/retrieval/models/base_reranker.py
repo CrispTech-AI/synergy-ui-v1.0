@@ -6,3 +6,4 @@ class BaseReranker(ABC):
     @abstractmethod
     def predict(self, sentences: List[Tuple[str, str]]) -> Optional[List[float]]:
         pass
+

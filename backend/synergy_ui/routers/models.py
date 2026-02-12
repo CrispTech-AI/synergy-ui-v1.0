@@ -1,4 +1,4 @@
-﻿from typing import Optional
+from typing import Optional
 import io
 import base64
 import json
@@ -421,3 +421,4 @@ async def delete_model_by_id(form_data: ModelIdForm, user=Depends(get_verified_u
 async def delete_all_models(user=Depends(get_admin_user)):
     result = Models.delete_all_models()
     return result
+

@@ -1,4 +1,4 @@
-﻿from typing import Optional
+from typing import Optional
 import logging
 from urllib.parse import urlparse
 
@@ -250,3 +250,4 @@ class QdrantClient(VectorDBBase):
         for collection_name in collection_names:
             if collection_name.name.startswith(self.collection_prefix):
                 self.client.delete_collection(collection_name=collection_name.name)
+

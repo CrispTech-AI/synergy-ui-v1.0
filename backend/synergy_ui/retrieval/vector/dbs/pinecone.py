@@ -1,4 +1,4 @@
-﻿from typing import Optional, List, Dict, Any, Union
+from typing import Optional, List, Dict, Any, Union
 import logging
 import time  # for measuring elapsed time
 from pinecone import Pinecone, ServerlessSpec
@@ -579,3 +579,4 @@ class PineconeClient(VectorDBBase):
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Exit context manager, ensuring resources are cleaned up."""
         self.close()
+

@@ -48,3 +48,4 @@ def rollback(migrator: Migrator, database: pw.Database, *, fake=False):
     migrator.remove_fields("tool", "valves")
     migrator.remove_fields("function", "valves")
     migrator.remove_fields("function", "is_active")
+

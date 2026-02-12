@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 from typing import Awaitable, Optional, Union
 
@@ -1322,3 +1322,4 @@ class RerankCompressor(BaseDocumentCompressor):
                 "No valid scores found, check your reranking function. Returning original documents."
             )
             return documents
+

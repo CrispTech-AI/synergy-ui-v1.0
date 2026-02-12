@@ -1,4 +1,4 @@
-﻿from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel
 import logging
 import asyncio
@@ -208,3 +208,4 @@ async def delete_memory_by_id(memory_id: str, user=Depends(get_verified_user)):
         return True
 
     return False
+

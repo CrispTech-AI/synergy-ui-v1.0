@@ -128,3 +128,4 @@ def has_permission(db, DocumentModel, query, filter: dict, permission: str = "re
         query = query.filter(or_(*conditions))
 
     return query
+

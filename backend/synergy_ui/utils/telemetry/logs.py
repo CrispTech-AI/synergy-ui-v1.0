@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from base64 import b64encode
 from opentelemetry.sdk._logs import (
     LoggingHandler,
@@ -51,3 +51,4 @@ def setup_logging():
 
 
 otel_handler = setup_logging()
+

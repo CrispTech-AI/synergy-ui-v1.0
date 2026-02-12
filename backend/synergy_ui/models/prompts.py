@@ -1,4 +1,4 @@
-﻿import time
+import time
 from typing import Optional
 
 from synergy_ui.internal.db import Base, get_db
@@ -165,3 +165,4 @@ class PromptsTable:
 
 
 Prompts = PromptsTable()
+

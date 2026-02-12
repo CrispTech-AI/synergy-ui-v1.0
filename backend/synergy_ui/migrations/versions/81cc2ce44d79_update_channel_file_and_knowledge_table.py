@@ -1,4 +1,4 @@
-﻿"""Update channel file and knowledge table
+"""Update channel file and knowledge table
 
 Revision ID: 81cc2ce44d79
 Revises: 6283dc0e4d8d
@@ -47,3 +47,4 @@ def downgrade() -> None:
     # Remove data column from knowledge table
     with op.batch_alter_table("knowledge", schema=None) as batch_op:
         batch_op.drop_column("data")
+

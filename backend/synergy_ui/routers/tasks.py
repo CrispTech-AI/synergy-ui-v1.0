@@ -1,4 +1,4 @@
-﻿from fastapi import APIRouter, Depends, HTTPException, Response, status, Request
+from fastapi import APIRouter, Depends, HTTPException, Response, status, Request
 from fastapi.responses import JSONResponse, RedirectResponse
 
 from pydantic import BaseModel
@@ -748,3 +748,4 @@ async def generate_moa_response(
             status_code=status.HTTP_400_BAD_REQUEST,
             content={"detail": str(e)},
         )
+

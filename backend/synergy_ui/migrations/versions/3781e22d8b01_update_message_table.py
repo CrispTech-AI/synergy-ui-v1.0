@@ -68,3 +68,4 @@ def downgrade():
     op.drop_column("message", "parent_id")
     op.drop_table("message_reaction")
     op.drop_table("channel_member")
+

@@ -1,4 +1,4 @@
-﻿import time
+import time
 import logging
 import sys
 import os
@@ -3347,3 +3347,4 @@ async def process_chat_response(
             headers=dict(response.headers),
             background=response.background,
         )
+

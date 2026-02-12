@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import traceback
 from typing import Collection, Union
 
@@ -198,3 +198,4 @@ class Instrumentor(BaseInstrumentor):
             return
         for instrumentor in self.instrumentors:
             instrumentor.uninstrument()
+

@@ -1,4 +1,4 @@
-﻿from typing import Optional
+from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 
 from synergy_ui.models.prompts import (
@@ -167,3 +167,4 @@ async def delete_prompt_by_command(command: str, user=Depends(get_verified_user)
 
     result = Prompts.delete_prompt_by_command(f"/{command}")
     return result
+

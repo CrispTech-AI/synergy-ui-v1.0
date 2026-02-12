@@ -1,4 +1,4 @@
-﻿import requests
+import requests
 import logging
 import ftfy
 import sys
@@ -401,3 +401,4 @@ class Loader:
                 loader = TextLoader(file_path, autodetect_encoding=True)
 
         return loader
+

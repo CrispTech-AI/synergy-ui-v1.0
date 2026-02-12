@@ -1,4 +1,4 @@
-﻿# tasks.py
+# tasks.py
 import asyncio
 from typing import Dict
 from uuid import uuid4
@@ -183,3 +183,4 @@ async def stop_item_tasks(redis: Redis, item_id: str):
             return result  # Return the first failure
 
     return {"status": True, "message": f"All tasks for item {item_id} stopped."}
+

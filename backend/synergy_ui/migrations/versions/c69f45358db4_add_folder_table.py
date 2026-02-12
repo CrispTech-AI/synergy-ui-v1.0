@@ -48,3 +48,4 @@ def downgrade():
     op.drop_column("chat", "folder_id")
 
     op.drop_table("folder")
+

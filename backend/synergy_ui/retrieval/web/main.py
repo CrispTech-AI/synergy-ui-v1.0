@@ -1,4 +1,4 @@
-﻿import validators
+import validators
 
 from typing import Optional
 from urllib.parse import urlparse
@@ -44,3 +44,4 @@ class SearchResult(BaseModel):
     link: str
     title: Optional[str]
     snippet: Optional[str]
+

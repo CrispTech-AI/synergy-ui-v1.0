@@ -1,4 +1,4 @@
-﻿import os
+import os
 import re
 import subprocess
 import sys
@@ -309,3 +309,4 @@ def install_tool_and_function_dependencies():
         install_frontmatter_requirements(all_dependencies.strip(", "))
     except Exception as e:
         log.error(f"Error installing requirements: {e}")
+

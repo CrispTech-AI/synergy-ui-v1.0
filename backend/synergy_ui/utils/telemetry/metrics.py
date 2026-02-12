@@ -1,4 +1,4 @@
-﻿"""OpenTelemetry metrics bootstrap for Synergy UI.
+"""OpenTelemetry metrics bootstrap for Synergy UI.
 
 This module initialises a MeterProvider that sends metrics to an OTLP
 collector. The collector is responsible for exposing a Prometheus
@@ -201,3 +201,4 @@ def setup_metrics(app: FastAPI, resource: Resource) -> None:
 
             request_counter.add(1, attrs)
             duration_histogram.record(elapsed_ms, attrs)
+

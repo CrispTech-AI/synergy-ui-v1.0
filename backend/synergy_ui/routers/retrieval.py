@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 import mimetypes
 import os
@@ -2572,3 +2572,4 @@ async def process_files_batch(
                 )
 
     return BatchProcessFilesResponse(results=file_results, errors=file_errors)
+

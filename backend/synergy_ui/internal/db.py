@@ -1,4 +1,4 @@
-﻿import os
+import os
 import json
 import logging
 from contextlib import contextmanager
@@ -158,3 +158,4 @@ def get_session():
 
 
 get_db = contextmanager(get_session)
+

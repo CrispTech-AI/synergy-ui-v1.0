@@ -1,4 +1,4 @@
-﻿import base64
+import base64
 import copy
 import hashlib
 import logging
@@ -1642,3 +1642,4 @@ class OAuthManager:
             log.error(f"Failed to store OAuth session server-side: {e}")
 
         return response
+

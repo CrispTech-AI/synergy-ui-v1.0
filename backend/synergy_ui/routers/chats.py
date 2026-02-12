@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 from typing import Optional
 
@@ -1065,3 +1065,4 @@ async def delete_all_tags_by_id(id: str, user=Depends(get_verified_user)):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail=ERROR_MESSAGES.NOT_FOUND
         )
+

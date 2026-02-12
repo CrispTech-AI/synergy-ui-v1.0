@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 import sys
 from typing import TYPE_CHECKING
@@ -161,3 +161,4 @@ def start_logger():
         uvicorn_logger.handlers = [InterceptHandler()]
 
     logger.info(f"GLOBAL_LOG_LEVEL: {GLOBAL_LOG_LEVEL}")
+

@@ -1,4 +1,4 @@
-﻿from typing import Optional, List, Dict, Any, Tuple
+from typing import Optional, List, Dict, Any, Tuple
 import logging
 import json
 from sqlalchemy import (
@@ -712,3 +712,4 @@ class PgvectorClient(VectorDBBase):
     def delete_collection(self, collection_name: str) -> None:
         self.delete(collection_name)
         log.info(f"Collection '{collection_name}' deleted.")
+

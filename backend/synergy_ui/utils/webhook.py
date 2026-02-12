@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 import aiohttp
 
@@ -60,3 +60,4 @@ async def post_webhook(name: str, url: str, message: str, event_data: dict) -> b
     except Exception as e:
         log.exception(e)
         return False
+

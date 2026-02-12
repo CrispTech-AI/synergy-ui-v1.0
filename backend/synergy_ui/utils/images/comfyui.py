@@ -309,3 +309,4 @@ async def comfyui_edit_image(
     ws.close()
 
     return images
+

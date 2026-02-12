@@ -1,4 +1,4 @@
-﻿import os
+import os
 import shutil
 import json
 import logging
@@ -372,3 +372,4 @@ def get_storage_provider(storage_provider: str):
 
 
 Storage = get_storage_provider(STORAGE_PROVIDER)
+

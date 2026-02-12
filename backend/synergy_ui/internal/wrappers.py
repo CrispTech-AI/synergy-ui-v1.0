@@ -84,3 +84,4 @@ def register_connection(db_url):
         else:
             raise ValueError("Unsupported database connection")
     return db
+

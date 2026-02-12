@@ -83,3 +83,4 @@ def downgrade():
 
     # Drop 'access_control' column from 'tools' table
     op.drop_column("tool", "access_control")
+

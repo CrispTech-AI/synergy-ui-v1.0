@@ -24,3 +24,4 @@ class SpanAttributes(_SpanAttributes):
     RESULT_CODE = "result.code"
     RESULT_MESSAGE = "result.message"
     RESULT_ERRORS = "result.errors"
+

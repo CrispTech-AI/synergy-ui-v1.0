@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
 
@@ -124,3 +124,4 @@ def search_azure(
     except Exception as ex:
         log.error(f"Azure AI Search error: {ex}")
         raise ex
+

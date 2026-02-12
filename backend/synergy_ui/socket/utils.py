@@ -1,4 +1,4 @@
-﻿import json
+import json
 import uuid
 from synergy_ui.utils.redis import get_redis_connection
 from synergy_ui.env import REDIS_KEY_PREFIX
@@ -225,3 +225,4 @@ class YdocManager:
                 del self._updates[document_id]
             if document_id in self._users:
                 del self._users[document_id]
+

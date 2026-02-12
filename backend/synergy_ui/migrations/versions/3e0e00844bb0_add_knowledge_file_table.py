@@ -1,4 +1,4 @@
-﻿"""Add knowledge_file table
+"""Add knowledge_file table
 
 Revision ID: 3e0e00844bb0
 Revises: 90ef40d4714e
@@ -167,3 +167,4 @@ def downgrade() -> None:
 
     # 3. Drop the knowledge_file table
     op.drop_table("knowledge_file")
+

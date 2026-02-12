@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import random
 
 import socketio
@@ -834,3 +834,4 @@ def get_event_call(request_info):
 
 
 get_event_caller = get_event_call
+

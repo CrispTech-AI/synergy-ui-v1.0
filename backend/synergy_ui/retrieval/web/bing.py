@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 from pprint import pprint
 from typing import Optional
@@ -69,3 +69,4 @@ def main():
 
     results = search_bing(args.locale, args.query, args.count, args.filter)
     pprint(results)
+

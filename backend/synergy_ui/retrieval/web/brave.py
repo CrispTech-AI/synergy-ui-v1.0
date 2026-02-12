@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
@@ -40,3 +40,4 @@ def search_brave(
         )
         for result in results[:count]
     ]
+

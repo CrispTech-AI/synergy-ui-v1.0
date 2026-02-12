@@ -1,4 +1,4 @@
-﻿import os
+import os
 from pathlib import Path
 from typing import Optional
 import logging
@@ -241,3 +241,4 @@ async def delete_group_by_id(id: str, user=Depends(get_admin_user)):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=ERROR_MESSAGES.DEFAULT(e),
         )
+

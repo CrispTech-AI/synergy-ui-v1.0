@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 import shutil
 import uuid
@@ -323,3 +323,4 @@ async def delete_folder_by_id(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=ERROR_MESSAGES.NOT_FOUND,
         )
+

@@ -1,4 +1,4 @@
-﻿"""
+"""
 Oracle 23ai Vector Database Client - Fixed Version
 
 # .env
@@ -939,3 +939,4 @@ class Oracle23aiClient(VectorDBBase):
         except Exception as e:
             log.exception(f"Error deleting collection '{collection_name}': {e}")
             raise
+

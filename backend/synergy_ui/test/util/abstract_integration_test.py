@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 import time
 
@@ -159,3 +159,4 @@ class AbstractPostgresTest(AbstractIntegrationTest):
         for table in tables:
             Session.execute(text(f"TRUNCATE TABLE {table}"))
         Session.commit()
+

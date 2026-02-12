@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
@@ -47,3 +47,4 @@ def search_tavily(
         )
         for result in results
     ]
+

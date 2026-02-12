@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 import time
 from typing import Optional
@@ -529,3 +529,4 @@ class GroupTable:
 
 
 Groups = GroupTable()
+

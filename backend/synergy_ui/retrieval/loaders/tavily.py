@@ -89,3 +89,4 @@ class TavilyLoader(BaseLoader):
                     log.error(f"Error extracting content from batch {batch_urls}: {e}")
                 else:
                     raise e
+

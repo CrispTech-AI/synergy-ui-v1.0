@@ -1,4 +1,4 @@
-﻿import pytest
+import pytest
 from unittest.mock import Mock, patch, AsyncMock
 import redis
 from synergy_ui.utils.redis import (
@@ -791,3 +791,4 @@ class TestSentinelRedisProxyFactoryMethods:
         # Verify calls
         mock_master.pipeline.assert_called_once()
         mock_master.get.assert_called_with("key2")
+

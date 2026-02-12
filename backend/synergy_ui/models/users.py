@@ -1,4 +1,4 @@
-﻿import time
+import time
 from typing import Optional
 
 from synergy_ui.internal.db import Base, JSONField, get_db
@@ -716,3 +716,4 @@ class UsersTable:
 
 
 Users = UsersTable()
+

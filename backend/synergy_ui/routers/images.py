@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import base64
 import uuid
 import io
@@ -1100,3 +1100,4 @@ async def image_edits(
                 error = data
 
         raise HTTPException(status_code=400, detail=ERROR_MESSAGES.DEFAULT(error))
+

@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import json
 from typing import Optional, List
 
@@ -56,3 +56,4 @@ def search_sougou(
     except TencentCloudSDKException as err:
         log.error(f"Error in Sougou search: {err}")
         return []
+

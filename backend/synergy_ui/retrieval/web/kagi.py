@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
@@ -44,3 +44,4 @@ def search_kagi(
         results = get_filtered_results(results, filter_list)
 
     return results
+

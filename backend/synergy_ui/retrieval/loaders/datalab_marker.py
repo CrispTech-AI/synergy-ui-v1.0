@@ -276,3 +276,4 @@ class DatalabMarkerLoader:
                 metadata[k] = ""
 
         return [Document(page_content=full_text, metadata=metadata)]
+

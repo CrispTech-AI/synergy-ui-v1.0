@@ -252,3 +252,4 @@ def rollback(migrator: Migrator, database: pw.Database, *, fake=False):
     migrator.remove_model("chat")
 
     migrator.remove_model("auth")
+

@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 from typing import Optional
 
@@ -1738,3 +1738,4 @@ async def delete_message_by_id(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail=ERROR_MESSAGES.DEFAULT()
         )
+

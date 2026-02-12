@@ -1,4 +1,4 @@
-﻿import inspect
+import inspect
 from urllib.parse import urlparse
 
 import logging
@@ -231,3 +231,4 @@ def get_sentinel_url_from_env(redis_url, sentinel_hosts_env, sentinel_port_env):
         f"{host}:{sentinel_port_env}" for host in sentinel_hosts_env.split(",")
     )
     return f"redis+sentinel://{auth_part}{hosts_part}/{redis_config['db']}/{redis_config['service']}"
+

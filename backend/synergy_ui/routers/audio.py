@@ -1,4 +1,4 @@
-﻿import hashlib
+import hashlib
 import json
 import logging
 import os
@@ -1358,3 +1358,4 @@ async def get_voices(request: Request, user=Depends(get_verified_user)):
             {"id": k, "name": v} for k, v in get_available_voices(request).items()
         ]
     }
+

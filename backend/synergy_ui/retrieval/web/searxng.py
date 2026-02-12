@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
@@ -87,3 +87,4 @@ def search_searxng(
         )
         for result in sorted_results[:count]
     ]
+

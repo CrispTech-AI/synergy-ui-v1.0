@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI
+from fastapi import FastAPI
 from opentelemetry import trace
 
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -56,3 +56,4 @@ def setup(app: FastAPI, db_engine: Engine):
     # set up metrics only if enabled
     if ENABLE_OTEL_METRICS:
         setup_metrics(app, resource)
+

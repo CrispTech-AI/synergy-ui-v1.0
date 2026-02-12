@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 import base64
 import io
@@ -619,3 +619,4 @@ async def delete_user_by_id(user_id: str, user=Depends(get_admin_user)):
 @router.get("/{user_id}/groups")
 async def get_user_groups_by_id(user_id: str, user=Depends(get_admin_user)):
     return Groups.get_groups_by_member_id(user_id)
+

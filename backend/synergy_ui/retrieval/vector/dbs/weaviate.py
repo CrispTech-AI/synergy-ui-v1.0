@@ -1,4 +1,4 @@
-﻿import weaviate
+import weaviate
 import re
 import uuid
 from typing import Any, Dict, List, Optional, Union
@@ -338,3 +338,4 @@ class WeaviateClient(VectorDBBase):
                 self.client.collections.delete(collection_name)
         except Exception:
             pass
+

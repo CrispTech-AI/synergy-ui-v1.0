@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import uuid
 import jwt
 import base64
@@ -413,3 +413,4 @@ def get_admin_user(user=Depends(get_current_user)):
             detail=ERROR_MESSAGES.ACCESS_PROHIBITED,
         )
     return user
+

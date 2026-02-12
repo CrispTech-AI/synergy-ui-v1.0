@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import logging
 import socket
 import ssl
@@ -723,3 +723,4 @@ def get_web_loader(
             f"Invalid WEB_LOADER_ENGINE: {WEB_LOADER_ENGINE.value}. "
             "Please set it to 'safe_web', 'playwright', 'firecrawl', or 'tavily'."
         )
+

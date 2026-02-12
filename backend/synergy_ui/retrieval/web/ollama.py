@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from dataclasses import dataclass
 from typing import Optional
 
@@ -50,3 +50,4 @@ def search_ollama_cloud(
     except Exception as e:
         log.error(f"Error searching Ollama: {e}")
         return []
+

@@ -1,4 +1,4 @@
-﻿"""init
+"""init
 
 Revision ID: 7e5b5dc7342b
 Revises:
@@ -202,3 +202,4 @@ def downgrade() -> None:
     op.drop_table("chat")
     op.drop_table("auth")
     # ### end Alembic commands ###
+

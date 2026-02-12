@@ -1,4 +1,4 @@
-﻿import requests
+import requests
 import logging, os
 from typing import Iterator, List, Union
 from urllib.parse import quote
@@ -87,3 +87,4 @@ class ExternalDocumentLoader(BaseLoader):
             raise Exception(
                 f"Error loading document: {response.status_code} {response.text}"
             )
+

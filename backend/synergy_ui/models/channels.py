@@ -1,4 +1,4 @@
-﻿import json
+import json
 import time
 import uuid
 from typing import Optional
@@ -905,3 +905,4 @@ class ChannelTable:
 
 
 Channels = ChannelTable()
+

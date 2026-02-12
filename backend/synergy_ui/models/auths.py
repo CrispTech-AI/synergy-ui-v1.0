@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import uuid
 from typing import Optional
 
@@ -194,3 +194,4 @@ class AuthsTable:
 
 
 Auths = AuthsTable()
+

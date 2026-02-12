@@ -1,4 +1,4 @@
-﻿from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager
 from dataclasses import asdict, dataclass
 from enum import Enum
 import re
@@ -281,3 +281,4 @@ class AuditLoggingMiddleware:
             self.audit_logger.write(entry)
         except Exception as e:
             logger.error(f"Failed to log audit entry: {str(e)}")
+

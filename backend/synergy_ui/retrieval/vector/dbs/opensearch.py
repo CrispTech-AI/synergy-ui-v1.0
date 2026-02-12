@@ -1,4 +1,4 @@
-﻿from opensearchpy import OpenSearch
+from opensearchpy import OpenSearch
 from opensearchpy.helpers import bulk
 from typing import Optional
 
@@ -265,3 +265,4 @@ class OpenSearchClient(VectorDBBase):
         indices = self.client.indices.get(index=f"{self.index_prefix}_*")
         for index in indices:
             self.client.indices.delete(index=index)
+

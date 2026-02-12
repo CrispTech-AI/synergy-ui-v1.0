@@ -1,4 +1,4 @@
-﻿"""
+"""
 Experimental SCIM 2.0 Implementation for Synergy UI
 Provides System for Cross-domain Identity Management endpoints for users and groups
 
@@ -927,3 +927,4 @@ async def delete_group(
         )
 
     return None
+

@@ -1,4 +1,4 @@
-﻿"""Update messages and channel member table
+"""Update messages and channel member table
 
 Revision ID: 2f1211949ecc
 Revises: 37f288994c47
@@ -101,3 +101,4 @@ def downgrade() -> None:
     op.drop_column("message", "pinned_by")
     op.drop_column("message", "pinned_at")
     op.drop_column("message", "is_pinned")
+

@@ -1,4 +1,4 @@
-﻿from pymilvus import MilvusClient as Client
+from pymilvus import MilvusClient as Client
 from pymilvus import FieldSchema, DataType
 from pymilvus import connections, Collection
 
@@ -389,3 +389,4 @@ class MilvusClient(VectorDBBase):
                 except Exception as e:
                     log.error(f"Error deleting collection {collection_name_full}: {e}")
         log.info(f"Milvus reset complete. Deleted collections: {deleted_collections}")
+

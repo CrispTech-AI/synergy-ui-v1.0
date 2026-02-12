@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import sys
 import inspect
 import json
@@ -350,3 +350,4 @@ async def generate_function_chat_completion(
 
         message = await get_message_content(res)
         return openai_chat_completion_message_template(form_data["model"], message)
+

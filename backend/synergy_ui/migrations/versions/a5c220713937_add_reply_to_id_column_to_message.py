@@ -32,3 +32,4 @@ def downgrade() -> None:
     op.drop_column("message", "reply_to_id")
 
     pass
+

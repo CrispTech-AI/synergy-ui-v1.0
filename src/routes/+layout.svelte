@@ -726,7 +726,8 @@
 			backendConfig = await getBackendConfig();
 			console.log('Backend config:', backendConfig);
 		} catch (error) {
-			console.error('Error loading backend config:', error);
+			console.error('Backend not available, continuing with offline mode:', error);
+			// Continue with offline mode instead of redirecting to error
 		}
 		// Initialize i18n even if we didn't get a backend config,
 		// so `/error` can show something that's not `undefined`.
@@ -779,8 +780,8 @@
 				}
 			}
 		} else {
-			// Redirect to /error when Backend Not Detected
-			await goto(`/error`);
+			// Continue in offline mode when backend not detected
+			console.log('Backend not available - running in offline mode');
 		}
 
 		await tick();

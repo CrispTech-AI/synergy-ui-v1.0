@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import time
 import uuid
 from typing import Optional
@@ -110,3 +110,4 @@ class TagTable:
 
 
 Tags = TagTable()
+

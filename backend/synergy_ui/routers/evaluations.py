@@ -1,4 +1,4 @@
-﻿from typing import Optional
+from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 from pydantic import BaseModel
 
@@ -183,3 +183,4 @@ async def delete_feedback_by_id(id: str, user=Depends(get_verified_user)):
         )
 
     return success
+

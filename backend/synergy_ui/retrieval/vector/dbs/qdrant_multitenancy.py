@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional, Tuple, List, Dict, Any
 from urllib.parse import urlparse
 
@@ -368,3 +368,4 @@ class QdrantClient(VectorDBBase):
                 filter=models.Filter(must=[_tenant_filter(tenant_id)])
             ),
         )
+

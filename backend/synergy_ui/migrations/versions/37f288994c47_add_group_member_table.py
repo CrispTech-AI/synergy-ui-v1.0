@@ -144,3 +144,4 @@ def downgrade():
 
     # Drop the new table
     op.drop_table("group_member")
+

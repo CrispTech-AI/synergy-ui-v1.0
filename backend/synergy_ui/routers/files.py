@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 import uuid
 import json
@@ -40,7 +40,11 @@ from synergy_ui.models.groups import Groups
 
 
 from synergy_ui.routers.retrieval import ProcessFileForm, process_file
+<<<<<<< HEAD
 from synergy_ui.routers.audio import transcribe
+=======
+# from synergy_ui.routers.audio import transcribe
+>>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 
 from synergy_ui.storage.provider import Storage
 
@@ -118,7 +122,8 @@ def process_uploaded_file(request, file, file_path, file_item, file_metadata, us
 
             if strict_match_mime_type(stt_supported_content_types, file.content_type):
                 file_path = Storage.get_file(file_path)
-                result = transcribe(request, file_path, file_metadata, user)
+                # result = transcribe(request, file_path, file_metadata, user)
+                result = None  # Audio transcription disabled
 
                 process_file(
                     request,
@@ -768,3 +773,4 @@ async def delete_file_by_id(id: str, user=Depends(get_verified_user)):
             status_code=status.HTTP_404_NOT_FOUND,
             detail=ERROR_MESSAGES.NOT_FOUND,
         )
+

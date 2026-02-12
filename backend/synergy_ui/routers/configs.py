@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import copy
 from fastapi import APIRouter, Depends, Request, HTTPException
 from pydantic import BaseModel, ConfigDict
@@ -534,3 +534,4 @@ async def get_banners(
     user=Depends(get_verified_user),
 ):
     return request.app.state.config.BANNERS
+

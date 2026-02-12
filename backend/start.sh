@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+﻿localhostls
+>>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 #!/usr/bin/env bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )

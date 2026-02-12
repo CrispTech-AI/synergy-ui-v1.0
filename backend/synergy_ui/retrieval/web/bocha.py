@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
@@ -61,3 +61,4 @@ def search_bocha(
         )
         for result in results[:count]
     ]
+

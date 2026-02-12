@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional, List
 
 from synergy_ui.retrieval.web.main import SearchResult, get_filtered_results
@@ -37,3 +37,4 @@ def search_firecrawl(
     except Exception as e:
         log.error(f"Error in External search: {e}")
         return []
+

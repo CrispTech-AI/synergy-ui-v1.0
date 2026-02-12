@@ -1,4 +1,4 @@
-﻿from contextlib import contextmanager
+from contextlib import contextmanager
 
 from fastapi import FastAPI
 
@@ -43,3 +43,4 @@ def mock_user(app: FastAPI, **kwargs):
     }
     yield
     app.dependency_overrides = {}
+

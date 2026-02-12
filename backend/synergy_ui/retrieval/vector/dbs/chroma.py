@@ -1,4 +1,4 @@
-﻿import chromadb
+import chromadb
 import logging
 from chromadb import Settings
 from chromadb.utils.batch_utils import create_batches
@@ -194,3 +194,4 @@ class ChromaClient(VectorDBBase):
     def reset(self):
         # Resets the database. This will delete all collections and item entries.
         return self.client.reset()
+

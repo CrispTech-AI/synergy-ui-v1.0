@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import hashlib
 import json
 import logging
@@ -1149,3 +1149,4 @@ async def proxy(path: str, request: Request, user=Depends(get_verified_user)):
     finally:
         if not streaming:
             await cleanup_response(r, session)
+

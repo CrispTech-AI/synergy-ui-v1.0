@@ -1,4 +1,4 @@
-﻿import time
+import time
 import logging
 import uuid
 from typing import Optional, List
@@ -274,3 +274,4 @@ class OAuthSessionTable:
 
 
 OAuthSessions = OAuthSessionTable()
+

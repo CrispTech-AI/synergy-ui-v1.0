@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional, Tuple, List, Dict, Any
 
 from synergy_ui.config import (
@@ -285,3 +285,4 @@ class MilvusClient(VectorDBBase):
 
     def insert(self, collection_name: str, items: List[VectorItem]):
         return self.upsert(collection_name, items)
+

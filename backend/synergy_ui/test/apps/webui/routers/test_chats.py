@@ -1,4 +1,4 @@
-﻿import uuid
+import uuid
 
 from test.util.abstract_integration_test import AbstractPostgresTest
 from test.util.mock_user import mock_webui_user
@@ -234,3 +234,4 @@ class TestChats(AbstractPostgresTest):
 
         chat = self.chats.get_chat_by_id(chat_id)
         assert chat.share_id is None
+

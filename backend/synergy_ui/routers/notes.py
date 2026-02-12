@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 from typing import Optional
 
@@ -291,3 +291,4 @@ async def delete_note_by_id(request: Request, id: str, user=Depends(get_verified
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail=ERROR_MESSAGES.DEFAULT()
         )
+

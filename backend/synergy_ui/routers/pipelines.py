@@ -1,4 +1,4 @@
-﻿from fastapi import (
+from fastapi import (
     Depends,
     FastAPI,
     File,
@@ -507,3 +507,4 @@ async def update_pipeline_valves(
             status_code=(r.status_code if r is not None else status.HTTP_404_NOT_FOUND),
             detail=detail if detail else "Pipeline not found",
         )
+

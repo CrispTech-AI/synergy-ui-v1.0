@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 from typing import Optional
 
@@ -39,3 +39,4 @@ def search_serper(
         )
         for result in results[:count]
     ]
+

@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import json
 import time
 import uuid
@@ -1351,3 +1351,4 @@ class ChatTable:
 
 
 Chats = ChatTable()
+

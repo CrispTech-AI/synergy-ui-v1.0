@@ -1,4 +1,4 @@
-﻿import time
+import time
 import uuid
 from typing import Optional
 
@@ -145,3 +145,4 @@ class MemoriesTable:
 
 
 Memories = MemoriesTable()
+

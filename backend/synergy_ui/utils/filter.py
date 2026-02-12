@@ -1,4 +1,4 @@
-﻿import inspect
+import inspect
 import logging
 
 from synergy_ui.utils.plugin import (
@@ -132,3 +132,4 @@ async def process_filter_functions(
             del form_data["files"]
 
     return form_data, {}
+

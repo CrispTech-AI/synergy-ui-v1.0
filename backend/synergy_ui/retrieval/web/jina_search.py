@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 
 import requests
 from synergy_ui.retrieval.web.main import SearchResult
@@ -44,3 +44,4 @@ def search_jina(api_key: str, query: str, count: int) -> list[SearchResult]:
         )
 
     return results
+

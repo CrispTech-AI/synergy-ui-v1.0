@@ -1,4 +1,4 @@
-﻿import requests
+import requests
 import aiohttp
 import asyncio
 import logging
@@ -767,3 +767,4 @@ class MistralLoader:
         )
 
         return processed_results
+

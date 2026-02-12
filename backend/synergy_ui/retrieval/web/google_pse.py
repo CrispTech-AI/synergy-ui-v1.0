@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from typing import Optional
 
 import requests
@@ -70,3 +70,4 @@ def search_google_pse(
         )
         for result in all_results
     ]
+

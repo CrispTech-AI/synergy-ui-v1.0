@@ -1,4 +1,4 @@
-﻿import random
+import random
 import logging
 import sys
 
@@ -87,3 +87,4 @@ async def generate_embeddings(
         form_data=form_data,
         user=user,
     )
+

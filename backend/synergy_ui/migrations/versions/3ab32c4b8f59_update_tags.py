@@ -79,3 +79,4 @@ def downgrade():
 
         # Since primary key on just 'id' is restored, we now add back any unique constraints if necessary
         batch_op.create_unique_constraint("uq_id_user_id", ["id", "user_id"])
+
