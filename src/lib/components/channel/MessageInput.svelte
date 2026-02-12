@@ -901,7 +901,57 @@
 											bind:value={content}
 											class="scrollbar-hidden rtl:text-right ltr:text-left bg-transparent dark:text-gray-100 outline-hidden w-full pt-2.5 pb-[5px] px-1 resize-none h-fit max-h-96 overflow-auto"
 											{placeholder}
-                                        />
+											on:keydown={async (e) => {
+												const isCtrlPressed = e.ctrlKey || e.metaKey; // metaKey is for Cmd key on Mac
+
+												const suggestionsContainerElement =
+													document.getElementById('suggestions-container');
+
+												if (!suggestionsContainerElement) {
+													if (
+														!$mobile ||
+														!(
+															'ontouchstart' in window ||
+															navigator.maxTouchPoints > 0 ||
+															navigator.msMaxTouchPoints > 0
+														)
+													) {
+														// Prevent Enter key from creating a new line
+														// Uses keyCode '13' for Enter key for chinese/japanese keyboards
+														if (e.keyCode === 13 && !e.shiftKey) {
+															if (!(e.ctrlKey || e.metaKey)) {
+																e.preventDefault();
+																return;
+															}
+
+															// Submit on content when Enter key is pressed
+															if (content !== '' && e.keyCode === 13 && !e.shiftKey) {
+																submitHandler();
+															}
+														}
+													}
+
+													if (e.key === 'Escape') {
+														console.info('Escape');
+														replyToMessage = null;
+													}
+												}}}
+											on:paste={async (e) => {
+												e = e.detail.event;
+
+												const clipboardData = e.clipboardData || window.clipboardData;
+
+												if (clipboardData && clipboardData.items) {
+													for (const item of clipboardData.items) {
+														const file = item.getAsFile();
+														if (file) {
+															await inputFilesHandler([file]);
+															e.preventDefault();
+														}
+													}
+												}
+											}}
+										/>
 									{/if}
 								</div>
 							</div>
@@ -1051,11 +1101,4 @@
                         </div>
                 </div>
         </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</svelte:component>
-</script>
+{/if}

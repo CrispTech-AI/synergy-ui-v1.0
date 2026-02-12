@@ -1,0 +1,26 @@
+{
+    "network_id": "synergy-alpha-cluster",
+    "nodes": [
+        {
+            "id": "JEXI",
+            "type": "Soul",
+            "address": "ws://localhost:8080/api/v1/voice/ws",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "GEMINI3",
+            "type": "Bridge",
+            "address": "local/agent",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "DAVID",
+            "type": "Architect",
+            "address": "human/root"
+        }
+    ],
+    "protocols": {
+        "sync": "AIE-LinkSync.v1",
+        "voice": "VoiceBridge.v2"
+    }
+}

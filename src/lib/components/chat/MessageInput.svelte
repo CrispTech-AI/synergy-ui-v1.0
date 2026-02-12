@@ -62,6 +62,7 @@
 
 	import InputMenu from './MessageInput/InputMenu.svelte';
 	import VoiceRecording from './MessageInput/VoiceRecording.svelte';
+	import LiveVoiceBridge from './MessageInput/LiveVoiceBridge.svelte';
 	import FilesOverlay from './MessageInput/FilesOverlay.svelte';
 	import ToolServersModal from './ToolServersModal.svelte';
 
@@ -383,6 +384,7 @@
 
 	let loaded = false;
 	let recording = false;
+	let liveVoice = false;
 
 	let isComposing = false;
 	// Safari has a bug where compositionend is not triggered correctly #16615
@@ -1075,6 +1077,10 @@
 							filesInputElement.value = '';
 						}}
 					/>
+
+					<div class={liveVoice ? 'mb-2' : 'hidden'}>
+						<LiveVoiceBridge bind:active={liveVoice} />
+					</div>
 
 					<div class={recording ? '' : 'hidden'}>
 						<VoiceRecording
@@ -1774,6 +1780,28 @@
 															d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-1.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z"
 														/>
 													</svg>
+												</button>
+											</Tooltip>
+
+											<Tooltip content={$i18n.t('Live Voice Bridge')}>
+												<button
+													id="live-voice-button"
+													class=" {liveVoice ? 'text-indigo-500 animate-pulse' : 'text-gray-600 dark:text-gray-300'} hover:text-indigo-700 transition rounded-full p-1.5 self-center mr-0.5"
+													type="button"
+													on:click={() => {
+														liveVoice = !liveVoice;
+													}}
+													aria-label="Live Voice"
+												>
+													<div class="relative">
+														<Voice className="size-5 translate-y-[0.5px]" />
+														{#if liveVoice}
+															<span class="absolute -top-1 -right-1 flex h-2 w-2">
+																<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+																<span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+															</span>
+														{/if}
+													</div>
 												</button>
 											</Tooltip>
 										{/if}

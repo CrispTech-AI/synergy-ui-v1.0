@@ -90,9 +90,10 @@ from synergy_ui.routers import (
     prompts,
     evaluations,
     tools,
-    users,
-    utils,
     scim,
+    voice,
+    users as users_router,
+    utils as utils_router,
 )
 
 from synergy_ui.routers.retrieval import (
@@ -1386,7 +1387,7 @@ app.include_router(retrieval.router, prefix="/api/v1/retrieval", tags=["retrieva
 app.include_router(configs.router, prefix="/api/v1/configs", tags=["configs"])
 
 app.include_router(auths.router, prefix="/api/v1/auths", tags=["auths"])
-app.include_router(users.router, prefix="/api/v1/users", tags=["users"])
+app.include_router(users_router.router, prefix="/api/v1/users", tags=["users"])
 
 
 app.include_router(channels.router, prefix="/api/v1/channels", tags=["channels"])
@@ -1407,11 +1408,13 @@ app.include_router(functions.router, prefix="/api/v1/functions", tags=["function
 app.include_router(
     evaluations.router, prefix="/api/v1/evaluations", tags=["evaluations"]
 )
-app.include_router(utils.router, prefix="/api/v1/utils", tags=["utils"])
+app.include_router(utils_router.router, prefix="/api/v1/utils", tags=["utils"])
 
 # SCIM 2.0 API for identity management
 if ENABLE_SCIM:
     app.include_router(scim.router, prefix="/api/v1/scim/v2", tags=["scim"])
+
+app.include_router(voice.router, prefix="/api/v1/voice", tags=["voice"])
 
 
 try:
