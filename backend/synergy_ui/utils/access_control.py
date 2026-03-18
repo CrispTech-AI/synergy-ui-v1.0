@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿from typing import Optional, Set, Union, List, Dict, Any
-=======
 from typing import Optional, Set, Union, List, Dict, Any
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 from synergy_ui.models.users import Users, UserModel
 from synergy_ui.models.groups import Groups
 

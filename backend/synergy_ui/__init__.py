@@ -72,15 +72,11 @@ def serve(
             os.environ["USE_CUDA_DOCKER"] = "false"
             os.environ["LD_LIBRARY_PATH"] = ":".join(LD_LIBRARY_PATH)
 
-<<<<<<< HEAD
     import synergy_ui.main  # we need set environment variables before importing main
-=======
-    import SYNERGY_UI.main  # we need set environment variables before importing main
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
     from synergy_ui.env import UVICORN_WORKERS  # Import the workers setting
 
     uvicorn.run(
-        "SYNERGY_UI.main:app",
+        "synergy_ui.main:app",
         host=host,
         port=port,
         forwarded_allow_ips="*",

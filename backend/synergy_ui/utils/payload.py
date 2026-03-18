@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿from synergy_ui.utils.task import prompt_template, prompt_variables_template
-=======
 from synergy_ui.utils.task import prompt_template, prompt_variables_template
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 from synergy_ui.utils.misc import (
     deep_update,
     add_or_update_system_message,
