@@ -40,11 +40,8 @@ from synergy_ui.models.groups import Groups
 
 
 from synergy_ui.routers.retrieval import ProcessFileForm, process_file
-<<<<<<< HEAD
 from synergy_ui.routers.audio import transcribe
-=======
 # from synergy_ui.routers.audio import transcribe
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 
 from synergy_ui.storage.provider import Storage
 

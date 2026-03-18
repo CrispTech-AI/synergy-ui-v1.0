@@ -4,11 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev --host",
-<<<<<<< HEAD
 		"dev:5050": "npm run pyodide:fetch && vite dev --port 5050",
-=======
-		"dev:5050": "vite dev --port 5050",
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
 		"build": "npm run pyodide:fetch && vite build",
 		"build:watch": "npm run pyodide:fetch && vite build --watch",
 		"preview": "vite preview",
@@ -68,7 +64,6 @@
 		"@joplin/turndown-plugin-gfm": "^1.0.62",
 		"@mediapipe/tasks-vision": "^0.10.17",
 		"@pyscript/core": "^0.4.32",
-		"@rollup/rollup-win32-x64-msvc": "^4.57.1",
 		"@sveltejs/adapter-node": "^2.0.0",
 		"@sveltejs/svelte-virtual-list": "^3.0.1",
 		"@tiptap/core": "^3.14.0",

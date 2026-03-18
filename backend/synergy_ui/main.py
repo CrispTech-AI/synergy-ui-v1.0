@@ -68,11 +68,8 @@ from synergy_ui.socket.main import (
     get_models_in_use,
 )
 from synergy_ui.routers import (
-<<<<<<< HEAD
     audio,
-=======
     # audio,
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
     images,
     ollama,
     openai,
@@ -2392,9 +2389,6 @@ else:
         f"Frontend build directory not found at '{FRONTEND_BUILD_DIR}'. Serving API only."
     )
 
-<<<<<<< HEAD
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-=======
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d

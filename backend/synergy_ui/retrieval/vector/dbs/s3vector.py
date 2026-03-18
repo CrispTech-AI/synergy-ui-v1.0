@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-﻿from synergy_ui.retrieval.vector.utils import process_metadata
-=======
 from synergy_ui.retrieval.vector.utils import process_metadata
->>>>>>> 42db75b9805d5b710cb1ac55e743061a7a6dde9d
+from synergy_ui.retrieval.vector.utils import process_metadata
 from synergy_ui.retrieval.vector.main import (
     VectorDBBase,
     VectorItem,
